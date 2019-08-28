@@ -1,14 +1,20 @@
 package com.spring.boot.sensor.service.impl;
 
+import com.spring.boot.sensor.entity.Dept;
 import com.spring.boot.sensor.entity.Role;
 import com.spring.boot.sensor.entity.User;
+import com.spring.boot.sensor.mapper.DeptMapper;
 import com.spring.boot.sensor.mapper.RoleMapper;
 import com.spring.boot.sensor.mapper.UserMapper;
+import com.spring.boot.sensor.model.ParameterM;
 import com.spring.boot.sensor.service.AdminService;
 import com.spring.boot.sensor.utils.result.Result;
 import com.spring.boot.sensor.utils.result.ResultUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -31,6 +37,9 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private RoleMapper roleMapper;
 
+    @Autowired
+    private DeptMapper deptMapper;
+
     //
 //    @Autowired
 //    private PermissionRepository permissionRepository;
@@ -50,6 +59,28 @@ public class AdminServiceImpl implements AdminService {
         if (userList.size() == 1) return ResultUtil.okWithData(userList.get(0));
         return null;
     }
+
+    @Override
+    public Result deptSud(ParameterM parameterM) {
+        if (!StringUtils.isNumeric(parameterM.getOrder())) return ResultUtil.errorWithMessage("排序只能是数字");
+        Dept dept = null;
+        if (parameterM.getId() != 0) dept = deptMapper.findById(parameterM.getId());
+        else if (parameterM.getId() == 0) dept = new Dept();
+        dept.setCode(parameterM.getCode());
+        dept.setIsuse(parameterM.getIsuse());
+        dept.setOrder(parameterM.getOrder());
+        dept.setRemark(parameterM.getRemark());
+        dept.setName(parameterM.getName());
+        dept.setParentid(parameterM.getParentid());
+        dept.setType(parameterM.getType());
+        if (dept.getId() != 0) {
+        } else {
+            deptMapper.insertDept(dept);
+        }
+        return ResultUtil.ok();
+    }
+
+
 //
 //    @Override
 //    public Result userList(ParameterM parameterM) {

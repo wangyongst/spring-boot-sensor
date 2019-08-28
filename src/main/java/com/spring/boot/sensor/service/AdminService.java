@@ -1,5 +1,6 @@
 package com.spring.boot.sensor.service;
 
+import com.spring.boot.sensor.entity.Dept;
 import com.spring.boot.sensor.entity.Role;
 import com.spring.boot.sensor.model.ParameterM;
 import com.spring.boot.sensor.utils.result.Result;
@@ -11,6 +12,8 @@ public interface AdminService {
     //    Result me();
 //
     Result findByUsername(String username);
+
+    Result deptSud(ParameterM parameterM);
 
 //
 //    Result userList(ParameterM parameterM);

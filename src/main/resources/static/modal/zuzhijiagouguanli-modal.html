@@ -6,10 +6,12 @@
     <link type="text/css" rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css"/>
     <link type="text/css" rel="stylesheet" href="css/select2.min.css"/>
     <link type="text/css" rel="stylesheet" href="css/all.css"/>
+    <script type="text/javascript" src="myjs/wy/zuzhijiagouguanli-modal.js"></script>
 </head>
 <body>
 <!--新建弹出框开始-->
 <form autocomplete="off">
+    <input id="id" name="id" hidden="hidden">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -23,35 +25,35 @@
                     <ul class="form-box clearfix" style="padding: 0;">
                         <li class="width-50">
                             <p>组织编码：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100"
+                            <input class="form-control required" type="text" value="" maxlength="100" name="code"
                                    required="required">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>组织名称：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100"
+                            <input class="form-control required" type="text" value="" maxlength="100" name="name"
                                    required="required">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>组织类型：</p>
-                            <select class="form-control" style="width: 50%;">
-                                <option selected="selected">公司</option>
-                                <option>部门</option>
+                            <select name="type" class="form-control" style="width: 50%;">
+                                <option selected="selected" value="公司">公司</option>
+                                <option value="部门">部门</option>
                             </select>
                             <span class="help-inline"><font color="red">*</font></span>
 
                         </li>
                         <li class="width-50">
                             <p>上级组织：</p>
-                            <input type="text" class="form-control click-bg" id="cat-select-click1">
+                            <input type="text" class="form-control click-bg" id="cat-select-click1" name="paraentid">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
 
                         <li class="width-50">
                             <p>是否可用：</p>
-                            <select class="form-control" style="width: 50%;">
+                            <select name="isuse" class="form-control" style="width: 50%;">
                                 <option selected="selected">是</option>
                                 <option>否</option>
                             </select>
@@ -59,7 +61,7 @@
                         </li>
                         <li class="width-50">
                             <p>排序 :</p>
-                            <input class="form-control required" type="text" value="" maxlength="100"
+                            <input name="order" class="form-control required" type="text" value="" maxlength="100"
                                    required="required">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
@@ -75,7 +77,7 @@
             </div>
             <div class="modal-footer">
                 <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary">保存</button>
+                <button type="button" class="btn btn-primary" id="deptSave">保存</button>
             </div>
         </div>
     </div>

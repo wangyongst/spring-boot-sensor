@@ -6,7 +6,6 @@ $(function () {
                 password: $("#pwd").val()
             },
             function (result) {
-            debugger;
                 if (result.status == 1) {
                     window.location.href = "/";
                 } else {
