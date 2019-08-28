@@ -3,6 +3,7 @@ package com.spring.boot.sensor.config.shiro;
 import com.spring.boot.sensor.entity.Role;
 import com.spring.boot.sensor.entity.Role2Permission;
 import com.spring.boot.sensor.entity.User;
+import com.spring.boot.sensor.entity.User2Role;
 import com.spring.boot.sensor.service.AdminService;
 import com.spring.boot.sensor.utils.result.Result;
 import org.apache.shiro.authc.AuthenticationException;
@@ -15,6 +16,9 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShiroRealm extends AuthorizingRealm {
 
     @Autowired
@@ -25,10 +29,11 @@ public class ShiroRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         User user = (User) principals.getPrimaryPrincipal();
-        Role role = user.getRole();
-        authorizationInfo.addRole(role.getName());
-        for (Role2Permission p : role.getRole2Permissions()) {
-            authorizationInfo.addStringPermission(p.getPermission().getName());
+        for (User2Role user2Role : user.getUser2Roles()) {
+            authorizationInfo.addRole(user2Role.getRole().getName());
+            for (Role2Permission p : user2Role.getRole().getRole2Permissions()) {
+                authorizationInfo.addStringPermission(p.getPermission().getName());
+            }
         }
         return authorizationInfo;
     }

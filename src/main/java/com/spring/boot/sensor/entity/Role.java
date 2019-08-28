@@ -1,29 +1,28 @@
 package com.spring.boot.sensor.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
+import java.util.Objects;
 
-import javax.persistence.*;
-import java.util.Set;
-
-@Entity
 public class Role {
-    private static final long serialVersionUID = 1L;
-
-    @Basic
-    @Column(name = "name", nullable = true, length = 255)
+    private int id;
     private String name;
+    private List<Role2Permission> role2Permissions;
 
-    @Basic
-    @Column(name = "projectid", nullable = true)
-    private Integer projectid;
+    public List<Role2Permission> getRole2Permissions() {
+        return role2Permissions;
+    }
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    public void setRole2Permissions(List<Role2Permission> role2Permissions) {
+        this.role2Permissions = role2Permissions;
+    }
 
-    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
-    private Set<Role2Permission> role2Permissions;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -33,27 +32,4 @@ public class Role {
         this.name = name;
     }
 
-    public Integer getProjectid() {
-        return projectid;
-    }
-
-    public void setProjectid(Integer projectid) {
-        this.projectid = projectid;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Set<Role2Permission> getRole2Permissions() {
-        return role2Permissions;
-    }
-
-    public void setRole2Permissions(Set<Role2Permission> role2Permissions) {
-        this.role2Permissions = role2Permissions;
-    }
 }

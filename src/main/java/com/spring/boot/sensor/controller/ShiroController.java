@@ -36,12 +36,13 @@ public class ShiroController {
             subject.login(token);
             User user = (User) SecurityUtils.getSubject().getPrincipal();
             SecurityUtils.getSubject().getSession().setTimeout(-1000l);
-            return ResultUtil.loginOK(subject.getSession().getId().toString(), user.getIschange() + "");
+            return ResultUtil.loginOK(subject.getSession().getId().toString(), "");
         } catch (Exception e) {
             e.printStackTrace();
             return ResultUtil.loginFail("您输入的账户或密码有误，请重新输入！");
         }
     }
+
     @PostMapping(value = "/logout")
     public void logout() {
     }

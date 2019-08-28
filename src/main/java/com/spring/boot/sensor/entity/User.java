@@ -1,73 +1,44 @@
 package com.spring.boot.sensor.entity;
 
-import javax.persistence.*;
+import java.util.List;
+import java.util.Objects;
 
-@Entity
 public class User {
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Basic
-    @Column(name = "name", nullable = true, length = 255)
+    private int id;
+    private String username;
     private String name;
-    @Basic
-    @Column(name = "password", nullable = true, length = 255)
     private String password;
-    @Basic
-    @Column(name = "openid", nullable = true, length = 255)
-    private String openid;
-    @Basic
-    @Column(name = "createusername", nullable = true, length = 255)
-    private String createusername;
-    @Basic
-    @Column(name = "mobile", nullable = true, length = 255)
+    private String workno;
     private String mobile;
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-    @JoinColumn(name = "roleid", referencedColumnName = "id")
-    private Role role;
-    @Basic
-    @Column(name = "deliver", nullable = true)
-    private Integer deliver;
-    @Basic
-    @Column(name = "ischange", nullable = true)
-    private Integer ischange;
-    @Basic
-    @Column(name = "createtime", nullable = true, length = 255)
-    private String createtime;
+    private String telephone;
+    private String email;
+    private Integer islogin;
+    private String remark;
+    private Integer islock;
+    private List<User2Role> user2Roles;
 
-    public String getOpenid() {
-        return openid;
+    public List<User2Role> getUser2Roles() {
+        return user2Roles;
     }
 
-    public void setOpenid(String openid) {
-        this.openid = openid;
+    public void setUser2Roles(List<User2Role> user2Roles) {
+        this.user2Roles = user2Roles;
     }
 
-    public Integer getDeliver() {
-        return deliver;
-    }
-
-    public void setDeliver(Integer deliver) {
-        this.deliver = deliver;
-    }
-
-    public String getCreatetime() {
-        return createtime;
-    }
-
-    public void setCreatetime(String createtime) {
-        this.createtime = createtime;
-    }
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {
@@ -86,12 +57,12 @@ public class User {
         this.password = password;
     }
 
-    public String getCreateusername() {
-        return createusername;
+    public String getWorkno() {
+        return workno;
     }
 
-    public void setCreateusername(String createusername) {
-        this.createusername = createusername;
+    public void setWorkno(String workno) {
+        this.workno = workno;
     }
 
     public String getMobile() {
@@ -102,19 +73,43 @@ public class User {
         this.mobile = mobile;
     }
 
-    public Role getRole() {
-        return role;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
-    public Integer getIschange() {
-        return ischange;
+    public String getEmail() {
+        return email;
     }
 
-    public void setIschange(Integer ischange) {
-        this.ischange = ischange;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getIslogin() {
+        return islogin;
+    }
+
+    public void setIslogin(Integer islogin) {
+        this.islogin = islogin;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public Integer getIslock() {
+        return islock;
+    }
+
+    public void setIslock(Integer islock) {
+        this.islock = islock;
     }
 }
