@@ -1,7 +1,5 @@
 package com.spring.boot.sensor.model;
 
-import com.spring.boot.sensor.entity.Purch;
-
 import java.util.List;
 
 public class ParameterM {
@@ -47,7 +45,6 @@ public class ParameterM {
     private String ids;
     private String createusername;
     private String billno;
-    private Purch purch;
     private String billtime;
     private String pricetime;
     private String accepttime;
@@ -74,14 +71,6 @@ public class ParameterM {
 
     public void setBilltime(String billtime) {
         this.billtime = billtime;
-    }
-
-    public Purch getPurch() {
-        return purch;
-    }
-
-    public void setPurch(Purch purch) {
-        this.purch = purch;
     }
 
     public int getBilldetailid() {

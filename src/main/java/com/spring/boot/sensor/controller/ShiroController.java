@@ -4,19 +4,13 @@ import com.spring.boot.sensor.entity.User;
 import com.spring.boot.sensor.service.AdminService;
 import com.spring.boot.sensor.utils.result.Result;
 import com.spring.boot.sensor.utils.result.ResultUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.annotations.ApiIgnore;
 
-@Api(tags = "用户认证接口")
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/shiro")
@@ -25,13 +19,11 @@ public class ShiroController {
     @Autowired
     public AdminService adminService;
 
-    @ApiIgnore
     @RequestMapping("/403")
     public Result unauthorizedRole() {
         return ResultUtil.noPermission();
     }
 
-    @ApiIgnore
     @PostMapping(value = "/login")
     public Result login(@RequestParam("username") String username, @RequestParam("password") String password) {
         if (StringUtils.isBlank(username)) return ResultUtil.errorWithMessage("登录账号不能为空！");
@@ -50,9 +42,6 @@ public class ShiroController {
             return ResultUtil.loginFail("您输入的账户或密码有误，请重新输入！");
         }
     }
-
-
-    @ApiIgnore
     @PostMapping(value = "/logout")
     public void logout() {
     }

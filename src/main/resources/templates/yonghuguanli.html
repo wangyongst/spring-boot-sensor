@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+		<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
+		<link type="text/css" rel="stylesheet" href="css/skin-blue.min.css" />
+		<link type="text/css" rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css" />
+		<link type="text/css" rel="stylesheet" href="css/AdminLTE.min.css" />
+		<link type="text/css" rel="stylesheet" href="css/all.css" />
+		<link type="text/css" rel="stylesheet" href="css/dataTables.bootstrap.min.css" />
+		<link type="text/css" rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	</head>
+	<body class="holl-init">
+		<section class="content-header">
+      		<h1>
+        		用户管理
+        		<small>用户管理</small>
+      		</h1>
+      		<ol class="breadcrumb">
+        		<li><a href="#"><i class="fa fa-dashboard"></i>系统配置</a></li>
+        		<li><a href="#">用户管理</a></li>
+        		<li class="active">用户管理</li>
+     		</ol>
+    	</section>
+    	<section class="content container-fluid">
+    		<div class="row">
+    			<!--左侧分类树 开始-->
+    			<div class="col-xs-3">
+    				<div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">组织机构</h3>
+                        </div>
+                       	<div class="box-body">
+                       		<!--组织机构树 -->
+                          	<ul id="treeDemo1" class="ztree"></ul>
+                       	</div>
+                    </div>
+    			</div>
+    			<!--左侧分类树 结束-->
+    			<!--右侧表格开始-->
+    			<div class="col-xs-9">
+    				<div class="box">
+    				    <div class="box-header">
+    				    	<h3 class="box-title">用户列表</h3>
+    				    </div>
+    				    <!--操作button-->
+    				    <div class="buttons mag_1">
+                            <button type="button" class="btn btn-primary" id="new">新增</button>
+                            <button type="button" class="btn btn-success ">修改</button>
+							<button type="button" class="btn btn-warning ">查看</button>
+                            <button type="button" class="btn btn-danger ">删除</button>
+							<button type="button" class="btn btn-danger ">批量删除</button>
+							<button type="button" class="btn btn-success ">导入</button>
+							<button type="button" class="btn btn-warning ">导出</button>
+							<button type="button" class="btn btn-success ">暂时停用</button>
+							<button type="button" class="btn btn-success ">用户激活</button>
+                       	</div>
+                       	<!--操作button结束-->
+                       	<!--table表格开始-->
+                       	<div class="box-body">
+                            <table class="table table-hover table-bordered table-striped example-table">
+                                <thead>
+                                	<tr>
+                                    	<th></th>
+                                    	<th>工号</th>
+                                    	<th>登录账号</th>
+                                   		<th>姓名</th>
+										<th>联系电话</th>
+                                    	<th>所属部门</th>
+                                    	<th>角色</th>
+                                	</tr>
+                                </thead>
+                        		<tbody>
+                        			<tr>
+                           				<td><input type="checkbox" class="minimal" /></td>
+                            			<td>HJ00001</td>
+                            			<td>laojin888</td>
+                            			<td>王大拿</td>
+                            			<td>13801001001</td>
+										<td>技术部>>设备维护部</td>
+                            			<td>工程师</td>
+                        			</tr>
+                        			<tr>
+                           				<td><input type="checkbox" class="minimal" /></td>
+                            			<td>HJ00001</td>
+                            			<td>laojin888</td>
+                            			<td>王大拿</td>
+                            			<td>13801001001</td>
+										<td>技术部>>设备维护部</td>
+                            			<td>工程师</td>
+                        			</tr>
+                        			<tr>
+                           				<td><input type="checkbox" class="minimal" /></td>
+                            			<td>HJ00001</td>
+                            			<td>laojin888</td>
+                            			<td>王大拿</td>
+                            			<td>13801001001</td>
+										<td>技术部>>设备维护部</td>
+                            			<td>工程师</td>
+                        			</tr>
+                        			<tr>
+                           				<td><input type="checkbox" class="minimal" /></td>
+                            			<td>HJ00001</td>
+                            			<td>laojin888</td>
+                            			<td>王大拿</td>
+                            			<td>13801001001</td>
+										<td>技术部>>设备维护部</td>
+                            			<td>工程师</td>
+                        			</tr>
+                        		</tbody>
+                       	    </table>
+                       	</div>
+                       	<!--table表格结束-->
+    				</div>
+    			</div>
+    				<!--右侧表格结束-->
+    		</div>
+        </section>
+  	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/adminlte.min.js"></script>
+	<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+	<script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/icheck.min.js"></script>
+	<!--组织机构分类树的初始化-->
+	<script type="text/javascript" src="myjs/treecat-init.js"></script>
+	<!--table初始化-->
+	<script type="text/javascript" src="myjs/tablecat-init.js"></script>
+	<script>
+   $(function() {	
+	/*----------点击按钮打开模态框------------*/
+		$("#new").click(function(){
+			var dialog = window.parent.$('#modal-default');
+			dialog.empty();
+			dialog.load("modal/yonghuguanli-modal.html");
+	        dialog.modal();		
+		})
+    });
+	</script>
+	</body>
+</html>

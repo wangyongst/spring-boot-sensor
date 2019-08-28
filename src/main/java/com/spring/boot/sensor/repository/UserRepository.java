@@ -1,9 +1,7 @@
 package com.spring.boot.sensor.repository;
 
 import com.spring.boot.sensor.entity.Role;
-import com.spring.boot.sensor.entity.Supplier;
 import com.spring.boot.sensor.entity.User;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.RepositoryDefinition;
@@ -19,6 +17,4 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
     List<User> findByMobile(String mobile);
 
     List<User> findByRole(Role role);
-
-    List<User> findBySupplier(Supplier supplier);
 }

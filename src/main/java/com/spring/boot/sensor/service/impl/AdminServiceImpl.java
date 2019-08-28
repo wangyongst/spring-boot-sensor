@@ -39,9 +39,6 @@ public class AdminServiceImpl implements AdminService {
 
     private static final Logger logger = LogManager.getLogger(AdminServiceImpl.class);
 
-    @Value("${custom.file.path}")
-    private String uploadPath;
-
     @Autowired
     private UserRepository userRepository;
 

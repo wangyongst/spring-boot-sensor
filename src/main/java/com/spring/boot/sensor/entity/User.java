@@ -28,9 +28,6 @@ public class User {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "roleid", referencedColumnName = "id")
     private Role role;
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-    @JoinColumn(name = "supplierid", referencedColumnName = "id")
-    private Supplier supplier;
     @Basic
     @Column(name = "deliver", nullable = true)
     private Integer deliver;
@@ -47,14 +44,6 @@ public class User {
 
     public void setOpenid(String openid) {
         this.openid = openid;
-    }
-
-    public Supplier getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
     }
 
     public Integer getDeliver() {

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link type="text/css" rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css" />
+		<link type="text/css" rel="stylesheet" href="css/dataTables.bootstrap.min.css" />
+		<link type="text/css" rel="stylesheet" href="css/all.css" />
+	</head>
+	<body>
+		<!--新建弹出框开始-->
+		<form action="" method="post" autocomplete="off">
+			<div class="modal-dialog">
+				<div class="modal-content">
+		    		<div class="modal-header">
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		            		<span aria-hidden="true">×</span>
+		        		</button>
+		       			 <h4 class="modal-title">用户管理</h4>
+		    		</div>
+		    		<div class="modal-body">
+		       			<div class="form-box-center">
+		        			 <ul class="form-box clearfix" style="padding: 0;">
+	                            <li class="width-50">
+	                                <p>归属机构：</p>
+	                                <input type="text" class="form-control click-bg" id="cat-select-click1">
+	                                <span class="input-group-addon" ><i class="fa fa-search"></i></span>
+	                                <span class="help-inline"><font color="red">*</font></span>
+	                            </li>
+	                             <li class="width-50">
+	                                <p>登录名：</p>
+	                                 <input  class="form-control required" type="text" value="" maxlength="100" required="required">
+	                                <span class="help-inline"><font color="red">*</font></span>
+	                            </li>
+	                            <li class="width-50">
+	                                <p>姓名：</p>
+	                                 <input  class="form-control required" type="text" value="" maxlength="100" required="required">
+	                                <span class="help-inline"><font color="red">*</font></span>
+	                            </li>
+	                            <li class="width-50">
+	                                <p>工号：</p>
+	                                 <input  class="form-control required" type="text" value="" maxlength="100" required="required">
+	                                <span class="help-inline"><font color="red">*</font></span>
+	                            </li>
+	                            <li class="width-50">
+	                                <p>密码：</p>
+	                                 <input  class="form-control required" type="password" value="" maxlength="100" required="required">
+	                                <span class="help-inline"><font color="red">*</font></span>
+	                            </li>
+	                             <li class="width-50">
+	                                <p>确认密码：</p>
+	                                 <input  class="form-control required" type="password" value="" maxlength="100" required="required">
+	                                <span class="help-inline"><font color="red">*</font></span>
+	                            </li>
+	                             <li class="width-50">
+	                                <p>电话：</p>
+	                                 <input  class="form-control required" type="text" value="" maxlength="100">
+	                               
+	                            </li>
+	                             <li class="width-50">
+	                                <p>手机：</p>
+	                                 <input  class="form-control required" type="text" value="" maxlength="100">
+	                              
+	                            </li>
+	                             <li class="width-50">
+	                                <p>邮箱：</p>
+	                                 <input  class="form-control required" type="email" value="" maxlength="100">                    
+	                            </li>
+	                           
+	                            <li class="width-50">
+	                                <p>是否允许登录：</p>
+	                                 <select class="form-control  select2" style="width: 50%;">
+	                                         <option selected="selected">是</option>
+	                                         <option>否</option>     
+	                                  </select> 
+	                            </li>
+	                             <li class="width-full">
+	                                 <p>用户角色 :</p>                                           
+	                                  <input type="text" class="form-control click-bg" id="cat-select-click3" >
+	                                   <span class="input-group-addon"><i class="fa fa-search"></i></span>                 
+	                            </li>
+								<li class="width-50">
+	                                <p>指纹验证:</p>
+	                                <div class="finger-lock">
+	                                    <img src="images/finger.png">
+	                                </div>
+	                            </li>
+	                            <li class="width-full">
+	                                 <p>备注 :</p>
+	                                  <div class="form-right">
+	                                       <textarea id="remarks" name="remarks" maxlength="255" class="form-control" rows="4"></textarea>
+	                                 </div>
+	                            </li>
+	                        </ul>
+		       			</div>
+		    		</div>
+		    		<div class="modal-footer">
+		       			<button type="reset" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+		        		<button type="submit" class="btn btn-primary">保存</button>
+		    		</div>
+				</div>
+			 </div>
+        </form>	
+        <!--新建弹出框结束-->
+        <!--弹出框内归属机构  弹出分类树 开始-->
+		<div id="mubu"></div>
+		<div class="cat-select" id="cat-select" style="display: none;">
+             <div class="cat-select-header">
+                <h4 class="cat-select-title">选择归属机构</h4>
+                <i class="fa fa-close close"></i>
+             </div>
+             <div class="cat-select-body">
+                <div class="cat-select-search">
+                    <p>关键字 : </p>
+                    <input type="text" class="form-control" />
+                    <button type="button" class="btn">搜索</button>
+                </div>
+                <div class="cat-select-tree">
+                      <ul id="treeDemo1" class="ztree"></ul>
+                </div>
+             </div>
+             <div class="cat-select-footer">
+                 <button type="button" class="btn btn-default pull-left cencel">取消</button>
+                 <button type="button" class="btn btn-primary pull-right sure">确定</button>
+            </div>
+         </div>
+	    <!--弹出框内归属机构 弹出分类树 结束-->
+	    <!--弹出框内 用户角色弹出 开始-->
+	     <div class="cat-select width-600" id="cat-select3" style="display: none;">
+             <div class="cat-select-header">
+                <h4 class="cat-select-title">选择角色列表</h4>
+                <i class="fa fa-close close"></i>
+             </div>
+             <div class="cat-select-body">
+                 <table  class="table table-hover table-bordered table-striped example-table">
+                	<thead>
+               			 <tr>
+                    		<th></th>
+                    		<th>角色名称</th>
+                		</tr>
+                	</thead>
+                	<tbody>
+                		<tr>
+                    		<td><input type="checkbox" class="minimal" /></td>
+                    		<td>系统管理员</td>
+		                </tr>
+						<tr>
+		                    <td><input type="checkbox" class="minimal" /></td>
+		                    <td>工程师</td>
+		                </tr>
+		                <tr>
+		                    <td><input type="checkbox" class="minimal" /></td>
+		                    <td>客户</td>
+		                </tr>
+              		 </tbody>
+                </table>
+             </div>
+             <div class="cat-select-footer">
+                 <button type="button" class="btn btn-default pull-left cencel">取消</button>
+                 <button type="button" class="btn btn-primary pull-right sure">确定</button>
+            </div>
+         </div>
+	    <!--弹出框内 用户角色弹出 结束-->
+	<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+	<script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>
+	<script type="text/javascript" src="js/icheck.min.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+	<!--table的初始化-->
+	<script type="text/javascript" src="myjs/tablecat-init.js"></script>
+	<!--组织机构 分类树的初始化-->
+	<script type="text/javascript" src="myjs/treecat-init.js"></script>
+	<!--js弹出控制弹出-->
+   <script type="text/javascript" src="myjs/demo-two.js"></script>
+	</body>
+</html>

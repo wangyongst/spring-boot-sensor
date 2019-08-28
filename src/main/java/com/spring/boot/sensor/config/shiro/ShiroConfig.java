@@ -21,20 +21,9 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
-        filterChainDefinitionMap.put("/swagger-ui.html", "anon");
-        filterChainDefinitionMap.put("/swagger-resources/**", "anon");
-        filterChainDefinitionMap.put("/v2/api-docs/**", "anon");
-        filterChainDefinitionMap.put("/webjars/springfox-swagger-ui/**", "anon");
-        filterChainDefinitionMap.put("/file/**", "anon");
-        filterChainDefinitionMap.put("/shiro/login", "anon");
-        filterChainDefinitionMap.put("/shiro/logout", "logout");
-        filterChainDefinitionMap.put("/**.html", "authc");
-        filterChainDefinitionMap.put("/", "authc");
-        filterChainDefinitionMap.put("/view/**", "authc");
-        filterChainDefinitionMap.put("/admin/**", "authc");
-        filterChainDefinitionMap.put("/api/**", "authc");
+        filterChainDefinitionMap.put("/**", "anon");
         shiroFilterFactoryBean.setUnauthorizedUrl("/shiro/403");
-        shiroFilterFactoryBean.setLoginUrl("/page-login");
+        shiroFilterFactoryBean.setLoginUrl("/index.html");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
