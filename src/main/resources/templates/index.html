@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+<!doctype html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -73,19 +74,19 @@
 			                </a>
 			                <ul class="treeview-menu">
 			                	<li>
-			                		<a href="yonghuguanli" target="menuFrame">
+			                		<a href="yonghuguanli.html" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>用户管理</span>
 			                		</a>
 			                	</li>
 			                	<li>
-			                		<a href="zuzhijiagouguanli" target="menuFrame">
+			                		<a href="/zuzhijiagouguanli" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>组织架构管理</span>
 			                		</a>
 			                	</li>
 			                	<li>
-			                		<a href="juesequanxian" target="menuFrame">
+			                		<a href="juesequanxian.html" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>角色权限</span>
 			                		</a>
@@ -102,19 +103,19 @@
 			                </a>
 			                <ul class="treeview-menu">
 			                	<li>
-			                		<a href="caidananniugongnengguanli" target="menuFrame">
+			                		<a href="caidananniugongnengguanli.html" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>菜单按钮功能管理</span>
 			                		</a>
 			                	</li>
 			                	<li>
-			                		<a href="xitongrizhi" target="menuFrame">
+			                		<a href="xitongrizhi.html" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>系统日志</span>
 			                		</a>
 			                	</li>
 			                	<li>
-			                		<a href="xitongbaimingdan" target="menuFrame">
+			                		<a href="xitongbaimingdan.html" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>系统白名单</span>
 			                		</a>
@@ -140,6 +141,7 @@
 			<!--footer结束-->
 			<!--弹出框区域 开始-->
 			<div class="modal fade" id="modal-default" style="display: none;"></div>
+                                                <div class="modal fade" id="modal-default1" style="display: none;"></div>
 			<!--弹出框区域 结束-->
 		</div>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>

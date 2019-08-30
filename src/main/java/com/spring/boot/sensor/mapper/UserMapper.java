@@ -10,7 +10,7 @@ public interface UserMapper {
 
     @Select("select * from user where username = #{username}")
     @Results(id = "userPermission", value = {
-            @Result(property = "user2Roles", column = "userid", many = @Many(select = "com.spring.boot.sensor.mapper.User2RoleMapper.findByUserid"))
+            @Result(property = "user2Roles", column = "id", many = @Many(select = "com.spring.boot.sensor.mapper.User2RoleMapper.findByUserid"))
     })
     List<User> findByUsername(@Param("username") String username);
 

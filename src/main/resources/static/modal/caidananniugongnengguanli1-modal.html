@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--新建弹出框开始-->
+		<form action="" method="post" autocomplete="off">
+			<div class="modal-dialog">
+				<div class="modal-content">
+		    		<div class="modal-header">
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		            		<span aria-hidden="true">×</span>
+		        		</button>
+		       			 <h4 class="modal-title">新增菜单</h4>
+		    		</div>
+		    		<div class="modal-body">
+		       			<div class="form-box-center">
+		        			 <ul class="form-box clearfix" style="padding: 0;">
+                                 <li class="width-50">
+                                    <p>按钮名：</p>
+                                     <input class="form-control required" type="text" value="" maxlength="100">
+                                    <span class="help-inline"><font color="red">*</font></span>
+                                </li>
+                                <li class="width-50">
+                                    <p>授权标识：</p>
+                                     <input class="form-control required" type="text" value="" maxlength="100">
+                                    <span class="help-inline"><font color="red">*</font></span>
+                                </li>
+                                <li class="width-50">
+                                    <p>排序：</p>
+                                     <input class="form-control required" type="text" value="" maxlength="100">
+                                    <span class="help-inline"><font color="red">*</font></span>
+                                </li>
+								 
+								 <li class="width-50">
+                                    <p>是否监护人验证：</p>
+                                     <select class="form-control" style="width: 50%;">
+                                             <option selected="selected">是</option>
+                                             <option>否</option>     
+                                      </select> 
+                                      <span class="help-inline"><font color="red">*</font></span>
+                                </li>
+                                <li class="width-full">
+                                     <p>备注 :</p>
+                                      <div class="form-right">
+                                           <textarea id="remarks" name="remarks" maxlength="255" class="form-control" rows="4"></textarea>
+                                     </div>
+                                </li>
+                            </ul>
+		       			</div>
+		    		</div>
+		    		<div class="modal-footer">
+		       			<button type="reset" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+		        		<button type="submit" class="btn btn-primary">保存</button>
+		    		</div>
+				</div>
+			 </div>
+		</form>
+	</body>
+</html>

@@ -1,7 +1,5 @@
 package com.spring.boot.sensor.entity;
 
-import java.util.Objects;
-
 public class Permission {
     private int id;
     private String cname;

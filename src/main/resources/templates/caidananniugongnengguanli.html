@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -49,7 +50,7 @@
     				    <!--操作button-->
     				    <div class="buttons mag_1">
                             <button type="button" class="btn btn-primary" id="new">新增菜单</button>
-                            <button type="button" class="btn btn-warning ">新增按钮</button>
+                            <button type="button" class="btn btn-warning " id="creat">新增按钮</button>
                             <button type="button" class="btn btn-success ">修改</button>
 							<button type="button" class="btn btn-warning ">查看</button>
                             <button type="button" class="btn btn-danger ">删除</button>
@@ -127,6 +128,12 @@
 			var dialog = window.parent.$('#modal-default');
 			dialog.empty();
 			dialog.load("modal/caidananniugongnengguanli-modal.html");
+	        dialog.modal();		
+		})
+                          $("#creat").click(function(){
+			var dialog = window.parent.$('#modal-default1');
+			dialog.empty();
+			dialog.load("modal/caidananniugongnengguanli1-modal.html");
 	        dialog.modal();		
 		})
     });
