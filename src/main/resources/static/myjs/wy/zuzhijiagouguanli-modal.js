@@ -1,5 +1,13 @@
 $(function () {
     $("#deptSave").click(function () {
-        $('#modal-default').modal('hide');
+        $.post("/admin/dept/sud?" + $('#deptForm').serialize(),
+            function (result) {
+                if (result.status) {
+                    $('#modal-default').modal('hide');
+                } else {
+                    alert(result.message);
+                }
+            });
+
     });
 })
