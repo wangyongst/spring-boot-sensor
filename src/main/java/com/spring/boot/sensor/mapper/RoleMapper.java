@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface RoleMapper {
-    @Select("select * from role where id = #{id} and isuse <> 1")
+    @Select("select * from role where id = #{id} and ifnull(isuse,0) <>1")
     @Results(id = "userPermission", value = {
             @Result(property = "role2Permissions", column = "id", many = @Many(select = "com.spring.boot.sensor.mapper.Role2PermissionMapper.findByRoleid"))
     })

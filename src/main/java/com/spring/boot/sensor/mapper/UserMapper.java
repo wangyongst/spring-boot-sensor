@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    @Select("select * from user where username = #{username} and isuse <> 1")
+    @Select("select * from user where username = #{username} and ifnull(isuse,0) <>1")
     @Results(id = "userPermission", value = {
             @Result(property = "user2Roles", column = "id", many = @Many(select = "com.spring.boot.sensor.mapper.User2RoleMapper.findByUserid"))
     })

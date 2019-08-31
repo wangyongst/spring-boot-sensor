@@ -14,6 +14,6 @@ public interface PermissionMapper {
     @Select("select * from permission where id = #{id}")
     Permission findById(@Param("id") int id);
 
-    @Select("select * from permission where isuse = 1")
+    @Select("select * from permission where and ifnull(isuse,0) = 1")
     List<Permission> findAllByIsuse();
 }
