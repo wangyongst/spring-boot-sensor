@@ -13,6 +13,8 @@ public interface AdminService {
 //
     Result findByUsername(String username);
 
+    Result deptList(ParameterM parameterM);
+
     Result deptSud(ParameterM parameterM);
 
 //

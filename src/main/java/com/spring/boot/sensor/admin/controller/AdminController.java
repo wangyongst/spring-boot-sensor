@@ -15,9 +15,14 @@ public class AdminController {
     @Autowired
     public AdminService adminService;
 
-    @RequestMapping("/dept/sud")
+    @PostMapping("/dept/sud")
     public Result deptSud(@ModelAttribute ParameterM parameterM) {
         return adminService.deptSud(parameterM);
+    }
+
+    @GetMapping("/dept/list")
+    public Object deptList(@ModelAttribute ParameterM parameterM) {
+        return adminService.deptList(parameterM).getData();
     }
 
 //    //我

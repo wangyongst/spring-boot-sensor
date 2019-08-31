@@ -65,6 +65,10 @@ public class AdminServiceImpl implements AdminService {
         if (!StringUtils.isNumeric(parameterM.getOrder())) return ResultUtil.errorWithMessage("排序只能是数字");
         if (!StringUtils.isBlank(parameterM.getCode())) return ResultUtil.errorWithMessage("组织编码不能为空");
         if (!StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("排序只能是数字");
+        if (parameterM.getDelete() == 1) {
+            deptMapper.deleteById(parameterM.getId());
+            return ResultUtil.ok();
+        }
         Dept dept = null;
         if (parameterM.getId() != 0) dept = deptMapper.findById(parameterM.getId());
         else if (parameterM.getId() == 0) dept = new Dept();
@@ -76,11 +80,17 @@ public class AdminServiceImpl implements AdminService {
         dept.setParentid(parameterM.getParentid());
         dept.setType(parameterM.getType());
         if (dept.getId() != 0) {
-            ResultUtil.errorWithMessage("修改");
+            deptMapper.updateDept(dept);
+            return ResultUtil.ok();
         } else {
             deptMapper.insertDept(dept);
         }
         return ResultUtil.ok();
+    }
+
+    @Override
+    public Result deptList(ParameterM parameterM) {
+        return ResultUtil.okWithData(deptMapper.findAll());
     }
 
 

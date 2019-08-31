@@ -13,6 +13,15 @@ public class ParameterM {
     private Integer isuse;
     private String order;
     private String remark;
+    private int delete;
+
+    public int getDelete() {
+        return delete;
+    }
+
+    public void setDelete(int delete) {
+        this.delete = delete;
+    }
 
     public String getType() {
         return type;
