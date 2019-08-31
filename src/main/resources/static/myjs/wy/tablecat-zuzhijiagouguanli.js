@@ -9,22 +9,22 @@ $(function () {
             "autoWidth": false,
             "autoHeight": false,
             "order": [[0, "asc"]],
-            "aoColumns": [{
-                "mDataProp": "deptname",
-                "sTitle": "组织名称",
-                "sDefaultContent": "",
-                "sClass": "center"
-            }, {
-                "mDataProp": "deptcode",
-                "sTitle": "组织编码",
-                "sDefaultContent": "",
-                "sClass": "center"
-            }, {
-                "mDataProp": "remark",
-                "sTitle": "备注",
-                "sDefaultContent": "",
-                "sClass": "center"
-            }],
+            // "aoColumns": [{
+            //     "mDataProp": "deptname",
+            //     "sTitle": "组织名称",
+            //     "sDefaultContent": "",
+            //     "sClass": "center"
+            // }, {
+            //     "mDataProp": "deptcode",
+            //     "sTitle": "组织编码",
+            //     "sDefaultContent": "",
+            //     "sClass": "center"
+            // }, {
+            //     "mDataProp": "remark",
+            //     "sTitle": "备注",
+            //     "sDefaultContent": "",
+            //     "sClass": "center"
+            // }],
             "oLanguage": {
                 "sLengthMenu": "每页显示 _MENU_ 条记录",
                 "sZeroRecords": "对不起，查询不到任何相关数据",
