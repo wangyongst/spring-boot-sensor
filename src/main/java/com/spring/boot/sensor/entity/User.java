@@ -14,7 +14,7 @@ public class User {
     private String telephone;
     private String email;
     private String remark;
-    private Integer islock;
+    private Integer isuse;
     private Integer deptid;
     private List<User2Role> user2Roles;
 
@@ -114,11 +114,11 @@ public class User {
         this.remark = remark;
     }
 
-    public Integer getIslock() {
-        return islock;
+    public Integer getIsuse() {
+        return isuse;
     }
 
-    public void setIslock(Integer islock) {
-        this.islock = islock;
+    public void setIsuse(Integer isuse) {
+        this.isuse = isuse;
     }
 }
