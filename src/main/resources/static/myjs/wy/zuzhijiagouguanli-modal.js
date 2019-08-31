@@ -4,6 +4,7 @@ $(function () {
             function (result) {
                 if (result.status) {
                     $('#modal-default').modal('hide');
+                    $('#mydatatable').DataTable().ajax.reload();
                 } else {
                     alert(result.message);
                 }

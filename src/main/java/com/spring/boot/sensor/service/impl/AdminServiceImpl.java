@@ -63,8 +63,8 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Result deptSud(ParameterM parameterM) {
         if (!StringUtils.isNumeric(parameterM.getOrder())) return ResultUtil.errorWithMessage("排序只能是数字");
-        if (!StringUtils.isBlank(parameterM.getCode())) return ResultUtil.errorWithMessage("组织编码不能为空");
-        if (!StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("排序只能是数字");
+        if (StringUtils.isBlank(parameterM.getCode())) return ResultUtil.errorWithMessage("组织编码不能为空");
+        if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("排序只能是数字");
         if (parameterM.getDelete() == 1) {
             deptMapper.deleteById(parameterM.getId());
             return ResultUtil.ok();

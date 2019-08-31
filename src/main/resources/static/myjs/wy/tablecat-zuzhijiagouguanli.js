@@ -1,6 +1,9 @@
 $(function () {
-    $('.example-table').DataTable({
-            "sAjaxSource": "admin/dept/list",
+    $('#mydatatable').DataTable({
+            "ajax": {
+                "url": "admin/dept/list",
+                "dataSrc": "data",
+            },
             "paging": true,
             "sidePagination": "client",
             "lengthChange": true,
@@ -9,22 +12,19 @@ $(function () {
             "autoWidth": false,
             "autoHeight": false,
             "order": [[0, "asc"]],
-            // "aoColumns": [{
-            //     "mDataProp": "deptname",
-            //     "sTitle": "组织名称",
-            //     "sDefaultContent": "",
-            //     "sClass": "center"
-            // }, {
-            //     "mDataProp": "deptcode",
-            //     "sTitle": "组织编码",
-            //     "sDefaultContent": "",
-            //     "sClass": "center"
-            // }, {
-            //     "mDataProp": "remark",
-            //     "sTitle": "备注",
-            //     "sDefaultContent": "",
-            //     "sClass": "center"
-            // }],
+            "columns": [
+                {
+                    "data": "id",
+                }, {
+                    "data": "deptname",
+                    "title": "组织名称",
+                }, {
+                    "data": "deptcode",
+                    "title": "组织编码",
+                }, {
+                    "data": "remark",
+                    "title": "备注",
+                }],
             "oLanguage": {
                 "sLengthMenu": "每页显示 _MENU_ 条记录",
                 "sZeroRecords": "对不起，查询不到任何相关数据",

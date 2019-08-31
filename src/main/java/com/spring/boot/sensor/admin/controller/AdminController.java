@@ -21,8 +21,8 @@ public class AdminController {
     }
 
     @GetMapping("/dept/list")
-    public Object deptList(@ModelAttribute ParameterM parameterM) {
-        return adminService.deptList(parameterM).getData();
+    public Result deptList(@ModelAttribute ParameterM parameterM) {
+        return adminService.deptList(parameterM);
     }
 
 //    //我
