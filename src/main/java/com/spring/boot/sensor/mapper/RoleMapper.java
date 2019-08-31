@@ -12,5 +12,5 @@ public interface RoleMapper {
     @Results(id = "userPermission", value = {
             @Result(property = "role2Permissions", column = "id", many = @Many(select = "com.spring.boot.sensor.mapper.Role2PermissionMapper.findByRoleid"))
     })
-    Role findById(@Param("id") int id);
+    Role findByIdAndIsuse(@Param("id") int id);
 }
