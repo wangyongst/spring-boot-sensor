@@ -64,7 +64,7 @@ public class AdminServiceImpl implements AdminService {
     public Result deptSud(ParameterM parameterM) {
         if (!StringUtils.isNumeric(parameterM.getOrder())) return ResultUtil.errorWithMessage("排序只能是数字");
         if (StringUtils.isBlank(parameterM.getCode())) return ResultUtil.errorWithMessage("组织编码不能为空");
-        if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("排序只能是数字");
+        if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("组织名称不能为空");
         if (parameterM.getDelete() == 1) {
             deptMapper.deleteById(parameterM.getId());
             return ResultUtil.ok();
@@ -72,11 +72,11 @@ public class AdminServiceImpl implements AdminService {
         Dept dept = null;
         if (parameterM.getId() != 0) dept = deptMapper.findById(parameterM.getId());
         else if (parameterM.getId() == 0) dept = new Dept();
-        dept.setDeptcode(parameterM.getCode());
+        dept.setCode(parameterM.getCode());
         dept.setIsuse(parameterM.getIsuse());
-        dept.setDeptorder(Integer.parseInt(parameterM.getOrder()));
+        dept.setOrder(Integer.parseInt(parameterM.getOrder()));
         dept.setRemark(parameterM.getRemark());
-        dept.setDeptname(parameterM.getName());
+        dept.setName(parameterM.getName());
         dept.setParentid(parameterM.getParentid());
         dept.setType(parameterM.getType());
         if (dept.getId() != 0) {

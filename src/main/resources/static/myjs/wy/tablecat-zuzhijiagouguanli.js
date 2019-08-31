@@ -1,5 +1,5 @@
 $(function () {
-    $('#mydatatable').DataTable({
+    var mydatatable = $('#mydatatable').DataTable({
             "ajax": {
                 "url": "admin/dept/list",
                 "dataSrc": "data",
@@ -15,11 +15,14 @@ $(function () {
             "columns": [
                 {
                     "data": "id",
+                    "render": function (data, type, row) {
+                        return "<input type='checkbox' name ='id' value='" + data + "'/>";
+                    }
                 }, {
-                    "data": "deptname",
+                    "data": "name",
                     "title": "组织名称",
                 }, {
-                    "data": "deptcode",
+                    "data": "code",
                     "title": "组织编码",
                 }, {
                     "data": "remark",
@@ -42,17 +45,27 @@ $(function () {
             }
         }
     );
-    $('.example-table').on('draw.dt', function () {
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-            checkboxClass: 'icheckbox_minimal-blue',
-            radioClass: 'iradio_minimal-blue'
-        })
-    });
 
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-        checkboxClass: 'icheckbox_minimal-blue',
-        radioClass: 'iradio_minimal-blue'
 
+    /*----------点击按钮打开模态框------------*/
+    $("#new").click(function () {
+        var dialog = window.parent.$('#modal-default');
+        dialog.empty();
+        dialog.load("modal/zuzhijiagouguanli-modal.html");
+        dialog.modal();
     })
 
+    $("#update").click(function () {
+        var dialog = window.parent.$('#modal-default');
+        dialog.empty();
+        dialog.load("modal/zuzhijiagouguanli-modal.html");
+        debugger;
+        dialog.find("[name='code']").val("1");
+        dialog.find("[name='name']").val("1");
+        dialog.find("[name='order']").val("1");
+        dialog.find("[name='remark']").val("1");
+        dialog.find("[name='isuse']").val("1");
+        dialog.find("[name='type']").val("1");
+        dialog.modal();
+    })
 })

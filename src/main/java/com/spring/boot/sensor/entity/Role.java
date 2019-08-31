@@ -5,7 +5,10 @@ import java.util.Objects;
 
 public class Role {
     private int id;
+    private String cnname;
+    private Integer isuse;
     private String name;
+    private Integer order;
     private List<Role2Permission> role2Permissions;
 
     public List<Role2Permission> getRole2Permissions() {
@@ -24,6 +27,22 @@ public class Role {
         this.id = id;
     }
 
+    public String getCnname() {
+        return cnname;
+    }
+
+    public void setCnname(String cnname) {
+        this.cnname = cnname;
+    }
+
+    public Integer getIsuse() {
+        return isuse;
+    }
+
+    public void setIsuse(Integer isuse) {
+        this.isuse = isuse;
+    }
+
     public String getName() {
         return name;
     }
@@ -32,4 +51,11 @@ public class Role {
         this.name = name;
     }
 
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
 }

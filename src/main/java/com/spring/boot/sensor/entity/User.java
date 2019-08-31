@@ -15,6 +15,7 @@ public class User {
     private Integer islogin;
     private String remark;
     private Integer islock;
+    private Integer deptid;
     private List<User2Role> user2Roles;
 
     public List<User2Role> getUser2Roles() {
@@ -23,6 +24,14 @@ public class User {
 
     public void setUser2Roles(List<User2Role> user2Roles) {
         this.user2Roles = user2Roles;
+    }
+
+    public Integer getDeptid() {
+        return deptid;
+    }
+
+    public void setDeptid(Integer deptid) {
+        this.deptid = deptid;
     }
 
     public int getId() {

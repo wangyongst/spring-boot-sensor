@@ -3,12 +3,12 @@ package com.spring.boot.sensor.entity;
 import java.util.Objects;
 public class Dept {
     private int id;
-    private String deptcode;
-    private String deptname;
+    private String code;
+    private String name;
     private String type;
     private Integer parentid;
     private Integer isuse;
-    private Integer deptorder;
+    private Integer order;
     private String remark;
 
     public int getId() {
@@ -19,20 +19,20 @@ public class Dept {
         this.id = id;
     }
 
-    public String getDeptcode() {
-        return deptcode;
+    public String getCode() {
+        return code;
     }
 
-    public void setDeptcode(String deptcode) {
-        this.deptcode = deptcode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getDeptname() {
-        return deptname;
+    public String getName() {
+        return name;
     }
 
-    public void setDeptname(String deptname) {
-        this.deptname = deptname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getType() {
@@ -59,12 +59,12 @@ public class Dept {
         this.isuse = isuse;
     }
 
-    public Integer getDeptorder() {
-        return deptorder;
+    public Integer getOrder() {
+        return order;
     }
 
-    public void setDeptorder(Integer deptorder) {
-        this.deptorder = deptorder;
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 
     public String getRemark() {

@@ -53,7 +53,7 @@
                     <button type="button" class="btn btn-primary" id="new">新增</button>
                     <button type="button" class="btn btn-success ">添加下级组织</button>
                     <button type="button" class="btn btn-warning ">添加同级组织</button>
-                    <button type="button" class="btn btn-success">修改</button>
+                    <button type="button" class="btn btn-success" id="update">修改</button>
                     <button type="button" class="btn btn-primary">查看</button>
                     <button type="button" class="btn btn-danger ">删除</button>
                     <button type="button" class="btn btn-danger ">批量删除</button>
@@ -84,16 +84,16 @@
 <script type="text/javascript" src="myjs/treecat-init.js"></script>
 <!--table初始化-->
 <script type="text/javascript" src="myjs/wy/tablecat-zuzhijiagouguanli.js"></script>
-<script>
-    $(function () {
-        /*----------点击按钮打开模态框------------*/
-        $("#new").click(function () {
-            var dialog = window.parent.$('#modal-default');
-            dialog.empty();
-            dialog.load("modal/zuzhijiagouguanli-modal.html");
-            dialog.modal();
-        })
-    });
-</script>
+<!--<script>-->
+<!--    $(function () {-->
+<!--        /*&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;点击按钮打开模态框&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;*/-->
+<!--        $("#new").click(function () {-->
+<!--            var dialog = window.parent.$('#modal-default');-->
+<!--            dialog.empty();-->
+<!--            dialog.load("modal/zuzhijiagouguanli-modal.html");-->
+<!--            dialog.modal();-->
+<!--        })-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>

@@ -64,7 +64,7 @@
                 <section class="sidebar hm-scroll">
                 <!-- Sidebar Menu -->
                		<ul class="sidebar-menu" data-widget="tree">
-			            <li class="treeview">
+			            <li class="treeview" shiro:haspermission="yonghuguanliP">
 			                <a href="#">
 			                	<i class="fa fa-circle-o"></i> 
 			                	<span>用户管理</span>
@@ -73,27 +73,27 @@
 			                    </span>
 			                </a>
 			                <ul class="treeview-menu">
-			                	<li>
-			                		<a href="yonghuguanli.html" target="menuFrame">
+			                	<li shiro:haspermission="yonghuguanli">
+			                		<a href="/yonghuguanli" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>用户管理</span>
 			                		</a>
 			                	</li>
-			                	<li>
+			                	<li shiro:haspermission="zuzhijiagouguanli">
 			                		<a href="/zuzhijiagouguanli" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>组织架构管理</span>
 			                		</a>
 			                	</li>
-			                	<li>
-			                		<a href="juesequanxian.html" target="menuFrame">
+			                	<li shiro:haspermission="juesequanxian">
+			                		<a href="/juesequanxian" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>角色权限</span>
 			                		</a>
 			                	</li>
 			                 </ul>
 			             </li>
-			            <li class="treeview">
+			            <li class="treeview" shiro:haspermission="xitongguanli">
 			                <a href="#">
 			                	<i class="fa fa-circle-o"></i> 
 			                	<span>系统管理</span>
@@ -102,20 +102,20 @@
 			                    </span>
 			                </a>
 			                <ul class="treeview-menu">
-			                	<li>
-			                		<a href="caidananniugongnengguanli.html" target="menuFrame">
+			                	<li shiro:haspermission="caidananniugongnengguanli">
+			                		<a href="/caidananniugongnengguanli" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>菜单按钮功能管理</span>
 			                		</a>
 			                	</li>
-			                	<li>
-			                		<a href="xitongrizhi.html" target="menuFrame">
+			                	<li shiro:haspermission="xitongrizhi">
+			                		<a href="/xitongrizhi" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>系统日志</span>
 			                		</a>
 			                	</li>
-			                	<li>
-			                		<a href="xitongbaimingdan.html" target="menuFrame">
+			                	<li shiro:haspermission="xitongbaimingdan">
+			                		<a href="/xitongbaimingdan" target="menuFrame">
 			                			<i class="fa fa-circle-o"></i> 
 			                			<span>系统白名单</span>
 			                		</a>
