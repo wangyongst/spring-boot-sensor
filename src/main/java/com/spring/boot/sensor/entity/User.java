@@ -7,12 +7,12 @@ public class User {
     private int id;
     private String username;
     private String name;
+    private String finger;
     private String password;
     private String workno;
     private String mobile;
     private String telephone;
     private String email;
-    private Integer islogin;
     private String remark;
     private Integer islock;
     private Integer deptid;
@@ -24,6 +24,14 @@ public class User {
 
     public void setUser2Roles(List<User2Role> user2Roles) {
         this.user2Roles = user2Roles;
+    }
+
+    public String getFinger() {
+        return finger;
+    }
+
+    public void setFinger(String finger) {
+        this.finger = finger;
     }
 
     public Integer getDeptid() {
@@ -96,14 +104,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Integer getIslogin() {
-        return islogin;
-    }
-
-    public void setIslogin(Integer islogin) {
-        this.islogin = islogin;
     }
 
     public String getRemark() {
