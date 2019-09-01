@@ -11,6 +11,15 @@ public class Permission {
     private String remark;
     private Integer type;
     private Integer parentid;
+    private String updatetime;
+
+    public String getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(String updatetime) {
+        this.updatetime = updatetime;
+    }
 
     public int getId() {
         return id;

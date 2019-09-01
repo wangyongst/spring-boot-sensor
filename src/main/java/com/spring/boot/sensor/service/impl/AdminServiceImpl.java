@@ -2,12 +2,15 @@ package com.spring.boot.sensor.service.impl;
 
 import com.spring.boot.sensor.entity.Dept;
 import com.spring.boot.sensor.entity.Role;
+import com.spring.boot.sensor.entity.Role2Permission;
 import com.spring.boot.sensor.entity.User;
 import com.spring.boot.sensor.mapper.DeptMapper;
+import com.spring.boot.sensor.mapper.PermissionMapper;
 import com.spring.boot.sensor.mapper.RoleMapper;
 import com.spring.boot.sensor.mapper.UserMapper;
 import com.spring.boot.sensor.model.ParameterM;
 import com.spring.boot.sensor.service.AdminService;
+import com.spring.boot.sensor.utils.db.TimeUtils;
 import com.spring.boot.sensor.utils.result.Result;
 import com.spring.boot.sensor.utils.result.ResultUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -40,9 +43,8 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private DeptMapper deptMapper;
 
-    //
-//    @Autowired
-//    private PermissionRepository permissionRepository;
+    @Autowired
+    private PermissionMapper permissionMapper;
 //
 //    @Autowired
 //    private Role2PermissionRepository role2PermissionRepository;
@@ -94,36 +96,58 @@ public class AdminServiceImpl implements AdminService {
     }
 
 
+
+    @Override
+    public Result permissionSud(ParameterM parameterM) {
+        if (!StringUtils.isNumeric(parameterM.getOrder())) return ResultUtil.errorWithMessage("排序只能是数字");
+        if (StringUtils.isBlank(parameterM.getCode())) return ResultUtil.errorWithMessage("组织编码不能为空");
+        if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("组织名称不能为空");
+        if (parameterM.getDelete() == 1) {
+            deptMapper.deleteById(parameterM.getId());
+            return ResultUtil.ok();
+        }
+        Dept dept = null;
+        if (parameterM.getId() != 0) dept = deptMapper.findById(parameterM.getId());
+        else if (parameterM.getId() == 0) dept = new Dept();
+        dept.setCode(parameterM.getCode());
+        dept.setIsuse(parameterM.getIsuse());
+        dept.setOrder(Integer.parseInt(parameterM.getOrder()));
+        dept.setRemark(parameterM.getRemark());
+        dept.setName(parameterM.getName());
+        dept.setParentid(parameterM.getParentid());
+        dept.setType(parameterM.getType());
+        if (dept.getId() != 0) {
+            deptMapper.updateDept(dept);
+            return ResultUtil.ok();
+        } else {
+            deptMapper.insertDept(dept);
+        }
+        return ResultUtil.ok();
+    }
+
+    @Override
+    public Result permissionList(ParameterM parameterM) {
+        return ResultUtil.okWithData(permissionMapper.findAll());
+    }
+
+    @Override
+    public Result userList(ParameterM parameterM) {
+        return ResultUtil.okWithData(userMapper.findAll());
+    }
 //
-//    @Override
-//    public Result userList(ParameterM parameterM) {
-//        Sort sort = new Sort(Sort.Direction.DESC, "createtime");
-//        User user = new User();
-//        if (StringUtils.isNotBlank(parameterM.getMobile())) user.setMobile(parameterM.getMobile());
-//        if (StringUtils.isNotBlank(parameterM.getName())) user.setName(parameterM.getName());
-//        ExampleMatcher matcher = ExampleMatcher.matching()
-//                .withMatcher("mobile", match -> match.contains())
-//                .withMatcher("name", match -> match.contains());
-//        Example<User> example = Example.of(user, matcher);
-//        return ResultUtil.okWithData(userRepository.findAll(example, sort));
-//    }
-//
-//    @Override
-//    public Result roleList(ParameterM parameterM) {
-//        List<Role> roles = roleMapper.findAll();
-//        Role role = roleMapper.findById(13);
-//        roles.remove(role);
-//        return ResultUtil.okWithData(roles);
-//    }
+    @Override
+    public Result roleList(ParameterM parameterM) {
+        return ResultUtil.okWithData(roleMapper.findAll());
+    }
 //
 //    @Override
 //    public Result user(ParameterM parameterM) {
 //        return ResultUtil.okWithData(userRepository.findById(parameterM.getUserid()).get());
 //    }
 //
-//    @Override
-//    public Result userSud(ParameterM parameterM) {
-//        User user = null;
+    @Override
+    public Result userSud(ParameterM parameterM) {
+        User user = null;
 //        if (parameterM.getUserid() == 0) {
 //            if (StringUtils.isBlank(parameterM.getMobile())) return ResultUtil.errorWithMessage("电话不能为空！");
 //            if (userRepository.findByMobile(parameterM.getMobile()).size() > 0)
@@ -142,30 +166,30 @@ public class AdminServiceImpl implements AdminService {
 //                return ResultUtil.ok();
 //            }
 //        }
-//        if (StringUtils.isBlank(parameterM.getMobile())) return ResultUtil.errorWithMessage("电话不能为空！");
-//        if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("登录姓名不能为空！");
-//        if (parameterM.getName().length() > 10) return ResultUtil.errorWithMessage("登录姓名不能超过10个字！");
-//        String regex = "^[0-9]+$";
-//        if (!parameterM.getMobile().matches(regex)) return ResultUtil.errorWithMessage("电话只能是数字！");
-//        if (parameterM.getMobile().length() != 11) return ResultUtil.errorWithMessage("电话只能是11位数字！");
-//        if (StringUtils.isBlank(parameterM.getPassword())) return ResultUtil.errorWithMessage("密码不能为空！");
-//        regex = "^[a-z0-9A-Z]+$";
-//        if (!parameterM.getPassword().matches(regex)) return ResultUtil.errorWithMessage("密码只支持数字和英文！");
-//        if (parameterM.getRoleid() == 0) return ResultUtil.errorWithMessage("配置角色未选择！");
-//        user.setName(parameterM.getName());
-//        user.setPassword(new Md5Hash(parameterM.getPassword()).toHex());
-//        user.setMobile(parameterM.getMobile());
+        if (StringUtils.isBlank(parameterM.getMobile())) return ResultUtil.errorWithMessage("电话不能为空！");
+        if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("登录姓名不能为空！");
+        if (parameterM.getName().length() > 10) return ResultUtil.errorWithMessage("登录姓名不能超过10个字！");
+        String regex = "^[0-9]+$";
+        if (!parameterM.getMobile().matches(regex)) return ResultUtil.errorWithMessage("电话只能是数字！");
+        if (parameterM.getMobile().length() != 11) return ResultUtil.errorWithMessage("电话只能是11位数字！");
+        if (StringUtils.isBlank(parameterM.getPassword())) return ResultUtil.errorWithMessage("密码不能为空！");
+        regex = "^[a-z0-9A-Z]+$";
+        if (!parameterM.getPassword().matches(regex)) return ResultUtil.errorWithMessage("密码只支持数字和英文！");
+        if (parameterM.getRoleid() == 0) return ResultUtil.errorWithMessage("配置角色未选择！");
+        user.setName(parameterM.getName());
+        user.setPassword(new Md5Hash(parameterM.getPassword()).toHex());
+        user.setMobile(parameterM.getMobile());
 //        userRepository.save(user);
-//        return ResultUtil.ok();
-//    }
+        return ResultUtil.ok();
+    }
 //
 //    @Override
 //    public Result role(ParameterM parameterM) {
 //        return ResultUtil.okWithData(roleRepository.findById(parameterM.getRoleid()).get());
 //    }
 //
-//    @Override
-//    public Result roleSud(ParameterM parameterM) {
+    @Override
+    public Result roleSud(ParameterM parameterM) {
 //        Role role = null;
 //        if (parameterM.getRoleid() == 0) {
 //            role = new Role();
@@ -189,14 +213,10 @@ public class AdminServiceImpl implements AdminService {
 //                role2PermissionRepository.save(role2Permission);
 //            });
 //        }
-//        return ResultUtil.ok();
-//    }
+        return ResultUtil.ok();
+    }
 //
-//    @Override
-//    public Result permissionList(ParameterM parameterM) {
-//        Sort sort = new Sort(Sort.Direction.ASC, "id");
-//        return ResultUtil.okWithData(permissionRepository.findAll(sort));
-//    }
+
 //
 //    @Override
 //    public Result changePassword(ParameterM parameterM) {

@@ -1,7 +1,7 @@
 $(function () {
     var mydatatable = $('#mydatatable').DataTable({
             "ajax": {
-                "url": "admin/dept/list",
+                "url": "admin/permission/list",
                 "dataSrc": "data",
             },
             "paging": true,
@@ -16,17 +16,28 @@ $(function () {
                 {
                     "data": "id",
                     "render": function (data, type, row) {
-                        return "<input type='checkbox' name ='id' value='" + data + "'/>";
+                        return "<input type='checkbox' class='minimal' name ='id' value='" + data + "'/>";
+                    }
+                }, {
+                    "data": "type",
+                    "title": "类型",
+                    "render": function (data, type, row) {
+                        if (data == 1) return "菜单";
+                        else return "按钮";
                     }
                 }, {
                     "data": "name",
-                    "title": "组织名称",
+                    "title": "权限标识",
                 }, {
-                    "data": "code",
-                    "title": "组织编码",
+                    "data": "updatetime",
+                    "title": "更新时间",
                 }, {
-                    "data": "remark",
-                    "title": "备注",
+                    "data": "ischeck",
+                    "title": "是否二次验证",
+                    "render": function (data, type, row) {
+                        if (data == 1) return "是";
+                        else return "否";
+                    }
                 }],
             "oLanguage": {
                 "sLengthMenu": "每页显示 _MENU_ 条记录",
@@ -51,7 +62,13 @@ $(function () {
     $("#new").click(function () {
         var dialog = window.parent.$('#modal-default');
         dialog.empty();
-        dialog.load("modal/zuzhijiagouguanli-modal.html");
+        dialog.load("modal/caidananniugongnengguanli-modal.html");
+        dialog.modal();
+    })
+    $("#creat").click(function () {
+        var dialog = window.parent.$('#modal-default1');
+        dialog.empty();
+        dialog.load("modal/caidananniugongnengguanli1-modal.html");
         dialog.modal();
     })
 

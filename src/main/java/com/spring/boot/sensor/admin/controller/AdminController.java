@@ -25,17 +25,27 @@ public class AdminController {
         return adminService.deptList(parameterM);
     }
 
+    @PostMapping("/permission/sud")
+    public Result permissionSud(@ModelAttribute ParameterM parameterM) {
+        return adminService.permissionSud(parameterM);
+    }
+
+    @GetMapping("/permission/list")
+    public Result permissionList(@ModelAttribute ParameterM parameterM) {
+        return adminService.permissionList(parameterM);
+    }
+
 //    //我
 //    @GetMapping("/me")
 //    public Result me(@ModelAttribute ParameterM parameterM) {
 //        return adminService.me();
 //    }
 //
-//    //账号列表
-//    @GetMapping("/user/list")
-//    public Object userList(@ModelAttribute ParameterM parameterM) {
-//        return adminService.userList(parameterM).getData();
-//    }
+    //账号列表
+    @GetMapping("/user/list")
+    public Object userList(@ModelAttribute ParameterM parameterM) {
+        return adminService.userList(parameterM);
+    }
 //
 //    //账号详情
 //    @GetMapping("/user")
@@ -43,11 +53,11 @@ public class AdminController {
 //        return adminService.user(parameterM);
 //    }
 //
-//    //账号增删改
-//    @PostMapping("/user/sud")
-//    public Result userSud(@ModelAttribute ParameterM parameterM) {
-//        return adminService.userSud(parameterM);
-//    }
+    //账号增删改
+    @PostMapping("/user/sud")
+    public Result userSud(@ModelAttribute ParameterM parameterM) {
+        return adminService.userSud(parameterM);
+    }
 //
 //    //角色列表
 //    @GetMapping("/role/list")

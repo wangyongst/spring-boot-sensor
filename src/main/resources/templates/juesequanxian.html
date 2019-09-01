@@ -46,35 +46,35 @@
 	                   	<!--操作button结束-->
 	                   	<!--table表格开始-->
 	                   	<div class="box-body">
-	                        <table class="table table-hover table-bordered table-striped example-table">
-	                            <thead>
-	                            	<tr>
-	                                	<th></th>
-	                                	<th>角色名称</th>
-	                                	<th>角色英文名称</th>
-	                                	<th>操作</th>
-	                            	</tr>
-	                            </thead>
-	                    		<tbody>
-	                    			<tr>
-	                       				<td><input type="checkbox" class="minimal" /></td>
-	                        			<td>系统管理员</td>
-	                        			<td>sysadmin</td>
-	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a></td>
-	                    			</tr>
-	                    			<tr>
-	                       				<td><input type="checkbox" class="minimal" /></td>
-	                        			<td>工程师</td>
-	                        			<td>engineer</td>
-	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a> </td>
-	                    			</tr>
-	                    			<tr>
-	                       				<td><input type="checkbox" class="minimal" /></td>
-	                        			<td>客户</td>
-	                        			<td>customer</td>
-	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a> </td>
-	                    			</tr>
-	                    		</tbody>
+	                        <table class="table table-hover table-bordered table-striped example-table" id="mydatatable">
+<!--	                            <thead>-->
+<!--	                            	<tr>-->
+<!--	                                	<th></th>-->
+<!--	                                	<th>角色名称</th>-->
+<!--	                                	<th>角色英文名称</th>-->
+<!--	                                	<th>操作</th>-->
+<!--	                            	</tr>-->
+<!--	                            </thead>-->
+<!--	                    		<tbody>-->
+<!--	                    			<tr>-->
+<!--	                       				<td><input type="checkbox" class="minimal" /></td>-->
+<!--	                        			<td>系统管理员</td>-->
+<!--	                        			<td>sysadmin</td>-->
+<!--	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a></td>-->
+<!--	                    			</tr>-->
+<!--	                    			<tr>-->
+<!--	                       				<td><input type="checkbox" class="minimal" /></td>-->
+<!--	                        			<td>工程师</td>-->
+<!--	                        			<td>engineer</td>-->
+<!--	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a> </td>-->
+<!--	                    			</tr>-->
+<!--	                    			<tr>-->
+<!--	                       				<td><input type="checkbox" class="minimal" /></td>-->
+<!--	                        			<td>客户</td>-->
+<!--	                        			<td>customer</td>-->
+<!--	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a> </td>-->
+<!--	                    			</tr>-->
+<!--	                    		</tbody>-->
 	                   	    </table>
 	                   	</div>
 	                   	<!--table表格结束-->
@@ -89,18 +89,18 @@
 	<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/icheck.min.js"></script>
 	<!--table初始化-->
-	<script type="text/javascript" src="myjs/tablecat-init.js"></script>
-	<script>
-   $(function() {	
-	/*----------点击按钮打开模态框------------*/
-		$("#new").click(function(){
-			var dialog = window.parent.$('#modal-default');
-			dialog.empty();
-			dialog.load("modal/juesequanxian-modal.html",function(){
-				dialog.modal();
-			});
-		})
-    });
-	</script>
+		<script type="text/javascript" src="myjs/wy/juesequanxian.js"></script>
+<!--	<script>-->
+<!--   $(function() {	-->
+<!--	/*&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;点击按钮打开模态框&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;*/-->
+<!--		$("#new").click(function(){-->
+<!--			var dialog = window.parent.$('#modal-default');-->
+<!--			dialog.empty();-->
+<!--			dialog.load("modal/juesequanxian-modal.html",function(){-->
+<!--				dialog.modal();-->
+<!--			});-->
+<!--		})-->
+<!--    });-->
+<!--	</script>-->
 	</body>
 </html>

@@ -17,18 +17,21 @@ public interface AdminService {
 
     Result deptSud(ParameterM parameterM);
 
-//
-//    Result userList(ParameterM parameterM);
-//
-//    Result roleList(ParameterM parameterM);
+    Result permissionList(ParameterM parameterM);
+
+    Result permissionSud(ParameterM parameterM);
+
+    Result userList(ParameterM parameterM);
+
+    Result userSud(ParameterM parameterM);
+
+    Result roleList(ParameterM parameterM);
 //
 //    Result user(ParameterM parameterM);
 //
-//    Result userSud(ParameterM parameterM);
-//
 //    Result role(ParameterM parameterM);
-//
-//    Result roleSud(ParameterM parameterM);
+
+    Result roleSud(ParameterM parameterM);
 //
 //    Result permissionList(ParameterM parameterM);
 //
