@@ -11,7 +11,7 @@ import java.util.List;
 
 @Mapper
 public interface PermissionMapper {
-    @Select("select * from permission where id = #{id}")
+    @Select("select * from permission where id = #{id} and ifnull(isuse,0) = 1")
     Permission findById(@Param("id") int id);
 
     @Select("select * from permission where and ifnull(isuse,0) = 1")

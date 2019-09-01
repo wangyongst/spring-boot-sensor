@@ -12,7 +12,7 @@ public interface DeptMapper {
     @Select("select * from dept")
     List<Dept> findAll();
 
-    @Select("select * from dept where isuse = 1")
+    @Select("select * from dept where ifnull(isuse,0) = 1")
     List<Dept> findAllByIsuse();
 
     @Select("select * from dept where id = #{id}")
