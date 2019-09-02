@@ -69,16 +69,29 @@ $(function () {
 
 
     $("#delete").click(function () {
-        $.post("/admin/dept/sud?delete=1&" + $('#deptForm').serialize(),
+        $.post("/admin/user/sud?delete=1&ids=" + select(),
             function (result) {
                 if (result.status) {
-                    $('#modal-default').modal('hide');
-                    debugger;
                     $('#mydatatable').DataTable().ajax.reload();
                 } else {
                     alert(result.message);
                 }
             });
+    })
+
+    $("#deleteall").click(function () {
+        $.post("/admin/user/sud?delete=2&ids=" + select(),
+            function (result) {
+                if (result.status) {
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
+    })
+
+    $("#export").click(function () {
+        $.get("/admin/user/export");
     })
 })
 

@@ -16,31 +16,9 @@ public class User {
     private String remark;
     private Integer isuse;
     private Integer deptid;
-    private List<User2Role> user2Roles;
-
-    public List<User2Role> getUser2Roles() {
-        return user2Roles;
-    }
-
-    public void setUser2Roles(List<User2Role> user2Roles) {
-        this.user2Roles = user2Roles;
-    }
-
-    public String getFinger() {
-        return finger;
-    }
-
-    public void setFinger(String finger) {
-        this.finger = finger;
-    }
-
-    public Integer getDeptid() {
-        return deptid;
-    }
-
-    public void setDeptid(Integer deptid) {
-        this.deptid = deptid;
-    }
+    private Integer roleid;
+    private Role role;
+    private Dept dept;
 
     public int getId() {
         return id;
@@ -64,6 +42,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getFinger() {
+        return finger;
+    }
+
+    public void setFinger(String finger) {
+        this.finger = finger;
     }
 
     public String getPassword() {
@@ -120,5 +106,37 @@ public class User {
 
     public void setIsuse(Integer isuse) {
         this.isuse = isuse;
+    }
+
+    public Integer getDeptid() {
+        return deptid;
+    }
+
+    public void setDeptid(Integer deptid) {
+        this.deptid = deptid;
+    }
+
+    public Integer getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(Integer roleid) {
+        this.roleid = roleid;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
     }
 }

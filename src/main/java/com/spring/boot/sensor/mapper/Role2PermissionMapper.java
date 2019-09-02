@@ -1,7 +1,6 @@
 package com.spring.boot.sensor.mapper;
 
 import com.spring.boot.sensor.entity.Role2Permission;
-import com.spring.boot.sensor.entity.User2Role;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

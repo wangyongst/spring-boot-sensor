@@ -85,4 +85,41 @@ $(function () {
         dialog.find("[name='type']").val("1");
         dialog.modal();
     })
+
+    $("#delete").click(function () {
+        $.post("/admin/permission/sud?delete=1&ids=" + select(),
+            function (result) {
+                if (result.status) {
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
+    })
+
+    $("#deleteall").click(function () {
+        $.post("/admin/permission/sud?delete=2&ids=" + select(),
+            function (result) {
+                if (result.status) {
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
+    })
+
+    $("#isuse").click(function () {
+        $.post("/admin/permission/sud?isuse=1&ids=" + select(),
+            function (result) {
+                if (result.status) {
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
+    })
+
+    $("#export").click(function () {
+        $.get("/admin/permission/export");
+    })
 })

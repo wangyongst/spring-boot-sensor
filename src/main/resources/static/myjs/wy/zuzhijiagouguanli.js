@@ -102,6 +102,10 @@ $(function () {
                 }
             });
     })
+
+    $("#export").click(function () {
+        $.get("/admin/dept/export");
+    })
 })
 
 

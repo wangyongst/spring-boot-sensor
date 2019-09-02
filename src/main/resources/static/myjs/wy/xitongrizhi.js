@@ -46,27 +46,8 @@ $(function () {
         }
     );
 
-
-    /*----------点击按钮打开模态框------------*/
-    $("#new").click(function () {
-        var dialog = window.parent.$('#modal-default');
-        dialog.empty();
-        dialog.load("modal/zuzhijiagouguanli-modal.html");
-        dialog.modal();
-    })
-
-    $("#update").click(function () {
-        var dialog = window.parent.$('#modal-default');
-        dialog.empty();
-        dialog.load("modal/zuzhijiagouguanli-modal.html");
-        debugger;
-        dialog.find("[name='code']").val("1");
-        dialog.find("[name='name']").val("1");
-        dialog.find("[name='order']").val("1");
-        dialog.find("[name='remark']").val("1");
-        dialog.find("[name='isuse']").val("1");
-        dialog.find("[name='type']").val("1");
-        dialog.modal();
+    $("#export").click(function () {
+        $.get("/admin/user/export");
     })
 })
 

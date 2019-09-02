@@ -19,7 +19,7 @@ $(function () {
                         return "<input type='checkbox' class='minimal' name ='btSelectItem' value='" + data + "'/>";
                     }
                 }, {
-                    "data": "cnname",
+                    "data": "cname",
                     "title": "角色名称",
                 }, {
                     "data": "name",

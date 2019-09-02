@@ -11,7 +11,7 @@ public interface UserMapper {
 
     @Select("select * from user where username = #{username} and ifnull(isuse,0) <>1")
     @Results(id = "userPermission", value = {
-            @Result(property = "user2Roles", column = "id", many = @Many(select = "com.spring.boot.sensor.mapper.User2RoleMapper.findByUserid"))
+            @Result(property = "role", column = "roleid", one = @One(select = "com.spring.boot.sensor.mapper.RoleMapper.findByIdAndIsuse"))
     })
     List<User> findByUsername(@Param("username") String username);
 
@@ -19,6 +19,10 @@ public interface UserMapper {
     User findById(@Param("id") int id);
 
     @Select("select * from user")
+    @Results(id = "userList", value = {
+            @Result(property = "role", column = "roleid", one = @One(select = "com.spring.boot.sensor.mapper.RoleMapper.findById")),
+            @Result(property = "dept", column = "deptid", one = @One(select = "com.spring.boot.sensor.mapper.DeptMapper.findById"))
+    })
     List<User> findAll();
 
     @Delete("delete from dept where id = #{id}")
