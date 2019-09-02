@@ -10,7 +10,7 @@ public class ParameterM {
     private String name;
     private String type;
     private Integer parentid;
-    private Integer isuse;
+    private int isuse;
     private String orders;
     private String remark;
     private String username;
@@ -29,14 +29,6 @@ public class ParameterM {
     private Integer permissionid;
     private Integer userid;
 
-    public String getIds() {
-        return ids;
-    }
-
-    public void setIds(String ids) {
-        this.ids = ids;
-    }
-
     public int getDelete() {
         return delete;
     }
@@ -51,6 +43,14 @@ public class ParameterM {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getIds() {
+        return ids;
+    }
+
+    public void setIds(String ids) {
+        this.ids = ids;
     }
 
     public String getCode() {
@@ -85,11 +85,11 @@ public class ParameterM {
         this.parentid = parentid;
     }
 
-    public Integer getIsuse() {
+    public int getIsuse() {
         return isuse;
     }
 
-    public void setIsuse(Integer isuse) {
+    public void setIsuse(int isuse) {
         this.isuse = isuse;
     }
 
