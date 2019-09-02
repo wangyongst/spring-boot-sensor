@@ -16,7 +16,7 @@ $(function () {
                 {
                     "data": "id",
                     "render": function (data, type, row) {
-                        return "<input type='checkbox' class='minimal' name ='id' value='" + data + "'/>";
+                        return "<input type='checkbox' class='minimal' name ='btSelectItem' value='" + data + "'/>";
                     }
                 }, {
                     "data": "name",
@@ -56,16 +56,55 @@ $(function () {
     })
 
     $("#update").click(function () {
-        var dialog = window.parent.$('#modal-default');
-        dialog.empty();
-        dialog.load("modal/zuzhijiagouguanli-modal.html");
-        debugger;
-        $("[name='code']").val("1");
-        $("[name='name']").val("1");
-        $("[name='order']").val("1");
-        $("[name='remark']").val("1");
-        $("[name='isuse']").val("1");
-        $("[name='type']").val("1");
-        dialog.modal();
+        // var dialog = window.parent.$('#modal-default');
+        // dialog.empty();
+        // dialog.load("modal/zuzhijiagouguanli-modal.html");
+        // debugger;
+        // $("[name='code']").val("1");
+        // $("[name='name']").val("1");
+        // $("[name='order']").val("1");
+        // $("[name='remark']").val("1");
+        // $("[name='isuse']").val("1");
+        // $("[name='type']").val("1");
+        // dialog.modal();
+    })
+
+
+    $("#delete").click(function () {
+        $.post("/admin/dept/sud?delete=1&ids=" + select(),
+            function (result) {
+                if (result.status) {
+                    $('#modal-default').modal('hide');
+                    debugger;
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
+    })
+
+    $("#delete").click(function () {
+        $.post("/admin/dept/sud?delete=1&ids=" + select(),
+            function (result) {
+                if (result.status) {
+                    $('#modal-default').modal('hide');
+                    debugger;
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
     })
 })
+
+
+function select() {
+    var ids = "";
+    $("input[name=btSelectItem]").each(function () {
+        if ($(this).prop('checked')) {
+            ids += "," + $(this).val();
+        }
+    });
+    if (ids.length > 1) ids = ids.substr(1);
+    return ids;
+}

@@ -16,7 +16,7 @@ $(function () {
                 {
                     "data": "id",
                     "render": function (data, type, row) {
-                        return "<input type='checkbox' class='minimal' name ='id' value='" + data + "'/>";
+                        return "<input type='checkbox' class='minimal' name ='btSelectItem' value='" + data + "'/>";
                     }
                 }, {
                     "data": "type",

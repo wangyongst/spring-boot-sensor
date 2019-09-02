@@ -16,7 +16,7 @@ $(function () {
                 {
                     "data": "id",
                     "render": function (data, type, row) {
-                        return "<input type='checkbox' class='minimal' name ='id' value='" + data + "'/>";
+                        return "<input type='checkbox' class='minimal' name ='btSelectItem' value='" + data + "'/>";
                     }
                 }, {
                     "data": "workno",
@@ -63,4 +63,33 @@ $(function () {
         dialog.load("modal/yonghuguanli-modal.html");
         dialog.modal();
     })
+    $("#update").click(function () {
+        alert(select());
+    })
+
+
+    $("#delete").click(function () {
+        $.post("/admin/dept/sud?delete=1&" + $('#deptForm').serialize(),
+            function (result) {
+                if (result.status) {
+                    $('#modal-default').modal('hide');
+                    debugger;
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
+    })
 })
+
+
+function select() {
+    var ids = "";
+    $("input[name=btSelectItem]").each(function () {
+        if ($(this).prop('checked')) {
+            ids += "," + $(this).val();
+        }
+    });
+    if (ids.length > 1) ids = ids.substr(1);
+    return ids;
+}

@@ -5,6 +5,7 @@ import java.util.List;
 public class ParameterM {
     private int delete;
     private int id;
+    private String ids;
     private String code;
     private String name;
     private String type;
@@ -28,6 +29,14 @@ public class ParameterM {
     private Integer roleid;
     private Integer permissionid;
     private Integer userid;
+
+    public String getIds() {
+        return ids;
+    }
+
+    public void setIds(String ids) {
+        this.ids = ids;
+    }
 
     public int getDelete() {
         return delete;

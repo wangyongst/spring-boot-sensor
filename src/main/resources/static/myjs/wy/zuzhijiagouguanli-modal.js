@@ -10,6 +10,5 @@ $(function () {
                     alert(result.message);
                 }
             });
-
     });
 })

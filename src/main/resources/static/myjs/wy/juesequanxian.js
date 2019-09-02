@@ -16,7 +16,7 @@ $(function () {
                 {
                     "data": "id",
                     "render": function (data, type, row) {
-                        return "<input type='checkbox' class='minimal' name ='id' value='" + data + "'/>";
+                        return "<input type='checkbox' class='minimal' name ='btSelectItem' value='" + data + "'/>";
                     }
                 }, {
                     "data": "cnname",
@@ -56,3 +56,14 @@ $(function () {
         });
     })
 })
+
+function select() {
+    var ids = "";
+    $("input[name=btSelectItem]").each(function () {
+        if ($(this).prop('checked')) {
+            ids += "," + $(this).val();
+        }
+    });
+    if (ids.length > 1) ids = ids.substr(1);
+    return ids;
+}

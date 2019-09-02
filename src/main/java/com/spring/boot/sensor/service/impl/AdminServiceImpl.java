@@ -60,13 +60,25 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Result deptSud(ParameterM parameterM) {
+        if (parameterM.getDelete() == 1) {
+            if (!StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
+            deptMapper.deleteById(Integer.parseInt(parameterM.getIds()));
+            return ResultUtil.ok();
+        }
+        else if (parameterM.getDelete() == 2) {
+            if (!StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            for (String id : parameterM.getIds().split(",")) {
+                deptMapper.deleteById(Integer.parseInt(id));
+            }
+            return ResultUtil.ok();
+        }
+        else if(parameterM.getIsuse()!=null && parameterM.getIsuse() == 1){
+
+        }
         if (!StringUtils.isNumeric(parameterM.getOrders())) return ResultUtil.errorWithMessage("排序只能是数字");
         if (StringUtils.isBlank(parameterM.getCode())) return ResultUtil.errorWithMessage("组织编码不能为空");
         if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("组织名称不能为空");
-        if (parameterM.getDelete() == 1) {
-            deptMapper.deleteById(parameterM.getId());
-            return ResultUtil.ok();
-        }
         Dept dept = null;
         if (parameterM.getId() != 0) dept = deptMapper.findById(parameterM.getId());
         else if (parameterM.getId() == 0) dept = new Dept();
