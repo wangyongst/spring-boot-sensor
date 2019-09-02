@@ -25,6 +25,6 @@ public interface DeptMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertDept(Dept dept);
 
-    @Update("update dept set code = #{code}, name = #{name}, type = #{type}, parentid = #{parentid},isuse = #{isuse},torder = #{order},remark = #{remark} where id = #{id}")
+    @Update("update dept set code = #{code}, name = #{name}, type = #{type}, parentid = #{parentid},isuse = #{isuse},order = #{order},remark = #{remark} where id = #{id}")
     void updateDept(Dept dept);
 }
