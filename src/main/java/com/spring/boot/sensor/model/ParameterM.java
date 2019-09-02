@@ -10,7 +10,7 @@ public class ParameterM {
     private String type;
     private Integer parentid;
     private Integer isuse;
-    private String order;
+    private String orders;
     private String remark;
     private String username;
     private String password;
@@ -85,12 +85,12 @@ public class ParameterM {
         this.isuse = isuse;
     }
 
-    public String getOrder() {
-        return order;
+    public String getOrders() {
+        return orders;
     }
 
-    public void setOrder(String order) {
-        this.order = order;
+    public void setOrders(String orders) {
+        this.orders = orders;
     }
 
     public String getRemark() {

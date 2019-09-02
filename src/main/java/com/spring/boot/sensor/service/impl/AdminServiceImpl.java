@@ -60,7 +60,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Result deptSud(ParameterM parameterM) {
-        if (!StringUtils.isNumeric(parameterM.getOrder())) return ResultUtil.errorWithMessage("排序只能是数字");
+        if (!StringUtils.isNumeric(parameterM.getOrders())) return ResultUtil.errorWithMessage("排序只能是数字");
         if (StringUtils.isBlank(parameterM.getCode())) return ResultUtil.errorWithMessage("组织编码不能为空");
         if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("组织名称不能为空");
         if (parameterM.getDelete() == 1) {
@@ -72,7 +72,7 @@ public class AdminServiceImpl implements AdminService {
         else if (parameterM.getId() == 0) dept = new Dept();
         dept.setCode(parameterM.getCode());
         dept.setIsuse(parameterM.getIsuse());
-        dept.setOrder(Integer.parseInt(parameterM.getOrder()));
+        dept.setOrders(Integer.parseInt(parameterM.getOrders()));
         dept.setRemark(parameterM.getRemark());
         dept.setName(parameterM.getName());
         dept.setParentid(parameterM.getParentid());
@@ -94,28 +94,12 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Result permissionSud(ParameterM parameterM) {
-        if (!StringUtils.isNumeric(parameterM.getOrder())) return ResultUtil.errorWithMessage("排序只能是数字");
+        if (!StringUtils.isNumeric(parameterM.getOrders())) return ResultUtil.errorWithMessage("排序只能是数字");
         if (StringUtils.isBlank(parameterM.getCode())) return ResultUtil.errorWithMessage("组织编码不能为空");
         if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("组织名称不能为空");
         if (parameterM.getDelete() == 1) {
             deptMapper.deleteById(parameterM.getId());
             return ResultUtil.ok();
-        }
-        Dept dept = null;
-        if (parameterM.getId() != 0) dept = deptMapper.findById(parameterM.getId());
-        else if (parameterM.getId() == 0) dept = new Dept();
-        dept.setCode(parameterM.getCode());
-        dept.setIsuse(parameterM.getIsuse());
-        dept.setOrder(Integer.parseInt(parameterM.getOrder()));
-        dept.setRemark(parameterM.getRemark());
-        dept.setName(parameterM.getName());
-        dept.setParentid(parameterM.getParentid());
-        dept.setType(parameterM.getType());
-        if (dept.getId() != 0) {
-            deptMapper.updateDept(dept);
-            return ResultUtil.ok();
-        } else {
-            deptMapper.insertDept(dept);
         }
         return ResultUtil.ok();
     }

@@ -8,7 +8,7 @@ public class Role {
     private String cnname;
     private Integer isuse;
     private String name;
-    private Integer order;
+    private Integer orders;
     private List<Role2Permission> role2Permissions;
 
     public List<Role2Permission> getRole2Permissions() {
@@ -51,11 +51,11 @@ public class Role {
         this.name = name;
     }
 
-    public Integer getOrder() {
-        return order;
+    public Integer getOrders() {
+        return orders;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public void setOrders(Integer orders) {
+        this.orders = orders;
     }
 }

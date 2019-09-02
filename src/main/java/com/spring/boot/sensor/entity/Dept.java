@@ -8,7 +8,7 @@ public class Dept {
     private String type;
     private Integer parentid;
     private Integer isuse;
-    private Integer order;
+    private Integer orders;
     private String remark;
 
     public int getId() {
@@ -59,12 +59,12 @@ public class Dept {
         this.isuse = isuse;
     }
 
-    public Integer getOrder() {
-        return order;
+    public Integer getOrders() {
+        return orders;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public void setOrders(Integer orders) {
+        this.orders = orders;
     }
 
     public String getRemark() {
