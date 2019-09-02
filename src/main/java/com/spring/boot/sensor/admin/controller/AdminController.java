@@ -20,6 +20,11 @@ public class AdminController {
         return adminService.deptSud(parameterM);
     }
 
+    @GetMapping("/dept")
+    public Result dept(@ModelAttribute ParameterM parameterM) {
+        return adminService.dept(parameterM);
+    }
+
     @GetMapping("/dept/list")
     public Result deptList(@ModelAttribute ParameterM parameterM) {
         return adminService.deptList(parameterM);
@@ -30,56 +35,48 @@ public class AdminController {
         return adminService.permissionSud(parameterM);
     }
 
+    @GetMapping("/permission")
+    public Result permission(@ModelAttribute ParameterM parameterM) {
+        return adminService.permission(parameterM);
+    }
+
     @GetMapping("/permission/list")
     public Result permissionList(@ModelAttribute ParameterM parameterM) {
         return adminService.permissionList(parameterM);
     }
 
-//    //我
-//    @GetMapping("/me")
-//    public Result me(@ModelAttribute ParameterM parameterM) {
-//        return adminService.me();
-//    }
-//
     //账号列表
     @GetMapping("/user/list")
     public Object userList(@ModelAttribute ParameterM parameterM) {
         return adminService.userList(parameterM);
     }
-//
-//    //账号详情
-//    @GetMapping("/user")
-//    public Result user(@ModelAttribute ParameterM parameterM) {
-//        return adminService.user(parameterM);
-//    }
-//
+
+    //账号详情
+    @GetMapping("/user")
+    public Result user(@ModelAttribute ParameterM parameterM) {
+        return adminService.user(parameterM);
+    }
+
     //账号增删改
     @PostMapping("/user/sud")
     public Result userSud(@ModelAttribute ParameterM parameterM) {
         return adminService.userSud(parameterM);
     }
-//
-//    //角色列表
-//    @GetMapping("/role/list")
-//    public Object roleList(@ModelAttribute ParameterM parameterM) {
-//        return adminService.roleList(parameterM).getData();
-//    }
-//
-//    //角色详情
-//    @GetMapping("/role")
-//    public Result role(@ModelAttribute ParameterM parameterM) {
-//        return adminService.role(parameterM);
-//    }
-//
-//    //角色增删改
-//    @PostMapping("/role/sud")
-//    public Result roleSud(@ModelAttribute ParameterM parameterM) {
-//        return adminService.roleSud(parameterM);
-//    }
-//
-//    //修改密码
-//    @PostMapping("/changepassword")
-//    public Result changePassword(@ModelAttribute ParameterM parameterM) {
-//        return adminService.changePassword(parameterM);
-//    }
+
+    //角色列表
+    @GetMapping("/role/list")
+    public Object roleList(@ModelAttribute ParameterM parameterM) {
+        return adminService.roleList(parameterM);
+    }
+
+    @GetMapping("/role")
+    public Result role(@ModelAttribute ParameterM parameterM) {
+        return adminService.role(parameterM);
+    }
+
+    //角色增删改
+    @PostMapping("/role/sud")
+    public Result roleSud(@ModelAttribute ParameterM parameterM) {
+        return adminService.roleSud(parameterM);
+    }
 }

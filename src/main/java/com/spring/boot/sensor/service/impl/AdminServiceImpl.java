@@ -45,20 +45,16 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private PermissionMapper permissionMapper;
-//
-//    @Autowired
-//    private Role2PermissionRepository role2PermissionRepository;
-//
-//    @Override
-//    public Result me() {
-//        User me = (User) SecurityUtils.getSubject().getPrincipal();
-//        return ResultUtil.okWithData(userMapper.findById(me.getId()));
-//    }
-//
+
     @Override
     public Result findByUsername(String username) {
         List<User> userList = userMapper.findByUsername(username);
         if (userList.size() == 1) return ResultUtil.okWithData(userList.get(0));
+        return null;
+    }
+
+    @Override
+    public Result dept(ParameterM parameterM) {
         return null;
     }
 
@@ -96,7 +92,6 @@ public class AdminServiceImpl implements AdminService {
     }
 
 
-
     @Override
     public Result permissionSud(ParameterM parameterM) {
         if (!StringUtils.isNumeric(parameterM.getOrder())) return ResultUtil.errorWithMessage("排序只能是数字");
@@ -131,41 +126,33 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public Result permission(ParameterM parameterM) {
+        return ResultUtil.okWithData(permissionMapper.findById(parameterM.getId()));
+    }
+
+    @Override
     public Result userList(ParameterM parameterM) {
         return ResultUtil.okWithData(userMapper.findAll());
     }
-//
+
+    @Override
+    public Result user(ParameterM parameterM) {
+        return ResultUtil.okWithData(userMapper.findById(parameterM.getId()));
+    }
+
     @Override
     public Result roleList(ParameterM parameterM) {
         return ResultUtil.okWithData(roleMapper.findAll());
     }
-//
-//    @Override
-//    public Result user(ParameterM parameterM) {
-//        return ResultUtil.okWithData(userRepository.findById(parameterM.getUserid()).get());
-//    }
-//
+
+    @Override
+    public Result role(ParameterM parameterM) {
+        return ResultUtil.okWithData(roleMapper.findById(parameterM.getId()));
+    }
+
     @Override
     public Result userSud(ParameterM parameterM) {
         User user = null;
-//        if (parameterM.getUserid() == 0) {
-//            if (StringUtils.isBlank(parameterM.getMobile())) return ResultUtil.errorWithMessage("电话不能为空！");
-//            if (userRepository.findByMobile(parameterM.getMobile()).size() > 0)
-//                return ResultUtil.errorWithMessage("电话已经存在！");
-//            user = new User();
-//            user.setCreatetime(TimeUtils.format(System.currentTimeMillis()));
-//            user.setIschange(0);
-//            User me = (User) SecurityUtils.getSubject().getPrincipal();
-//            user.setCreateusername(me.getName());
-//        } else {
-//            user = userRepository.findById(parameterM.getUserid()).get();
-//            if (parameterM.getDelete() != 0) {
-//                if (user.getId() == ((User) SecurityUtils.getSubject().getPrincipal()).getId())
-//                    SecurityUtils.getSubject().logout();
-//                deleteUser(user);
-//                return ResultUtil.ok();
-//            }
-//        }
         if (StringUtils.isBlank(parameterM.getMobile())) return ResultUtil.errorWithMessage("电话不能为空！");
         if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("登录姓名不能为空！");
         if (parameterM.getName().length() > 10) return ResultUtil.errorWithMessage("登录姓名不能超过10个字！");
@@ -179,70 +166,13 @@ public class AdminServiceImpl implements AdminService {
         user.setName(parameterM.getName());
         user.setPassword(new Md5Hash(parameterM.getPassword()).toHex());
         user.setMobile(parameterM.getMobile());
-//        userRepository.save(user);
         return ResultUtil.ok();
     }
-//
-//    @Override
-//    public Result role(ParameterM parameterM) {
-//        return ResultUtil.okWithData(roleRepository.findById(parameterM.getRoleid()).get());
-//    }
-//
+
     @Override
     public Result roleSud(ParameterM parameterM) {
-//        Role role = null;
-//        if (parameterM.getRoleid() == 0) {
-//            role = new Role();
-//        } else {
-//            role = roleRepository.findById(parameterM.getRoleid()).get();
-//            if (parameterM.getDelete() != 0) {
-//                deleteRole(role);
-//                return ResultUtil.ok();
-//            }
-//        }
-//        if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("角色名称不能为空！");
-//        if (parameterM.getName().length() > 10) return ResultUtil.errorWithMessage("角色名称最多10个字！");
-//        role.setName(parameterM.getName());
-//        Role saveedRole = roleRepository.save(role);
-//        role2PermissionRepository.deleteAllByRole(role);
-//        if (parameterM.getPermission() != null && parameterM.getPermission().size() > 0) {
-//            parameterM.getPermission().forEach(e -> {
-//                Role2Permission role2Permission = new Role2Permission();
-//                role2Permission.setRole(saveedRole);
-//                role2Permission.setPermission(permissionRepository.findById(e).get());
-//                role2PermissionRepository.save(role2Permission);
-//            });
-//        }
+
         return ResultUtil.ok();
     }
-//
 
-//
-//    @Override
-//    public Result changePassword(ParameterM parameterM) {
-//        User user = (User) SecurityUtils.getSubject().getPrincipal();
-//        if (StringUtils.isBlank(parameterM.getPassword())) return ResultUtil.errorWithMessage("原录密码不能为空！");
-//        if (StringUtils.isBlank(parameterM.getNewpassword())) return ResultUtil.errorWithMessage("新密码不能为空不能为空！");
-//        if (!parameterM.getNewpassword().equals(parameterM.getNewpassword2()))
-//            return ResultUtil.errorWithMessage("两次密码输入不一致，请重新输入！");
-//        if (parameterM.getPassword().equals(parameterM.getNewpassword()))
-//            return ResultUtil.errorWithMessage("新密码与原密码相同，请重新输入！");
-//        if (parameterM.getNewpassword().length() < 3 || parameterM.getNewpassword().length() > 20)
-//            return ResultUtil.errorWithMessage("密码长度不正确，请重新输入（最短3个字符，最长20个字符）（！");
-//        String regex = "^[a-z0-9A-Z]+$";
-//        if (!parameterM.getNewpassword().matches(regex)) return ResultUtil.errorWithMessage("密码只包含数字和英文,其他字符不能输入！");
-//        if (userRepository.findById(user.getId()).get().getPassword().equals(new Md5Hash(parameterM.getPassword()).toHex())) {
-//            user.setPassword(new Md5Hash(parameterM.getNewpassword()).toHex());
-//            user.setIschange(1);
-//            userRepository.save(user);
-//            return ResultUtil.ok();
-//        } else {
-//            return ResultUtil.errorWithMessage("原密码错误！");
-//        }
-//    }
-//
-//    @Override
-//    public void deleteRole(Role role) {
-//
-//    }
 }

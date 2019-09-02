@@ -15,6 +15,9 @@ public interface RoleMapper {
     })
     Role findByIdAndIsuse(@Param("id") int id);
 
+    @Select("select * from role where id = #{id}")
+    Role findById(@Param("id") int id);
+
     @Select("select * from role")
     List<Role> findAll();
 

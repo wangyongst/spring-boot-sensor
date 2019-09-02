@@ -35,13 +35,13 @@
 					    </div>
 					    <!--操作button-->
 					    <div class="buttons mag_1">
-	                        <button type="button" class="btn btn-primary" id="new">新建</button>
-	                        <button type="button" class="btn btn-success ">编辑</button>
-							<button type="button" class="btn btn-warning ">查看</button>
-	                        <button type="button" class="btn btn-danger ">删除</button>
-							<button type="button" class="btn btn-danger ">批量删除</button>
-							<button type="button" class="btn btn-success ">导入</button>
-							<button type="button" class="btn btn-warning ">导出</button>
+	                        <button type="button" class="btn btn-primary" id="new" shiro:haspermission="permission-new">新建</button>
+	                        <button type="button" class="btn btn-success " shiro:haspermission="permission-update">编辑</button>
+							<button type="button" class="btn btn-warning " shiro:haspermission="permission-chakan">查看</button>
+	                        <button type="button" class="btn btn-danger " shiro:haspermission="permission-delete">删除</button>
+							<button type="button" class="btn btn-danger " shiro:haspermission="permission-deleteall">批量删除</button>
+							<button type="button" class="btn btn-success " shiro:haspermission="permission-import">导入</button>
+							<button type="button" class="btn btn-warning " shiro:haspermission="permission-export">导出</button>
 	                   	</div>
 	                   	<!--操作button结束-->
 	                   	<!--table表格开始-->

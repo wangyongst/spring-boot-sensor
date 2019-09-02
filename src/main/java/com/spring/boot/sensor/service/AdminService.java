@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface AdminService {
 
-    //    Result me();
-//
     Result findByUsername(String username);
+
+    Result dept(ParameterM parameterM);
 
     Result deptList(ParameterM parameterM);
 
@@ -19,24 +19,20 @@ public interface AdminService {
 
     Result permissionList(ParameterM parameterM);
 
+    Result permission(ParameterM parameterM);
+
     Result permissionSud(ParameterM parameterM);
 
     Result userList(ParameterM parameterM);
 
+    Result user(ParameterM parameterM);
+
     Result userSud(ParameterM parameterM);
 
     Result roleList(ParameterM parameterM);
-//
-//    Result user(ParameterM parameterM);
-//
-//    Result role(ParameterM parameterM);
+
+    Result role(ParameterM parameterM);
 
     Result roleSud(ParameterM parameterM);
-//
-//    Result permissionList(ParameterM parameterM);
-//
-//    Result changePassword(ParameterM parameterM);
-//
-//    void deleteRole(Role role);
 
 }
