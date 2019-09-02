@@ -19,6 +19,7 @@ public class ParameterM {
     private String mobile;
     private String telephone;
     private String email;
+    private String ip;
     private Integer islogin;
     private Integer islock;
     private String cname;
@@ -28,6 +29,14 @@ public class ParameterM {
     private Integer roleid;
     private Integer permissionid;
     private Integer userid;
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 
     public int getDelete() {
         return delete;

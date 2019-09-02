@@ -4,10 +4,7 @@ import com.spring.boot.sensor.entity.Dept;
 import com.spring.boot.sensor.entity.Role;
 import com.spring.boot.sensor.entity.Role2Permission;
 import com.spring.boot.sensor.entity.User;
-import com.spring.boot.sensor.mapper.DeptMapper;
-import com.spring.boot.sensor.mapper.PermissionMapper;
-import com.spring.boot.sensor.mapper.RoleMapper;
-import com.spring.boot.sensor.mapper.UserMapper;
+import com.spring.boot.sensor.mapper.*;
 import com.spring.boot.sensor.model.ParameterM;
 import com.spring.boot.sensor.service.AdminService;
 import com.spring.boot.sensor.utils.db.TimeUtils;
@@ -45,6 +42,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private PermissionMapper permissionMapper;
+
+    @Autowired
+    private BlacklistMapper blacklistMapper;
 
     @Override
     public Result findByUsername(String username) {
@@ -161,7 +161,7 @@ public class AdminServiceImpl implements AdminService {
                 userMapper.deleteById(Integer.parseInt(id));
             }
             return ResultUtil.ok();
-        }else if (parameterM.getIsuse() == 1) {
+        } else if (parameterM.getIsuse() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 deptMapper.updateIsuse(Integer.parseInt(id), 1);
@@ -195,6 +195,23 @@ public class AdminServiceImpl implements AdminService {
             return ResultUtil.ok();
         }
         return ResultUtil.ok();
+    }
+
+    @Override
+    public Result isInBlack(String ip) {
+        if (blacklistMapper.findAllByBlack(ip).size() > 0) return ResultUtil.errorWithMessage("");
+        else return ResultUtil.ok();
+    }
+
+    @Override
+    public Result blacklist(int type) {
+        return ResultUtil.okWithData(blacklistMapper.findAll(type));
+    }
+
+    @Override
+    public Result blacklistSud(ParameterM parameterM) {
+        blacklistMapper.update(parameterM.getIp(),Integer.parseInt(parameterM.getType()));
+        return ResultUtil.okWithMessage("保存成功");
     }
 
 }

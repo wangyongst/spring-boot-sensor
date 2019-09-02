@@ -88,6 +88,12 @@ public class AdminController {
         return adminService.roleSud(parameterM);
     }
 
+    //账号增删改
+    @PostMapping("/blacklist/sud")
+    public Result blacklistSud(@ModelAttribute ParameterM parameterM) {
+        return adminService.blacklistSud(parameterM);
+    }
+
 
     @GetMapping("/dept/export")
     public void deptExport(@ModelAttribute ParameterM parameterM, HttpServletRequest req, HttpServletResponse resp) {
@@ -110,7 +116,7 @@ public class AdminController {
         ServletUtil su = new ServletUtil(fileName, req, resp);
         su.poiExcelServlet();
         String[] heads = {"工号", "登录账号", "姓名", "联系电话", "所属部门", "角色"};
-        String[] cols = {"workno", "username", "name", "mobile","deptname","rolename"};
+        String[] cols = {"workno", "username", "name", "mobile", "deptname", "rolename"};
         int[] numerics = {0};
         ServletUtil suresp = new ServletUtil(resp);
         PoiExcelExport<User> pee = new PoiExcelExport<>(fileName, heads, cols, userList, numerics, suresp.getOut());

@@ -1,6 +1,8 @@
 package com.spring.boot.sensor.controller;
 
+import com.spring.boot.sensor.entity.Blacklist;
 import com.spring.boot.sensor.entity.User;
+import com.spring.boot.sensor.mapper.BlacklistMapper;
 import com.spring.boot.sensor.service.AdminService;
 import com.spring.boot.sensor.utils.result.Result;
 import com.spring.boot.sensor.utils.result.ResultUtil;
@@ -10,6 +12,8 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.ServletRequest;
 
 @CrossOrigin("*")
 @RestController
@@ -25,7 +29,9 @@ public class ShiroController {
     }
 
     @PostMapping(value = "/login")
-    public Result login(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public Result login(@RequestParam("username") String username, @RequestParam("password") String password, ServletRequest request) {
+        String ip = request.getRemoteAddr();
+        if (adminService.isInBlack(ip).getStatus() != 1) return ResultUtil.loginFail("你不允许登录！");
         if (StringUtils.isBlank(username)) return ResultUtil.errorWithMessage("登录账号不能为空！");
         if (StringUtils.isBlank(password)) return ResultUtil.errorWithMessage("登录密码不能为空！");
         String regex = "^[a-z0-9A-Z]+$";
