@@ -21,7 +21,6 @@ public class ParameterM {
     private String email;
     private Integer islogin;
     private Integer islock;
-    private String cnname;
     private String cname;
     private String urlpath;
     private String iconpath;
@@ -172,14 +171,6 @@ public class ParameterM {
 
     public void setIslock(Integer islock) {
         this.islock = islock;
-    }
-
-    public String getCnname() {
-        return cnname;
-    }
-
-    public void setCnname(String cnname) {
-        this.cnname = cnname;
     }
 
     public String getCname() {

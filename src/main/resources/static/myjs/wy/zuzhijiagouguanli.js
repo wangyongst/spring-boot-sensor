@@ -74,8 +74,6 @@ $(function () {
         $.post("/admin/dept/sud?delete=1&ids=" + select(),
             function (result) {
                 if (result.status) {
-                    $('#modal-default').modal('hide');
-                    debugger;
                     $('#mydatatable').DataTable().ajax.reload();
                 } else {
                     alert(result.message);
@@ -83,12 +81,21 @@ $(function () {
             });
     })
 
-    $("#delete").click(function () {
-        $.post("/admin/dept/sud?delete=1&ids=" + select(),
+    $("#deleteall").click(function () {
+        $.post("/admin/dept/sud?delete=2&ids=" + select(),
             function (result) {
                 if (result.status) {
-                    $('#modal-default').modal('hide');
-                    debugger;
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
+    })
+
+    $("#isuse").click(function () {
+        $.post("/admin/dept/sud?isuse=1&ids=" + select(),
+            function (result) {
+                if (result.status) {
                     $('#mydatatable').DataTable().ajax.reload();
                 } else {
                     alert(result.message);

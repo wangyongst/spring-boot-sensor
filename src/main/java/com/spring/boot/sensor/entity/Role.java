@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Role {
     private int id;
-    private String cnname;
+    private String cname;
     private Integer isuse;
     private String name;
     private Integer orders;
@@ -27,12 +27,12 @@ public class Role {
         this.id = id;
     }
 
-    public String getCnname() {
-        return cnname;
+    public String getCname() {
+        return cname;
     }
 
-    public void setCnname(String cnname) {
-        this.cnname = cnname;
+    public void setCname(String cname) {
+        this.cname = cname;
     }
 
     public Integer getIsuse() {

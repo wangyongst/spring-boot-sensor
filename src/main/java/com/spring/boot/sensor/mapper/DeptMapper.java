@@ -27,4 +27,7 @@ public interface DeptMapper {
 
     @Update("update dept set code = #{code}, name = #{name}, type = #{type}, parentid = #{parentid},isuse = #{isuse},orders = #{orders},remark = #{remark} where id = #{id}")
     void updateDept(Dept dept);
+
+    @Update("update dept set isuse = #{isuse} where id = #{id}")
+    void updateIsuse(@Param("id") int id, @Param("isuse") int isuse);
 }

@@ -61,20 +61,22 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Result deptSud(ParameterM parameterM) {
         if (parameterM.getDelete() == 1) {
-            if (!StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
             deptMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
-        }
-        else if (parameterM.getDelete() == 2) {
-            if (!StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+        } else if (parameterM.getDelete() == 2) {
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 deptMapper.deleteById(Integer.parseInt(id));
             }
             return ResultUtil.ok();
-        }
-        else if(parameterM.getIsuse()!=null && parameterM.getIsuse() == 1){
-
+        } else if (parameterM.getIsuse() != null && parameterM.getIsuse() == 1) {
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            for (String id : parameterM.getIds().split(",")) {
+                deptMapper.updateIsuse(Integer.parseInt(id), 1);
+            }
+            return ResultUtil.ok();
         }
         if (!StringUtils.isNumeric(parameterM.getOrders())) return ResultUtil.errorWithMessage("排序只能是数字");
         if (StringUtils.isBlank(parameterM.getCode())) return ResultUtil.errorWithMessage("组织编码不能为空");
@@ -148,17 +150,24 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Result userSud(ParameterM parameterM) {
+        if (parameterM.getDelete() == 1) {
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
+            userMapper.deleteById(Integer.parseInt(parameterM.getIds()));
+            return ResultUtil.ok();
+        } else if (parameterM.getDelete() == 2) {
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            for (String id : parameterM.getIds().split(",")) {
+                userMapper.deleteById(Integer.parseInt(id));
+            }
+            return ResultUtil.ok();
+        }
+
         User user = null;
-        if (StringUtils.isBlank(parameterM.getMobile())) return ResultUtil.errorWithMessage("电话不能为空！");
-        if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("登录姓名不能为空！");
-        if (parameterM.getName().length() > 10) return ResultUtil.errorWithMessage("登录姓名不能超过10个字！");
-        String regex = "^[0-9]+$";
-        if (!parameterM.getMobile().matches(regex)) return ResultUtil.errorWithMessage("电话只能是数字！");
-        if (parameterM.getMobile().length() != 11) return ResultUtil.errorWithMessage("电话只能是11位数字！");
-        if (StringUtils.isBlank(parameterM.getPassword())) return ResultUtil.errorWithMessage("密码不能为空！");
-        regex = "^[a-z0-9A-Z]+$";
-        if (!parameterM.getPassword().matches(regex)) return ResultUtil.errorWithMessage("密码只支持数字和英文！");
-        if (parameterM.getRoleid() == 0) return ResultUtil.errorWithMessage("配置角色未选择！");
+        if (StringUtils.isBlank(parameterM.getUsername())) return ResultUtil.errorWithMessage("电话不能为空！");
+        if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("姓名不能为空！");
+        if (StringUtils.isBlank(parameterM.getWorkno())) return ResultUtil.errorWithMessage("电话不能为空！");
+        if (StringUtils.isBlank(parameterM.getPassword())) return ResultUtil.errorWithMessage("姓名不能为空！");
         user.setName(parameterM.getName());
         user.setPassword(new Md5Hash(parameterM.getPassword()).toHex());
         user.setMobile(parameterM.getMobile());
@@ -167,7 +176,18 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Result roleSud(ParameterM parameterM) {
-
+        if (parameterM.getDelete() == 1) {
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
+            roleMapper.deleteById(Integer.parseInt(parameterM.getIds()));
+            return ResultUtil.ok();
+        } else if (parameterM.getDelete() == 2) {
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            for (String id : parameterM.getIds().split(",")) {
+                roleMapper.deleteById(Integer.parseInt(id));
+            }
+            return ResultUtil.ok();
+        }
         return ResultUtil.ok();
     }
 
