@@ -1,152 +1,152 @@
 <!doctype html>
 <html lang="zh_CN" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-		<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
-		<link type="text/css" rel="stylesheet" href="css/skin-blue.min.css" />
-		<link type="text/css" rel="stylesheet" href="css/AdminLTE.min.css" />
-		<link type="text/css" rel="stylesheet" href="css/swiper.min.css" />
-		<link type="text/css" rel="stylesheet" href="css/index.css" />
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-	</head>
-	<body class="skin-blue sidebar-mini" style="overflow-y: hidden;">
-		<div class="wrapper">
-			<!--顶部开始-->
-			 <header class="main-header">
-			 	 <!--logo开始-->
-                 <a href="" class="logo">
-                    <span class="logo-mini">管理</span>
-                    <span class="logo-lg"><b>监控系统 </b></span>
-                 </a>
-                 <!--logo结束-->
-                 <!--顶部用户导航开始-->
-                 <nav class="navbar navbar-static-top" role="navigation">
-      				<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-       					 <span class="sr-only">Toggle navigation</span>
-     				 </a>
-     				 <!--右侧用户导航-->
-     				<div class="navbar-custom-menu">
-       					 <ul class="nav navbar-nav">
-          					<li class="dropdown user user-menu">
-            					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-             						<img src="images/header.png" class="user-image" >
-                                	<span class="hidden-xs">技术部>>系统管理员</span>
-            					</a>
-            					<ul class="dropdown-menu">
-              						<li class="user-header">
-                						<img src="images/header.png" class="img-circle" >
-                						<p>
-                 							系统管理员
-                  							<small>18511088786</small>
-                						</p>
-              						</li>
-              						<li class="user-footer">
-                						<div class="pull-left">
-                  							<a href="#" class="btn btn-default btn-flat">修改密码</a>
-                						</div>
-                						<div class="pull-right">
-                 						 	<a href="#" class="btn btn-default btn-flat">退出</a>
-               						 	</div>
-              						</li>
-            					</ul>
-         					 </li>
-       					 </ul>
-      				</div>
-   				 </nav>
-                  <!--顶部用户导航结束-->
-			</header>
-			<!--顶部结束-->
-			<!--左侧导航开始-->
-			<aside class="main-sidebar scroll">
-                <section class="sidebar hm-scroll">
-                <!-- Sidebar Menu -->
-               		<ul class="sidebar-menu" data-widget="tree">
-			            <li class="treeview" shiro:haspermission="yonghuguanliP">
-			                <a href="#">
-			                	<i class="fa fa-circle-o"></i> 
-			                	<span>用户管理</span>
-			                    <span class="pull-right-container">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/skin-blue.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/AdminLTE.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/swiper.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/index.css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body class="skin-blue sidebar-mini" style="overflow-y: hidden;">
+<div class="wrapper">
+    <!--顶部开始-->
+    <header class="main-header">
+        <!--logo开始-->
+        <a href="" class="logo">
+            <span class="logo-mini">管理</span>
+            <span class="logo-lg"><b>监控系统 </b></span>
+        </a>
+        <!--logo结束-->
+        <!--顶部用户导航开始-->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <!--右侧用户导航-->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="images/header.png" class="user-image">
+                            <span class="hidden-xs">技术部>>系统管理员</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="user-header">
+                                <img src="images/header.png" class="img-circle">
+                                <p>
+                                    系统管理员
+                                    <small>18511088786</small>
+                                </p>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">修改密码</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="#" class="btn btn-default btn-flat" id="logout">退出</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--顶部用户导航结束-->
+    </header>
+    <!--顶部结束-->
+    <!--左侧导航开始-->
+    <aside class="main-sidebar scroll">
+        <section class="sidebar hm-scroll">
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="treeview" shiro:haspermission="yonghuguanliP">
+                    <a href="#">
+                        <i class="fa fa-circle-o"></i>
+                        <span>用户管理</span>
+                        <span class="pull-right-container">
 			                        <i class="fa fa-angle-left pull-right"></i>
 			                    </span>
-			                </a>
-			                <ul class="treeview-menu">
-			                	<li shiro:haspermission="yonghuguanli">
-			                		<a href="/yonghuguanli" target="menuFrame">
-			                			<i class="fa fa-circle-o"></i> 
-			                			<span>用户管理</span>
-			                		</a>
-			                	</li>
-			                	<li shiro:haspermission="zuzhijiagouguanli">
-			                		<a href="/zuzhijiagouguanli" target="menuFrame">
-			                			<i class="fa fa-circle-o"></i> 
-			                			<span>组织架构管理</span>
-			                		</a>
-			                	</li>
-			                	<li shiro:haspermission="juesequanxian">
-			                		<a href="/juesequanxian" target="menuFrame">
-			                			<i class="fa fa-circle-o"></i> 
-			                			<span>角色权限</span>
-			                		</a>
-			                	</li>
-			                 </ul>
-			             </li>
-			            <li class="treeview" shiro:haspermission="xitongguanli">
-			                <a href="#">
-			                	<i class="fa fa-circle-o"></i> 
-			                	<span>系统管理</span>
-			                    <span class="pull-right-container">
+                    </a>
+                    <ul class="treeview-menu">
+                        <li shiro:haspermission="yonghuguanli">
+                            <a href="/yonghuguanli" target="menuFrame">
+                                <i class="fa fa-circle-o"></i>
+                                <span>用户管理</span>
+                            </a>
+                        </li>
+                        <li shiro:haspermission="zuzhijiagouguanli">
+                            <a href="/zuzhijiagouguanli" target="menuFrame">
+                                <i class="fa fa-circle-o"></i>
+                                <span>组织架构管理</span>
+                            </a>
+                        </li>
+                        <li shiro:haspermission="juesequanxian">
+                            <a href="/juesequanxian" target="menuFrame">
+                                <i class="fa fa-circle-o"></i>
+                                <span>角色权限</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview" shiro:haspermission="xitongguanli">
+                    <a href="#">
+                        <i class="fa fa-circle-o"></i>
+                        <span>系统管理</span>
+                        <span class="pull-right-container">
 			                        <i class="fa fa-angle-left pull-right"></i>
 			                    </span>
-			                </a>
-			                <ul class="treeview-menu">
-			                	<li shiro:haspermission="caidananniugongnengguanli">
-			                		<a href="/caidananniugongnengguanli" target="menuFrame">
-			                			<i class="fa fa-circle-o"></i> 
-			                			<span>菜单按钮功能管理</span>
-			                		</a>
-			                	</li>
-			                	<li shiro:haspermission="xitongrizhi">
-			                		<a href="/xitongrizhi" target="menuFrame">
-			                			<i class="fa fa-circle-o"></i> 
-			                			<span>系统日志</span>
-			                		</a>
-			                	</li>
-			                	<li shiro:haspermission="xitongbaimingdan">
-			                		<a href="/xitongbaimingdan" target="menuFrame">
-			                			<i class="fa fa-circle-o"></i> 
-			                			<span>系统白名单</span>
-			                		</a>
-			                	</li>
-			                 </ul>
-			             </li>
-               		</ul>
-    			</section>
-  			</aside>
-			<!--左侧导航结束-->
-			<!--主内容区域开始-->
-			 <div class="content-wrapper">
-			 	<iframe id="menuFrame" name="menuFrame"  style="overflow:visible;" scrolling="auto"
-                frameborder="no"  width="100%" src=""></iframe>
-    		 </div>
-			<!--主内容区域结束-->
-			<!--footer开始-->
-			<footer class="main-footer">
-    				<div class="pull-right hidden-xs">
-     				</div>
-     				<strong>Copyright © 2018-2019 Co.Ltd. All Rights Reserved. XXXXXX公司 版权所有</strong>
-			</footer>
-			<!--footer结束-->
-			<!--弹出框区域 开始-->
-			<div class="modal fade" id="modal-default" style="display: none;"></div>
-                                                <div class="modal fade" id="modal-default1" style="display: none;"></div>
-			<!--弹出框区域 结束-->
-		</div>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/adminlte.min.js"></script>
-	<script type="text/javascript" src="js/swiper.min.js"></script>
-	<script type="text/javascript" src="myjs/index.js"></script>
-	</body>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li shiro:haspermission="caidananniugongnengguanli">
+                            <a href="/caidananniugongnengguanli" target="menuFrame">
+                                <i class="fa fa-circle-o"></i>
+                                <span>菜单按钮功能管理</span>
+                            </a>
+                        </li>
+                        <li shiro:haspermission="xitongrizhi">
+                            <a href="/xitongrizhi" target="menuFrame">
+                                <i class="fa fa-circle-o"></i>
+                                <span>系统日志</span>
+                            </a>
+                        </li>
+                        <li shiro:haspermission="xitongbaimingdan">
+                            <a href="/xitongbaimingdan" target="menuFrame">
+                                <i class="fa fa-circle-o"></i>
+                                <span>系统白名单</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <!--左侧导航结束-->
+    <!--主内容区域开始-->
+    <div class="content-wrapper">
+        <iframe id="menuFrame" name="menuFrame" style="overflow:visible;" scrolling="auto"
+                frameborder="no" width="100%" src=""></iframe>
+    </div>
+    <!--主内容区域结束-->
+    <!--footer开始-->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+        </div>
+        <strong>Copyright © 2018-2019 Co.Ltd. All Rights Reserved. XXXXXX公司 版权所有</strong>
+    </footer>
+    <!--footer结束-->
+    <!--弹出框区域 开始-->
+    <div class="modal fade" id="modal-default" style="display: none;"></div>
+    <div class="modal fade" id="modal-default1" style="display: none;"></div>
+    <!--弹出框区域 结束-->
+</div>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/adminlte.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript" src="myjs/index.js"></script>
+</body>
 </html>

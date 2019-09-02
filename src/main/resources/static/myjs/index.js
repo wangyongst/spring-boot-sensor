@@ -30,4 +30,12 @@ $('.sidebar-menu li:not(.treeview)>a').on('click',function(){
 	$(this).parents().siblings().removeClass('active');
 	$(this).parents().siblings().find('li').removeClass('active');
 });
+
+$(function () {
+    $("#logout").click(function () {
+        $.post("/shiro/logout")
+    });
+})
+
+
   
