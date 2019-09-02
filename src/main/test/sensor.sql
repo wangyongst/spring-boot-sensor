@@ -10,10 +10,27 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2019-09-02 15:51:57
+Date: 2019-09-02 17:30:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for blacklist
+-- ----------------------------
+DROP TABLE IF EXISTS `blacklist`;
+CREATE TABLE `blacklist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip` varchar(2550) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of blacklist
+-- ----------------------------
+INSERT INTO `blacklist` VALUES ('1', '', '1');
+INSERT INTO `blacklist` VALUES ('2', '', '2');
 
 -- ----------------------------
 -- Table structure for dept
@@ -43,6 +60,34 @@ INSERT INTO `dept` VALUES ('13', '4', '设备维护部', '1', '12', '0', '6', '�
 INSERT INTO `dept` VALUES ('14', '2323', '数据分析部', '1', '12', null, '7', '没有');
 INSERT INTO `dept` VALUES ('15', '232', '安全保障部', '1', null, null, '8', '没有');
 INSERT INTO `dept` VALUES ('16', '323', '设备维护部', '1', null, null, '9', '没有');
+
+-- ----------------------------
+-- Table structure for logs
+-- ----------------------------
+DROP TABLE IF EXISTS `logs`;
+CREATE TABLE `logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `userusername` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `method` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `createtime` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of logs
+-- ----------------------------
+INSERT INTO `logs` VALUES ('3', '1', '办公楼', '1', '0', null, '没有');
+INSERT INTO `logs` VALUES ('4', '2 ', '总经办', '1', '3', null, '没有');
+INSERT INTO `logs` VALUES ('6', '2', '项目部', '2', '3', null, '没有');
+INSERT INTO `logs` VALUES ('11', '2', '质监部', '1', '3', null, '没有');
+INSERT INTO `logs` VALUES ('12', '4', '技术部', '1', null, null, '没有');
+INSERT INTO `logs` VALUES ('13', '4', '设备维护部', '1', '12', null, '没有');
+INSERT INTO `logs` VALUES ('14', '2323', '数据分析部', '1', '12', null, '没有');
+INSERT INTO `logs` VALUES ('15', '232', '安全保障部', '1', null, null, '没有');
+INSERT INTO `logs` VALUES ('16', '323', '设备维护部', '1', null, null, '没有');
 
 -- ----------------------------
 -- Table structure for permission
@@ -130,7 +175,7 @@ CREATE TABLE `role2permission` (
   `roleid` int(11) DEFAULT NULL,
   `permissionid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=514 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=515 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role2permission
@@ -169,6 +214,7 @@ INSERT INTO `role2permission` VALUES ('510', '48', '91');
 INSERT INTO `role2permission` VALUES ('511', '48', '92');
 INSERT INTO `role2permission` VALUES ('512', '48', '93');
 INSERT INTO `role2permission` VALUES ('513', '48', '94');
+INSERT INTO `role2permission` VALUES ('514', '48', '95');
 
 -- ----------------------------
 -- Table structure for user
