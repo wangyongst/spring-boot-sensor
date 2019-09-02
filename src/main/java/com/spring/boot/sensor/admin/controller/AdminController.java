@@ -110,7 +110,7 @@ public class AdminController {
         ServletUtil su = new ServletUtil(fileName, req, resp);
         su.poiExcelServlet();
         String[] heads = {"工号", "登录账号", "姓名", "联系电话", "所属部门", "角色"};
-        String[] cols = {"id", "createtime", "acceptime", "overtime"};
+        String[] cols = {"workno", "username", "name", "mobile","deptname","rolename"};
         int[] numerics = {0};
         ServletUtil suresp = new ServletUtil(resp);
         PoiExcelExport<User> pee = new PoiExcelExport<>(fileName, heads, cols, userList, numerics, suresp.getOut());

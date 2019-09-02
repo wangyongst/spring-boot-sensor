@@ -21,11 +21,11 @@ public interface DeptMapper {
     @Delete("delete from dept where id = #{id}")
     int deleteById(@Param("id") int id);
 
-    @Select("insert into dept(code, name, type, parentid,isuse,orders,remark) values(#{code}, #{name}, #{type}, #{parentid}, #{isuse}, #{orders}, #{remark})")
+    @Select("insert into dept(code, name, type, pId,isuse,orders,remark) values(#{code}, #{name}, #{type}, #{pId}, #{isuse}, #{orders}, #{remark})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertDept(Dept dept);
 
-    @Update("update dept set code = #{code}, name = #{name}, type = #{type}, parentid = #{parentid},isuse = #{isuse},orders = #{orders},remark = #{remark} where id = #{id}")
+    @Update("update dept set code = #{code}, name = #{name}, type = #{type}, pId = #{pId},isuse = #{isuse},orders = #{orders},remark = #{remark} where id = #{id}")
     void updateDept(Dept dept);
 
     @Update("update dept set isuse = #{isuse} where id = #{id}")

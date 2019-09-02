@@ -6,7 +6,7 @@ public class Dept {
     private String code;
     private String name;
     private String type;
-    private Integer parentid;
+    private Integer pId;
     private Integer isuse;
     private Integer orders;
     private String remark;
@@ -43,12 +43,12 @@ public class Dept {
         this.type = type;
     }
 
-    public Integer getParentid() {
-        return parentid;
+    public Integer getpId() {
+        return pId;
     }
 
-    public void setParentid(Integer parentid) {
-        this.parentid = parentid;
+    public void setpId(Integer pId) {
+        this.pId = pId;
     }
 
     public Integer getIsuse() {

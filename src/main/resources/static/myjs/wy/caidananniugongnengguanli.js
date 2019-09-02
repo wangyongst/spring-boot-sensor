@@ -1,4 +1,29 @@
 $(function () {
+
+    var setting = {
+        view: {
+            selectedMulti: false
+        },
+        check: {
+            enable: true
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        edit: {
+            enable: false
+        }
+    };
+
+    $.get("/admin/permission/list",
+        function (result) {
+            if (result.status) {
+                $.fn.zTree.init($("#treeDemo7"), setting, result.data);
+            }
+        });
+
     var mydatatable = $('#mydatatable').DataTable({
             "ajax": {
                 "url": "admin/permission/list",
@@ -26,7 +51,7 @@ $(function () {
                         else return "按钮";
                     }
                 }, {
-                    "data": "name",
+                    "data": "pname",
                     "title": "权限标识",
                 }, {
                     "data": "updatetime",

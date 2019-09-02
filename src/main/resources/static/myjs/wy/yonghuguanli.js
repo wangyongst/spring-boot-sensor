@@ -1,4 +1,29 @@
 $(function () {
+
+    var setting2 = {
+        check: {
+            enable: true,
+            chkStyle: "radio",
+            radioType: "all"
+        },
+        view: {
+            dblClickExpand: false
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+
+    };
+
+    $.get("/admin/dept/list",
+        function (result) {
+            if (result.status) {
+                $.fn.zTree.init($("#treeDemo1"), setting2, result.data);
+            }
+        });
+
     var mydatatable = $('#mydatatable').DataTable({
             "ajax": {
                 "url": "admin/user/list",
@@ -31,11 +56,19 @@ $(function () {
                     "data": "mobile",
                     "title": "联系电话",
                 }, {
-                    "data": "name",
+                    "data": "dept",
                     "title": "所属部门",
+                    "render": function (data, type, row) {
+                        if(data != null)  return data.name;
+                        else return null;
+                    }
                 }, {
-                    "data": "name",
+                    "data": "role",
                     "title": "角色",
+                    "render": function (data, type, row) {
+                        if(data != null)  return data.name;
+                        else return null;
+                    }
                 }],
             "oLanguage": {
                 "sLengthMenu": "每页显示 _MENU_ 条记录",

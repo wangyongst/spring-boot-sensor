@@ -2,7 +2,7 @@ package com.spring.boot.sensor.entity;
 
 public class Permission {
     private int id;
-    private String cname;
+    private String pname;
     private String name;
     private String urlpath;
     private Integer orders;
@@ -10,7 +10,7 @@ public class Permission {
     private Integer ischeck;
     private String remark;
     private Integer type;
-    private Integer parentid;
+    private Integer pId;
     private String updatetime;
 
     public String getUpdatetime() {
@@ -29,12 +29,12 @@ public class Permission {
         this.id = id;
     }
 
-    public String getCname() {
-        return cname;
+    public String getPname() {
+        return pname;
     }
 
-    public void setCname(String cname) {
-        this.cname = cname;
+    public void setPname(String pname) {
+        this.pname = pname;
     }
 
     public String getName() {
@@ -93,11 +93,11 @@ public class Permission {
         this.type = type;
     }
 
-    public Integer getParentid() {
-        return parentid;
+    public Integer getpId() {
+        return pId;
     }
 
-    public void setParentid(Integer parentid) {
-        this.parentid = parentid;
+    public void setpId(Integer pId) {
+        this.pId = pId;
     }
 }
