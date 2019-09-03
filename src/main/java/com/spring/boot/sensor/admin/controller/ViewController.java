@@ -1,6 +1,7 @@
 package com.spring.boot.sensor.admin.controller;
 
 import com.spring.boot.sensor.entity.Blacklist;
+import com.spring.boot.sensor.entity.Permission;
 import com.spring.boot.sensor.model.ParameterM;
 import com.spring.boot.sensor.service.AdminService;
 import com.spring.boot.sensor.utils.ThymeleafUtils;
@@ -62,34 +63,32 @@ public class ViewController {
         return "modal/zuzhijiagouguanli-new";
     }
 
-    @RequestMapping("/modal/caidananniugongnengguanli1")
-    public String caidananniugongnengguanli1(Integer id, Model model) {
-        if (id != null && id != 0) {
-            ParameterM parameterM = new ParameterM();
-            parameterM.setId(id);
-            model.addAttribute("permission", adminService.permission(parameterM).getData());
-            return "modal/caidananniugongnengguanli1-update";
-        }
-        return "modal/caidananniugongnengguanli1-new";
-    }
-
     @RequestMapping("/modal/caidananniugongnengguanli")
-    public String caidananniugongnengguanli(Integer id, Model model) {
+    public String caidananniugongnengguanli(Integer id, Integer look, Integer type, Model model) {
         if (id != null && id != 0) {
             ParameterM parameterM = new ParameterM();
             parameterM.setId(id);
             model.addAttribute("permission", adminService.permission(parameterM).getData());
-            return "modal/caidananniugongnengguanli-update";
+            if (type != null && type == 1) {
+                if (look != null && look == 1) return "modal/caidananniugongnengguanli-look";
+                return "modal/caidananniugongnengguanli-update";
+            } else {
+                if (look != null && look == 1) return "modal/caidananniugongnengguanli1-look";
+                return "modal/caidananniugongnengguanli1-update";
+            }
         }
-        return "modal/caidananniugongnengguanli-new";
+        if (type != null && type == 1) {
+            return "modal/caidananniugongnengguanli-new";
+        } else return "modal/caidananniugongnengguanli1-new";
     }
 
     @RequestMapping("/modal/juesequanxian")
-    public String juesequanxian(Integer id, Model model) {
+    public String juesequanxian(Integer id, Integer look, Model model) {
         if (id != null && id != 0) {
             ParameterM parameterM = new ParameterM();
             parameterM.setId(id);
             model.addAttribute("role", adminService.role(parameterM).getData());
+            if (look != null && look == 1) return "modal/yonghuguanli-look";
             return "modal/juesequanxian-update";
         }
         return "modal/juesequanxian-new";
