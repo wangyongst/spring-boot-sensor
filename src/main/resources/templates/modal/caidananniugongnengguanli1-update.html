@@ -4,9 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link type="text/css" rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css"/>
-    <link type="text/css" rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
-    <link type="text/css" rel="stylesheet" href="css/all.css"/>
 </head>
 <body>
 <!--新建弹出框开始-->
@@ -21,50 +18,36 @@
             </div>
             <div class="modal-body">
                 <div class="form-box-center">
+                    <input name="id" th:value="${permission.id}" hidden>
                     <ul class="form-box clearfix" style="padding: 0;">
                         <li class="width-50">
-                            <p>上级菜单：</p>
-                            <input type="text" class="form-control click-bg" id="cat-select-click1" name="pId">
-                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <span class="help-inline"><font color="red">*</font></span>
-                        </li>
-                        <li class="width-50">
-                            <p>菜单名：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="name">
-                            <span class="help-inline"><font color="red">*</font></span>
-                        </li>
-                        <li class="width-50">
-                            <p>菜单路径：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="urlpath">
+                            <p>按钮名：</p>
+                            <input class="form-control required" type="text" value="" maxlength="100" name="name" th:value="${permission.name}">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>授权标识：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="pname">
+                            <input class="form-control required" type="text" value="" maxlength="100" name="pname" th:value="${permission.pname}">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>排序：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="orders">
+                            <input class="form-control required" type="text" value="" maxlength="100" name="orders" th:value="${permission.orders}">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
-                        <li class="width-50">
-                            <p>菜单图标路径：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="iconpath">
-                            <span class="help-inline"><font color="red">*</font></span>
-                        </li>
+
                         <li class="width-50">
                             <p>是否监护人验证：</p>
                             <select class="form-control" style="width: 50%;" name="ischeck">
-                                <option selected="selected" value="0">是</option>
-                                <option value="1">否</option>
+                                <option th:selected="${permission.ischeck == 0}" value="0">是</option>
+                                <option th:selected="${permission.ischeck == 1}" value="1">否</option>
                             </select>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-full">
                             <p>备注 :</p>
                             <div class="form-right">
-                                <textarea name="remark" maxlength="255" class="form-control" rows="4"></textarea>
+                                <textarea name="remark" maxlength="255" class="form-control" rows="4" th:text="${permission.id}"></textarea>
                             </div>
                         </li>
                     </ul>
@@ -77,30 +60,7 @@
         </div>
     </div>
 </form>
-<!--新建弹出框结束-->
-<!--弹出框内上级菜单  弹出分类树 开始-->
-<div id="mubu"></div>
-<div class="cat-select" id="cat-select" style="display: none;">
-    <div class="cat-select-header">
-        <h4 class="cat-select-title">选择上级菜单</h4>
-        <i class="fa fa-close close"></i>
-    </div>
-    <div class="cat-select-body">
-        <div class="cat-select-search">
-            <p>关键字 : </p>
-            <input type="text" class="form-control"/>
-            <button type="button" class="btn">搜索</button>
-        </div>
-        <div class="cat-select-tree">
-            <ul id="treeDemo6" class="ztree"></ul>
-        </div>
-    </div>
-    <div class="cat-select-footer">
-        <button type="button" class="btn btn-default pull-left cencel">取消</button>
-        <button type="button" class="btn btn-primary pull-right sure">确定</button>
-    </div>
-</div>
-<!--弹出框内上级菜单 弹出分类树 结束-->
+
 
 <script type="text/javascript" src="js/jquery.ztree.core.js"></script>
 <script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>

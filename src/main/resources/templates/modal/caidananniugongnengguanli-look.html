@@ -21,50 +21,51 @@
             </div>
             <div class="modal-body">
                 <div class="form-box-center">
+                    <input name="id" th:value="${permission.id}" hidden>
                     <ul class="form-box clearfix" style="padding: 0;">
                         <li class="width-50">
                             <p>上级菜单：</p>
-                            <input type="text" class="form-control click-bg" id="cat-select-click1" name="pId">
+                            <input type="text" class="form-control click-bg" id="cat-select-click1" name="pId" th:value="${permission.pId}" disabled>
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>菜单名：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="name">
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="name" th:value="${permission.name}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>菜单路径：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="urlpath">
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="urlpath" th:value="${permission.urlpath}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>授权标识：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="pname">
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="pname" th:value="${permission.pname}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>排序：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="orders">
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="orders" th:value="${permission.orders}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>菜单图标路径：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="iconpath">
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="iconpath" th:value="${permission.iconpath}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>是否监护人验证：</p>
-                            <select class="form-control" style="width: 50%;" name="ischeck">
-                                <option selected="selected" value="0">是</option>
-                                <option value="1">否</option>
+                            <select class="form-control" style="width: 50%;" name="ischeck" disabled>
+                                <option th:selected="${permission.ischeck == 0}" value="0">是</option>
+                                <option th:selected="${permission.ischeck == 1}" value="1">否</option>
                             </select>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-full">
                             <p>备注 :</p>
                             <div class="form-right">
-                                <textarea name="remark" maxlength="255" class="form-control" rows="4"></textarea>
+                                <textarea name="remark" maxlength="255" class="form-control" rows="4" th:text="${permission.remark}" disabled></textarea>
                             </div>
                         </li>
                     </ul>
@@ -72,7 +73,7 @@
             </div>
             <div class="modal-footer">
                 <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" id="permissionSave">保存</button>
+                <button type="button" class="btn btn-primary">保存</button>
             </div>
         </div>
     </div>
