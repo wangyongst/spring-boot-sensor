@@ -100,7 +100,7 @@ public class ViewController {
         if (id != null && id != 0) {
             ParameterM parameterM = new ParameterM();
             parameterM.setId(id);
-            model.addAttribute("dept", adminService.dept(parameterM).getData());
+            model.addAttribute("user", adminService.user(parameterM).getData());
             if (look != null && look == 1) return "modal/yonghuguanli-look";
             return "modal/yonghuguanli-update";
         }
