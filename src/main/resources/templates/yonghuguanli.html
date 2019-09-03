@@ -50,68 +50,68 @@
                 <!--操作button-->
                 <div class="buttons mag_1">
                     <button type="button" class="btn btn-primary" id="new" shiro:haspermission="user-new">新增</button>
-                    <button type="button" class="btn btn-success " shiro:haspermission="user-update">修改</button>
-                    <button type="button" class="btn btn-warning " shiro:haspermission="user-chakan">查看</button>
-                    <button type="button" class="btn btn-danger " shiro:haspermission="user-delete">删除</button>
-                    <button type="button" class="btn btn-danger " shiro:haspermission="user-deleteall">批量删除</button>
-                    <button type="button" class="btn btn-success " shiro:haspermission="user-import">导入</button>
-                    <button type="button" class="btn btn-warning " shiro:haspermission="user-export">导出</button>
-                    <button type="button" class="btn btn-success " shiro:haspermission="user-lock">暂时停用</button>
-                    <button type="button" class="btn btn-success " shiro:haspermission="user-use">用户激活</button>
+                    <button type="button" class="btn btn-success " id="update" shiro:haspermission="user-update">修改</button>
+                    <button type="button" class="btn btn-warning " id="look" shiro:haspermission="user-chakan">查看</button>
+                    <button type="button" class="btn btn-danger " id="delete" shiro:haspermission="user-delete">删除</button>
+                    <button type="button" class="btn btn-danger " id="deleteall" shiro:haspermission="user-deleteall">批量删除</button>
+                    <button type="button" class="btn btn-success " id="import" shiro:haspermission="user-import">导入</button>
+                    <button type="button" class="btn btn-warning " id="export" shiro:haspermission="user-export">导出</button>
+                    <button type="button" class="btn btn-success " id="lock" shiro:haspermission="user-lock">暂时停用</button>
+                    <button type="button" class="btn btn-success " id="use" shiro:haspermission="user-use">用户激活</button>
                 </div>
                 <!--操作button结束-->
                 <!--table表格开始-->
                 <div class="box-body">
                     <table class="table table-hover table-bordered table-striped example-table" id="mydatatable">
-<!--                        <thead>-->
-<!--                        <tr>-->
-<!--                            <th></th>-->
-<!--                            <th>工号</th>-->
-<!--                            <th>登录账号</th>-->
-<!--                            <th>姓名</th>-->
-<!--                            <th>联系电话</th>-->
-<!--                            <th>所属部门</th>-->
-<!--                            <th>角色</th>-->
-<!--                        </tr>-->
-<!--                        </thead>-->
-<!--                        <tbody>-->
-<!--                        <tr>-->
-<!--                            <td><input type="checkbox" class="minimal"/></td>-->
-<!--                            <td>HJ00001</td>-->
-<!--                            <td>laojin888</td>-->
-<!--                            <td>王大拿</td>-->
-<!--                            <td>13801001001</td>-->
-<!--                            <td>技术部>>设备维护部</td>-->
-<!--                            <td>工程师</td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><input type="checkbox" class="minimal"/></td>-->
-<!--                            <td>HJ00001</td>-->
-<!--                            <td>laojin888</td>-->
-<!--                            <td>王大拿</td>-->
-<!--                            <td>13801001001</td>-->
-<!--                            <td>技术部>>设备维护部</td>-->
-<!--                            <td>工程师</td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><input type="checkbox" class="minimal"/></td>-->
-<!--                            <td>HJ00001</td>-->
-<!--                            <td>laojin888</td>-->
-<!--                            <td>王大拿</td>-->
-<!--                            <td>13801001001</td>-->
-<!--                            <td>技术部>>设备维护部</td>-->
-<!--                            <td>工程师</td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><input type="checkbox" class="minimal"/></td>-->
-<!--                            <td>HJ00001</td>-->
-<!--                            <td>laojin888</td>-->
-<!--                            <td>王大拿</td>-->
-<!--                            <td>13801001001</td>-->
-<!--                            <td>技术部>>设备维护部</td>-->
-<!--                            <td>工程师</td>-->
-<!--                        </tr>-->
-<!--                        </tbody>-->
+                        <!--                        <thead>-->
+                        <!--                        <tr>-->
+                        <!--                            <th></th>-->
+                        <!--                            <th>工号</th>-->
+                        <!--                            <th>登录账号</th>-->
+                        <!--                            <th>姓名</th>-->
+                        <!--                            <th>联系电话</th>-->
+                        <!--                            <th>所属部门</th>-->
+                        <!--                            <th>角色</th>-->
+                        <!--                        </tr>-->
+                        <!--                        </thead>-->
+                        <!--                        <tbody>-->
+                        <!--                        <tr>-->
+                        <!--                            <td><input type="checkbox" class="minimal"/></td>-->
+                        <!--                            <td>HJ00001</td>-->
+                        <!--                            <td>laojin888</td>-->
+                        <!--                            <td>王大拿</td>-->
+                        <!--                            <td>13801001001</td>-->
+                        <!--                            <td>技术部>>设备维护部</td>-->
+                        <!--                            <td>工程师</td>-->
+                        <!--                        </tr>-->
+                        <!--                        <tr>-->
+                        <!--                            <td><input type="checkbox" class="minimal"/></td>-->
+                        <!--                            <td>HJ00001</td>-->
+                        <!--                            <td>laojin888</td>-->
+                        <!--                            <td>王大拿</td>-->
+                        <!--                            <td>13801001001</td>-->
+                        <!--                            <td>技术部>>设备维护部</td>-->
+                        <!--                            <td>工程师</td>-->
+                        <!--                        </tr>-->
+                        <!--                        <tr>-->
+                        <!--                            <td><input type="checkbox" class="minimal"/></td>-->
+                        <!--                            <td>HJ00001</td>-->
+                        <!--                            <td>laojin888</td>-->
+                        <!--                            <td>王大拿</td>-->
+                        <!--                            <td>13801001001</td>-->
+                        <!--                            <td>技术部>>设备维护部</td>-->
+                        <!--                            <td>工程师</td>-->
+                        <!--                        </tr>-->
+                        <!--                        <tr>-->
+                        <!--                            <td><input type="checkbox" class="minimal"/></td>-->
+                        <!--                            <td>HJ00001</td>-->
+                        <!--                            <td>laojin888</td>-->
+                        <!--                            <td>王大拿</td>-->
+                        <!--                            <td>13801001001</td>-->
+                        <!--                            <td>技术部>>设备维护部</td>-->
+                        <!--                            <td>工程师</td>-->
+                        <!--                        </tr>-->
+                        <!--                        </tbody>-->
                     </table>
                 </div>
                 <!--table表格结束-->
