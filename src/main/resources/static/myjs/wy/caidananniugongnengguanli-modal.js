@@ -1,6 +1,6 @@
 $(function () {
-    $("#roleSave").click(function () {
-        $.post("/admin/role/sud?" + $('#roleForm').serialize(),
+    $("#permissionSave").click(function () {
+        $.post("/admin/permission/sud?" + $('#permissionForm').serialize(),
             function (result) {
                 if (result.status) {
                     $('#modal-default').modal('hide');
