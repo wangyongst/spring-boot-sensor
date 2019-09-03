@@ -68,8 +68,9 @@ public class ViewController {
         if (id != null && id != 0) {
             ParameterM parameterM = new ParameterM();
             parameterM.setId(id);
-            model.addAttribute("permission", adminService.permission(parameterM).getData());
-            if (type != null && type == 1) {
+            Permission permission = (Permission) adminService.permission(parameterM).getData();
+            model.addAttribute("permission", permission);
+            if (permission.getType() != null && permission.getType() == 1) {
                 if (look != null && look == 1) return "modal/caidananniugongnengguanli-look";
                 return "modal/caidananniugongnengguanli-update";
             } else {

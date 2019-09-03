@@ -87,27 +87,45 @@ $(function () {
     $("#new").click(function () {
         var dialog = window.parent.$('#modal-default');
         dialog.empty();
-        dialog.load("modal/caidananniugongnengguanli-modal.html");
+        dialog.load("modal/caidananniugongnengguanli?type=1");
         dialog.modal();
     })
     $("#creat").click(function () {
         var dialog = window.parent.$('#modal-default1');
         dialog.empty();
-        dialog.load("modal/caidananniugongnengguanli1-modal.html");
+        dialog.load("modal/caidananniugongnengguanli?type=2");
+        dialog.modal();
+    })
+
+    $("#look").click(function () {
+        var id = select();
+        if(id == ""){
+            alert("请先选择一条数据")
+            return;
+        }
+        if (id.split(',').length > 1){
+            alert("只能选择一条数据")
+            return;
+        }
+        var dialog = window.parent.$('#modal-default');
+        dialog.empty();
+        dialog.load("modal/caidananniugongnengguanli?look=1&id=" + id);
         dialog.modal();
     })
 
     $("#update").click(function () {
+        var id = select();
+        if(id == ""){
+            alert("请先选择一条数据")
+            return;
+        }
+        if (id.split(',').length > 1){
+            alert("只能选择一条数据")
+            return;
+        }
         var dialog = window.parent.$('#modal-default');
         dialog.empty();
-        dialog.load("modal/zuzhijiagouguanli-modal.html");
-        debugger;
-        dialog.find("[name='code']").val("1");
-        dialog.find("[name='name']").val("1");
-        dialog.find("[name='order']").val("1");
-        dialog.find("[name='remark']").val("1");
-        dialog.find("[name='isuse']").val("1");
-        dialog.find("[name='type']").val("1");
+        dialog.load("modal/caidananniugongnengguanli?id=" + id);
         dialog.modal();
     })
 
@@ -148,3 +166,14 @@ $(function () {
         $.get("/admin/permission/export");
     })
 })
+
+function select() {
+    var ids = "";
+    $("input[name=btSelectItem]").each(function () {
+        if ($(this).prop('checked')) {
+            ids += "," + $(this).val();
+        }
+    });
+    if (ids.length > 1) ids = ids.substr(1);
+    return ids;
+}
