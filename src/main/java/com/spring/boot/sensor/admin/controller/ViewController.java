@@ -96,11 +96,12 @@ public class ViewController {
     }
 
     @RequestMapping("/modal/yonghuguanli")
-    public String yonghuguanli(Integer id, Model model) {
+    public String yonghuguanli(Integer id, Integer look, Model model) {
         if (id != null && id != 0) {
             ParameterM parameterM = new ParameterM();
             parameterM.setId(id);
-            model.addAttribute("user", adminService.user(parameterM).getData());
+            model.addAttribute("dept", adminService.dept(parameterM).getData());
+            if (look != null && look == 1) return "modal/yonghuguanli-look";
             return "modal/yonghuguanli-update";
         }
         return "modal/yonghuguanli-new";
