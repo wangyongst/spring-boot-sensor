@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<!--新建弹出框开始-->
-		<form action="" method="post" autocomplete="off">
+		<form id="userForm">
 			<div class="modal-dialog">
 				<div class="modal-content">
 		    		<div class="modal-header">
@@ -24,60 +24,60 @@
 		        			 <ul class="form-box clearfix" style="padding: 0;">
 	                            <li class="width-50">
 	                                <p>归属机构：</p>
-	                                <input type="text" class="form-control click-bg" id="cat-select-click1">
+	                                <input type="text" class="form-control click-bg" id="cat-select-click1" th:value="${user.deptid}" name="deptid">
 	                                <span class="input-group-addon" ><i class="fa fa-search"></i></span>
 	                                <span class="help-inline"><font color="red">*</font></span>
 	                            </li>
 	                             <li class="width-50">
 	                                <p>登录名：</p>
-	                                 <input  class="form-control required" type="text" value="" maxlength="100" required="required">
+	                                 <input  class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.username}" name="username">
 	                                <span class="help-inline"><font color="red">*</font></span>
 	                            </li>
 	                            <li class="width-50">
 	                                <p>姓名：</p>
-	                                 <input  class="form-control required" type="text" value="" maxlength="100" required="required">
+	                                 <input  class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.name}" name="name">
 	                                <span class="help-inline"><font color="red">*</font></span>
 	                            </li>
 	                            <li class="width-50">
 	                                <p>工号：</p>
-	                                 <input  class="form-control required" type="text" value="" maxlength="100" required="required">
+	                                 <input  class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.workno}" name="workno">
 	                                <span class="help-inline"><font color="red">*</font></span>
 	                            </li>
 	                            <li class="width-50">
 	                                <p>密码：</p>
-	                                 <input  class="form-control required" type="password" value="" maxlength="100" required="required">
+	                                 <input  class="form-control required" type="password" value="" maxlength="100" required="required" th:value="${user.password}" name="password">
 	                                <span class="help-inline"><font color="red">*</font></span>
 	                            </li>
 	                             <li class="width-50">
 	                                <p>确认密码：</p>
-	                                 <input  class="form-control required" type="password" value="" maxlength="100" required="required">
+	                                 <input  class="form-control required" type="password" value="" maxlength="100" required="required" th:value="${user.password}" name="password2">
 	                                <span class="help-inline"><font color="red">*</font></span>
 	                            </li>
 	                             <li class="width-50">
 	                                <p>电话：</p>
-	                                 <input  class="form-control required" type="text" value="" maxlength="100">
+	                                 <input  class="form-control required" type="text" value="" maxlength="100" th:value="${user.telephone}" name="telphone">
 	                               
 	                            </li>
 	                             <li class="width-50">
 	                                <p>手机：</p>
-	                                 <input  class="form-control required" type="text" value="" maxlength="100">
+	                                 <input  class="form-control required" type="text" value="" maxlength="100" th:value="${user.mobile}" name="mobile">
 	                              
 	                            </li>
 	                             <li class="width-50">
 	                                <p>邮箱：</p>
-	                                 <input  class="form-control required" type="email" value="" maxlength="100">                    
+	                                 <input  class="form-control required" type="email" value="" maxlength="100" th:value="${user.email}" name="email">
 	                            </li>
 	                           
 	                            <li class="width-50">
 	                                <p>是否允许登录：</p>
-	                                 <select class="form-control  select2" style="width: 50%;">
-	                                         <option selected="selected">是</option>
-	                                         <option>否</option>     
+	                                 <select class="form-control  select2" style="width: 50%;" name="isuse">
+										 <option th:selected="${user.isuse == 0}" value="0">是</option>
+										 <option th:selected="${user.isuse == 1}" value="1">否</option>
 	                                  </select> 
 	                            </li>
 	                             <li class="width-full">
 	                                 <p>用户角色 :</p>                                           
-	                                  <input type="text" class="form-control click-bg" id="cat-select-click3" >
+	                                  <input type="text" class="form-control click-bg" id="cat-select-click3" th:value="${user.roleid}" name="roleid">
 	                                   <span class="input-group-addon"><i class="fa fa-search"></i></span>                 
 	                            </li>
 								<li class="width-50">
@@ -89,7 +89,7 @@
 	                            <li class="width-full">
 	                                 <p>备注 :</p>
 	                                  <div class="form-right">
-	                                       <textarea id="remarks" name="remarks" maxlength="255" class="form-control" rows="4"></textarea>
+	                                       <textarea  name="remark" maxlength="255" class="form-control" rows="4" th:text="${user.remark}"></textarea>
 	                                 </div>
 	                            </li>
 	                        </ul>
@@ -97,7 +97,7 @@
 		    		</div>
 		    		<div class="modal-footer">
 		       			<button type="reset" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
-		        		<button type="submit" class="btn btn-primary">保存</button>
+		        		<button type="submit" class="btn btn-primary" id="userSave">保存</button>
 		    		</div>
 				</div>
 			 </div>
@@ -167,10 +167,12 @@
 	<script type="text/javascript" src="js/icheck.min.js"></script>
 	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
-	<!--table的初始化-->
-	<script type="text/javascript" src="myjs/tablecat-init.js"></script>
-	<!--组织机构 分类树的初始化-->
-	<script type="text/javascript" src="myjs/treecat-init.js"></script>
+		<!--&lt;!&ndash;table的初始化&ndash;&gt;-->
+		<!--<script type="text/javascript" src="myjs/tablecat-init.js"></script>-->
+		<!--&lt;!&ndash;组织机构 分类树的初始化&ndash;&gt;-->
+		<!--<script type="text/javascript" src="myjs/treecat-init.js"></script>-->
+
+		<script type="text/javascript" src="myjs/wy/yonghuguanli-modal.js"></script>
 	<!--js弹出控制弹出-->
    <script type="text/javascript" src="myjs/demo-two.js"></script>
 	</body>
