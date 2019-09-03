@@ -3,9 +3,10 @@ package com.spring.boot.sensor.entity;
 public class Logs {
     private int id;
     private String name;
+    private String username;
     private String userusername;
     private String url;
-    private String mothed;
+    private String method;
     private String createtime;
 
     public int getId() {
@@ -24,6 +25,14 @@ public class Logs {
         this.name = name;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getUserusername() {
         return userusername;
     }
@@ -40,12 +49,12 @@ public class Logs {
         this.url = url;
     }
 
-    public String getMothed() {
-        return mothed;
+    public String getMethod() {
+        return method;
     }
 
-    public void setMothed(String mothed) {
-        this.mothed = mothed;
+    public void setMethod(String method) {
+        this.method = method;
     }
 
     public String getCreatetime() {

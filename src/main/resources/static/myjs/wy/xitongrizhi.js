@@ -1,7 +1,7 @@
 $(function () {
     var mydatatable = $('#mydatatable').DataTable({
             "ajax": {
-                "url": "admin/dept/list",
+                "url": "admin/logs/list",
                 "dataSrc": "data",
             },
             "paging": true,
@@ -20,13 +20,22 @@ $(function () {
                     }
                 }, {
                     "data": "name",
-                    "title": "组织名称",
+                    "title": "操作菜单",
                 }, {
-                    "data": "code",
-                    "title": "组织编码",
+                    "data": "username",
+                    "title": "操作用户",
                 }, {
-                    "data": "remark",
-                    "title": "备注",
+                    "data": "url",
+                    "title": "url",
+                }, {
+                    "data": "method",
+                    "title": "提交方式",
+                }, {
+                    "data": "userusername",
+                    "title": "操作者",
+                }, {
+                    "data": "createtime",
+                    "title": "操作时间",
                 }],
             "oLanguage": {
                 "sLengthMenu": "每页显示 _MENU_ 条记录",
@@ -47,7 +56,7 @@ $(function () {
     );
 
     $("#export").click(function () {
-        $.get("/admin/user/export");
+        $.get("/admin/logs/export");
     })
 })
 

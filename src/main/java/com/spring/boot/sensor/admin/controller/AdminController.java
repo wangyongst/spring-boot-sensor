@@ -2,6 +2,7 @@ package com.spring.boot.sensor.admin.controller;
 
 
 import com.spring.boot.sensor.entity.Dept;
+import com.spring.boot.sensor.entity.Logs;
 import com.spring.boot.sensor.entity.User;
 import com.spring.boot.sensor.model.ParameterM;
 import com.spring.boot.sensor.service.AdminService;
@@ -120,6 +121,26 @@ public class AdminController {
         int[] numerics = {0};
         ServletUtil suresp = new ServletUtil(resp);
         PoiExcelExport<User> pee = new PoiExcelExport<>(fileName, heads, cols, userList, numerics, suresp.getOut());
+        pee.exportExcel();
+    }
+
+    @GetMapping("/logs/list")
+    public Object logsList(@ModelAttribute ParameterM parameterM) {
+        return adminService.logsList(parameterM);
+    }
+
+
+    @GetMapping("/logs/export")
+    public void logsExport(@ModelAttribute ParameterM parameterM, HttpServletRequest req, HttpServletResponse resp) {
+        List<Logs> logsList = (List<Logs>) adminService.logsList(parameterM).getData();
+        String fileName = "系统日志导出.xls";
+        ServletUtil su = new ServletUtil(fileName, req, resp);
+        su.poiExcelServlet();
+        String[] heads = {"操作菜单", "操作用户", "url", "操作者", "操作时间"};
+        String[] cols = {"name", "username", "url", "method", "userusername", "createtime"};
+        int[] numerics = {0};
+        ServletUtil suresp = new ServletUtil(resp);
+        PoiExcelExport<Logs> pee = new PoiExcelExport<>(fileName, heads, cols, logsList, numerics, suresp.getOut());
         pee.exportExcel();
     }
 }

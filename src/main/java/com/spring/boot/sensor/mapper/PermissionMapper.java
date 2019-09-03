@@ -16,4 +16,7 @@ public interface PermissionMapper {
 
     @Select("select * from permission")
     List<Permission> findAll();
+
+    @Select("select * from permission where urlpath = #{urlpath}")
+    List<Permission> findByUrl(String urlpath);
 }

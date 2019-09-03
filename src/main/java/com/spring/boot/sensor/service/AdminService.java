@@ -41,4 +41,8 @@ public interface AdminService {
 
     Result blacklistSud(ParameterM parameterM);
 
+    Result createLog(String method, String path);
+
+    Result logsList(ParameterM parameterM);
+
 }

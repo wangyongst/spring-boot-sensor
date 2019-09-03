@@ -1,9 +1,6 @@
 package com.spring.boot.sensor.service.impl;
 
-import com.spring.boot.sensor.entity.Dept;
-import com.spring.boot.sensor.entity.Role;
-import com.spring.boot.sensor.entity.Role2Permission;
-import com.spring.boot.sensor.entity.User;
+import com.spring.boot.sensor.entity.*;
 import com.spring.boot.sensor.mapper.*;
 import com.spring.boot.sensor.model.ParameterM;
 import com.spring.boot.sensor.service.AdminService;
@@ -45,6 +42,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private BlacklistMapper blacklistMapper;
+
+    @Autowired
+    private LogsMapper logsMapper;
 
     @Override
     public Result findByUsername(String username) {
@@ -167,7 +167,7 @@ public class AdminServiceImpl implements AdminService {
                 userMapper.updateIsuse(Integer.parseInt(id), 1);
             }
             return ResultUtil.ok();
-        }else if (parameterM.getUse() == 1) {
+        } else if (parameterM.getUse() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 userMapper.updateIsuse(Integer.parseInt(id), 0);
@@ -215,8 +215,30 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Result blacklistSud(ParameterM parameterM) {
-        blacklistMapper.update(parameterM.getIp(),Integer.parseInt(parameterM.getType()));
+        blacklistMapper.update(parameterM.getIp(), Integer.parseInt(parameterM.getType()));
         return ResultUtil.okWithMessage("保存成功");
+    }
+
+    @Override
+    public Result createLog(String method, String path) {
+        List<Permission> permissionList = permissionMapper.findByUrl(path);
+        if (permissionList != null && permissionList.size() == 1) {
+            User me = (User) SecurityUtils.getSubject().getPrincipal();
+            Logs logs = new Logs();
+            logs.setMethod(method);
+            logs.setName(permissionList.get(0).getName());
+            logs.setUrl(path);
+            logs.setUserusername(me.getUsername());
+            logs.setUsername(me.getName());
+            logs.setCreatetime(TimeUtils.format(System.currentTimeMillis()));
+            logsMapper.insertLogs(logs);
+        }
+        return null;
+    }
+
+    @Override
+    public Result logsList(ParameterM parameterM) {
+        return ResultUtil.okWithData(logsMapper.findAll());
     }
 
 }
