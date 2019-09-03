@@ -22,63 +22,62 @@
             <div class="modal-body">
                 <div class="form-box-center">
                     <ul class="form-box clearfix" style="padding: 0;">
-                        <input name="id" th:value="${user.id}" hidden>
                         <li class="width-50">
                             <p>归属机构：</p>
-                            <input type="text" class="form-control click-bg" id="cat-select-click1" th:value="${user.deptid}" name="deptid">
+                            <input type="text" class="form-control click-bg" id="cat-select-click1" th:value="${user.deptid}" name="deptid" disabled="disabled">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>登录名：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.username}" name="username">
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.username}" name="username" disabled="disabled">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>姓名：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.name}" name="name">
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.name}" name="name" disabled="disabled">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>工号：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.workno}" name="workno">
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.workno}" name="workno" disabled="disabled">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>密码：</p>
-                            <input class="form-control required" type="password" value="" maxlength="100" required="required" th:value="${user.password}" name="password">
+                            <input class="form-control required" type="password" value="" maxlength="100" required="required" th:value="${user.password}" name="password" disabled="disabled">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>确认密码：</p>
-                            <input class="form-control required" type="password" value="" maxlength="100" required="required" th:value="${user.password}" name="password2">
+                            <input class="form-control required" type="password" value="" maxlength="100" required="required" th:value="${user.password}" name="password2" disabled="disabled">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>电话：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" th:value="${user.telephone}" name="telphone">
+                            <input class="form-control required" type="text" value="" maxlength="100" th:value="${user.telephone}" name="telphone" disabled="disabled">
 
                         </li>
                         <li class="width-50">
                             <p>手机：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" th:value="${user.mobile}" name="mobile">
+                            <input class="form-control required" type="text" value="" maxlength="100" th:value="${user.mobile}" name="mobile" disabled="disabled">
 
                         </li>
                         <li class="width-50">
                             <p>邮箱：</p>
-                            <input class="form-control required" type="email" value="" maxlength="100" th:value="${user.email}" name="email">
+                            <input class="form-control required" type="email" value="" maxlength="100" th:value="${user.email}" name="email" disabled="disabled">
                         </li>
 
                         <li class="width-50">
                             <p>是否允许登录：</p>
-                            <select class="form-control  select2" style="width: 50%;" name="isuse">
+                            <select class="form-control  select2" style="width: 50%;" name="isuse" disabled="disabled">
                                 <option th:selected="${user.isuse == 0}" value="0">是</option>
                                 <option th:selected="${user.isuse == 1}" value="1">否</option>
                             </select>
                         </li>
                         <li class="width-full">
                             <p>用户角色 :</p>
-                            <input type="text" class="form-control click-bg" id="cat-select-click3" th:value="${user.roleid}" name="roleid">
+                            <input type="text" class="form-control click-bg" id="cat-select-click3" th:value="${user.roleid}" name="roleid" disabled="disabled">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                         </li>
                         <li class="width-50">
@@ -90,7 +89,7 @@
                         <li class="width-full">
                             <p>备注 :</p>
                             <div class="form-right">
-                                <textarea name="remark" maxlength="255" class="form-control" rows="4" th:text="${user.remark}"></textarea>
+                                <textarea name="remark" maxlength="255" class="form-control" rows="4" th:text="${user.remark}" disabled="disabled"></textarea>
                             </div>
                         </li>
                     </ul>
