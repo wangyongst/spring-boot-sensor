@@ -55,7 +55,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Result dept(ParameterM parameterM) {
-        return null;
+        return ResultUtil.okWithData(deptMapper.findById(parameterM.getId()));
     }
 
     @Override

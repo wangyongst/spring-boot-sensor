@@ -49,4 +49,14 @@ public class ViewController {
     public String zuzhijiagouguanli() {
         return "zuzhijiagouguanli";
     }
+
+    @RequestMapping("/modal/zuzhijiagouguanli-modal")
+    public String zuzhijiagouguanlimodal(Integer id, Model model) {
+        if (id != null && id != 0) {
+            ParameterM parameterM = new ParameterM();
+            parameterM.setId(id);
+            model.addAttribute("dept", adminService.dept(parameterM).getData());
+        }
+        return "modal/zuzhijiagouguanli-modal";
+    }
 }
