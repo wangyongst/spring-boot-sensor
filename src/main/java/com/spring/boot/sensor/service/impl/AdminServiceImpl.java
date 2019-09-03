@@ -71,7 +71,7 @@ public class AdminServiceImpl implements AdminService {
                 deptMapper.deleteById(Integer.parseInt(id));
             }
             return ResultUtil.ok();
-        } else if (parameterM.getIsuse() == 1) {
+        } else if (parameterM.getLock() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 deptMapper.updateIsuse(Integer.parseInt(id), 1);
@@ -161,14 +161,19 @@ public class AdminServiceImpl implements AdminService {
                 userMapper.deleteById(Integer.parseInt(id));
             }
             return ResultUtil.ok();
-        } else if (parameterM.getIsuse() == 1) {
+        } else if (parameterM.getLock() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
-                deptMapper.updateIsuse(Integer.parseInt(id), 1);
+                userMapper.updateIsuse(Integer.parseInt(id), 1);
+            }
+            return ResultUtil.ok();
+        }else if (parameterM.getUse() == 1) {
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            for (String id : parameterM.getIds().split(",")) {
+                userMapper.updateIsuse(Integer.parseInt(id), 0);
             }
             return ResultUtil.ok();
         }
-
         User user = null;
         if (StringUtils.isBlank(parameterM.getUsername())) return ResultUtil.errorWithMessage("电话不能为空！");
         if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("姓名不能为空！");

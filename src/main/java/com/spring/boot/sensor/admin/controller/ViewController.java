@@ -50,13 +50,60 @@ public class ViewController {
         return "zuzhijiagouguanli";
     }
 
-    @RequestMapping("/modal/zuzhijiagouguanli-modal")
-    public String zuzhijiagouguanlimodal(Integer id, Model model) {
+    @RequestMapping("/modal/zuzhijiagouguanli")
+    public String zuzhijiagouguanlimodal(Integer id, Integer look, Model model) {
         if (id != null && id != 0) {
             ParameterM parameterM = new ParameterM();
             parameterM.setId(id);
             model.addAttribute("dept", adminService.dept(parameterM).getData());
+            if (look != null && look == 1) return "modal/zuzhijiagouguanli-look";
+            return "modal/zuzhijiagouguanli-update";
         }
-        return "modal/zuzhijiagouguanli-modal";
+        return "modal/zuzhijiagouguanli-new";
     }
+
+    @RequestMapping("/modal/caidananniugongnengguanli1")
+    public String caidananniugongnengguanli1(Integer id, Model model) {
+        if (id != null && id != 0) {
+            ParameterM parameterM = new ParameterM();
+            parameterM.setId(id);
+            model.addAttribute("permission", adminService.permission(parameterM).getData());
+            return "modal/caidananniugongnengguanli1-update";
+        }
+        return "modal/caidananniugongnengguanli1-new";
+    }
+
+    @RequestMapping("/modal/caidananniugongnengguanli")
+    public String caidananniugongnengguanli(Integer id, Model model) {
+        if (id != null && id != 0) {
+            ParameterM parameterM = new ParameterM();
+            parameterM.setId(id);
+            model.addAttribute("permission", adminService.permission(parameterM).getData());
+            return "modal/caidananniugongnengguanli-update";
+        }
+        return "modal/caidananniugongnengguanli-new";
+    }
+
+    @RequestMapping("/modal/juesequanxian")
+    public String juesequanxian(Integer id, Model model) {
+        if (id != null && id != 0) {
+            ParameterM parameterM = new ParameterM();
+            parameterM.setId(id);
+            model.addAttribute("role", adminService.role(parameterM).getData());
+            return "modal/juesequanxian-update";
+        }
+        return "modal/juesequanxian-new";
+    }
+
+    @RequestMapping("/modal/yonghuguanli")
+    public String yonghuguanli(Integer id, Model model) {
+        if (id != null && id != 0) {
+            ParameterM parameterM = new ParameterM();
+            parameterM.setId(id);
+            model.addAttribute("user", adminService.user(parameterM).getData());
+            return "modal/yonghuguanli-update";
+        }
+        return "modal/yonghuguanli-new";
+    }
+
 }

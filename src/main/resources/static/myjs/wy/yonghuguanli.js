@@ -93,11 +93,40 @@ $(function () {
     $("#new").click(function () {
         var dialog = window.parent.$('#modal-default');
         dialog.empty();
-        dialog.load("modal/yonghuguanli-modal.html");
+        dialog.load("modal/yonghuguanli");
         dialog.modal();
     })
+
+    $("#look").click(function () {
+        var id = select();
+        if(id == ""){
+            alert("请先选择一条数据")
+            return;
+        }
+        if (id.split(',').length > 1){
+            alert("只能选择一条数据")
+            return;
+        }
+        var dialog = window.parent.$('#modal-default');
+        dialog.empty();
+        dialog.load("modal/yonghuguanli?look=1&id=" + id);
+        dialog.modal();
+    })
+
     $("#update").click(function () {
-        alert(select());
+        var id = select();
+        if(id == ""){
+            alert("请先选择一条数据")
+            return;
+        }
+        if (id.split(',').length > 1){
+            alert("只能选择一条数据")
+            return;
+        }
+        var dialog = window.parent.$('#modal-default');
+        dialog.empty();
+        dialog.load("modal/yonghuguanli?id=" + id);
+        dialog.modal();
     })
 
 
@@ -114,6 +143,28 @@ $(function () {
 
     $("#deleteall").click(function () {
         $.post("/admin/user/sud?delete=2&ids=" + select(),
+            function (result) {
+                if (result.status) {
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
+    })
+
+    $("#lock").click(function () {
+        $.post("/admin/user/sud?lock=1&ids=" + select(),
+            function (result) {
+                if (result.status) {
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
+    })
+
+    $("#use").click(function () {
+        $.post("/admin/user/sud?use=1&ids=" + select(),
             function (result) {
                 if (result.status) {
                     $('#mydatatable').DataTable().ajax.reload();

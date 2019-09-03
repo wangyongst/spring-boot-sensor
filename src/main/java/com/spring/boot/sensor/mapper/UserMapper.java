@@ -27,4 +27,7 @@ public interface UserMapper {
 
     @Delete("delete from dept where id = #{id}")
     int deleteById(@Param("id") int id);
+
+    @Update("update user set isuse = #{isuse} where id = #{id}")
+    void updateIsuse(@Param("id") int id, @Param("isuse") int isuse);
 }

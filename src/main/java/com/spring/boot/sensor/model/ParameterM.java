@@ -11,6 +11,8 @@ public class ParameterM {
     private String type;
     private Integer pId;
     private int isuse;
+    private int lock;
+    private int use;
     private String orders;
     private String remark;
     private String username;
@@ -29,6 +31,22 @@ public class ParameterM {
     private Integer roleid;
     private Integer permissionid;
     private Integer userid;
+
+    public int getLock() {
+        return lock;
+    }
+
+    public void setLock(int lock) {
+        this.lock = lock;
+    }
+
+    public int getUse() {
+        return use;
+    }
+
+    public void setUse(int use) {
+        this.use = use;
+    }
 
     public String getIp() {
         return ip;

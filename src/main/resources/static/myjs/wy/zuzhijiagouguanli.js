@@ -76,7 +76,23 @@ $(function () {
     $("#new").click(function () {
         var dialog = window.parent.$('#modal-default');
         dialog.empty();
-        dialog.load("modal/zuzhijiagouguanli-new.html");
+        dialog.load("modal/zuzhijiagouguanli");
+        dialog.modal();
+    })
+
+    $("#look").click(function () {
+        var id = select();
+        if(id == ""){
+            alert("请先选择一条数据")
+            return;
+        }
+        if (id.split(',').length > 1){
+            alert("只能选择一条数据")
+            return;
+        }
+        var dialog = window.parent.$('#modal-default');
+        dialog.empty();
+        dialog.load("modal/zuzhijiagouguanli?look=1&id=" + id);
         dialog.modal();
     })
 
@@ -92,7 +108,7 @@ $(function () {
         }
         var dialog = window.parent.$('#modal-default');
         dialog.empty();
-        dialog.load("modal/zuzhijiagouguanli-modal?id=" + id);
+        dialog.load("modal/zuzhijiagouguanli?id=" + id);
         dialog.modal();
     })
 
@@ -120,7 +136,7 @@ $(function () {
     })
 
     $("#isuse").click(function () {
-        $.post("/admin/dept/sud?isuse=1&ids=" + select(),
+        $.post("/admin/dept/sud?lock=1&ids=" + select(),
             function (result) {
                 if (result.status) {
                     $('#mydatatable').DataTable().ajax.reload();

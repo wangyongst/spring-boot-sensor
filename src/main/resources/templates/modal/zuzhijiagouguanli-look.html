@@ -25,17 +25,17 @@
                         <input name="id" th:value="${dept.id}" hidden>
                         <li class="width-50">
                             <p>组织编码：</p>
-                            <input class="form-control required" type="text" name="code" maxlength="100" th:value="${dept.code}">
+                            <input class="form-control required" type="text" name="code" maxlength="100" th:value="${dept.code}" disabled="disabled">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>组织名称：</p>
-                            <input class="form-control required" type="text" name="name" maxlength="100" th:value="${dept.name}">
+                            <input class="form-control required" type="text" name="name" maxlength="100" th:value="${dept.name}" disabled="disabled">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>组织类型：</p>
-                            <select class="form-control" style="width: 50%;" name="type">
+                            <select class="form-control" style="width: 50%;" disabled="disabled">
                                 <option th:selected="${dept.type == '1'}" value="1">公司</option>
                                 <option th:selected="${dept.type == '2'}" value="2">部门</option>
                             </select>
@@ -44,13 +44,13 @@
                         </li>
                         <li class="width-50">
                             <p>上级组织：</p>
-                            <input type="text" class="form-control click-bg" id="cat-select-click1" name="pId" th:value="${dept.pId}">
+                            <input type="text" class="form-control click-bg" name="pId" th:value="${dept.pId}" disabled="disabled">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>是否可用：</p>
-                            <select class="form-control" style="width: 50%;" name="isuse">
+                            <select class="form-control" style="width: 50%;" name="isuse" disabled="disabled">
                                 <option th:selected="${dept.isuse == 0}" value="0">是</option>
                                 <option th:selected="${dept.isuse == 1}" value="1">否</option>
                             </select>
@@ -58,14 +58,14 @@
                         </li>
                         <li class="width-50">
                             <p>排序 :</p>
-                            <input class="form-control required" type="text" maxlength="100" th:value="${dept.orders}"
+                            <input class="form-control required" type="text" maxlength="100" th:value="${dept.orders}" disabled="disabled"
                                    name="orders">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-full">
                             <p>备注 :</p>
                             <div class="form-right">
-                                <textarea name="remark" maxlength="255" class="form-control" th:text="${dept.remark}"
+                                <textarea name="remark" maxlength="255" class="form-control" th:text="${dept.remark}" disabled="disabled"
                                           rows="4"></textarea>
                             </div>
                         </li>
