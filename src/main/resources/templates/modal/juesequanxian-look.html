@@ -10,63 +10,54 @@
 </head>
 <body>
 <!--新建弹出框开始-->
-<form id="deptForm">
+<form id="roleForm">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">组织管理</h4>
+                <h4 class="modal-title">新建角色</h4>
             </div>
             <div class="modal-body">
                 <div class="form-box-center">
+                    <input name="id" th:value="${role.id}" hidden>
                     <ul class="form-box clearfix" style="padding: 0;">
-                        <input name="id" th:value="${dept.id}" hidden>
                         <li class="width-50">
-                            <p>组织编码：</p>
-                            <input class="form-control required" type="text" name="code" maxlength="100" th:value="${dept.code}" disabled="disabled">
+                            <p>角色名称：</p>
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="rname" th:value="${role.rname}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
-                            <p>组织名称：</p>
-                            <input class="form-control required" type="text" name="name" maxlength="100" th:value="${dept.name}" disabled="disabled">
+                            <p>英文名称：</p>
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="name" th:value="${role.name}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
+
                         <li class="width-50">
-                            <p>组织类型：</p>
-                            <select class="form-control" style="width: 50%;" disabled="disabled">
-                                <option th:selected="${dept.type == '1'}" value="1">公司</option>
-                                <option th:selected="${dept.type == '2'}" value="2">部门</option>
+                            <p>是否可用：</p>
+                            <select class="form-control select2" style="width: 50%;" name="isuse">
+                                <option selected="selected" value="0">是</option>
+                                <option value="1">否</option>
                             </select>
                             <span class="help-inline"><font color="red">*</font></span>
-
                         </li>
+
                         <li class="width-50">
-                            <p>上级组织：</p>
-                            <input type="text" class="form-control click-bg" name="pId" th:value="${dept.pId}" disabled="disabled">
+                            <p>功能权限：</p>
+                            <input type="text" class="form-control click-bg" id="cat-select-click1" name="permissionids" th:value="${role.id}" disabled>
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
-                            <p>是否可用：</p>
-                            <select class="form-control" style="width: 50%;" name="isuse" disabled="disabled">
-                                <option th:selected="${dept.isuse == 0}" value="0">是</option>
-                                <option th:selected="${dept.isuse == 1}" value="1">否</option>
-                            </select>
-                            <span class="help-inline"><font color="red">*</font></span>
-                        </li>
-                        <li class="width-50">
                             <p>排序 :</p>
-                            <input class="form-control required" type="text" maxlength="100" th:value="${dept.orders}" disabled="disabled"
-                                   name="orders">
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="orders" th:value="${role.orders}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-full">
                             <p>备注 :</p>
                             <div class="form-right">
-                                <textarea name="remark" maxlength="255" class="form-control" th:text="${dept.remark}" disabled="disabled"
-                                          rows="4"></textarea>
+                                <textarea name="remark" maxlength="255" class="form-control" rows="4" th:text="${role.orders}" disabled></textarea>
                             </div>
                         </li>
                     </ul>
@@ -74,17 +65,17 @@
             </div>
             <div class="modal-footer">
                 <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary">保存</button>
+                <button type="submit" class="btn btn-primary">保存</button>
             </div>
         </div>
     </div>
 </form>
 <!--新建弹出框结束-->
-<!--弹出框内上级组织分类 弹出分类树 开始-->
+<!--弹出框内 功能权限  弹出分类树 开始-->
 <div id="mubu"></div>
 <div class="cat-select" id="cat-select" style="display: none;">
     <div class="cat-select-header">
-        <h4 class="cat-select-title">选择上级组织</h4>
+        <h4 class="cat-select-title">选择功能</h4>
         <i class="fa fa-close close"></i>
     </div>
     <div class="cat-select-body">
@@ -94,24 +85,27 @@
             <button type="button" class="btn">搜索</button>
         </div>
         <div class="cat-select-tree">
-            <!--上级组织分类树-->
-            <ul id="treeDemo1" class="ztree"></ul>
+            <!--项目分类树-->
+            <ul id="treeDemo2" class="ztree"></ul>
         </div>
     </div>
     <div class="cat-select-footer">
-        <button type="button" class="btn btn-default pull-left cancel">取消</button>
+        <button type="button" class="btn btn-default pull-left cencel">取消</button>
         <button type="button" class="btn btn-primary pull-right sure">确定</button>
     </div>
 </div>
-<!--弹出框内上级组织 弹出分类树 结束-->
+<!--弹出框内上级分类 弹出分类树 结束-->
 <script type="text/javascript" src="js/jquery.ztree.core.js"></script>
 <script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>
 <script type="text/javascript" src="js/select2.full.min.js"></script>
 <script type="text/javascript" src="js/icheck.min.js"></script>
-<!--组织机构 分类树的初始化-->
-<!--<script type="text/javascript" src="myjs/treecat-init.js"></script>-->
-<!--js弹出控制弹出-->
-<!--<script type="text/javascript" src="myjs/demo-one.js"></script>-->
-<script type="text/javascript" src="myjs/wy/zuzhijiagouguanli-modal.js"></script>
+<script type="text/javascript" src="myjs/wy/jusequanxian-modal.js"></script>
+<!--	&lt;!&ndash;组织机构 分类树的初始化&ndash;&gt;-->
+<!--	<script type="text/javascript" src="myjs/treecat-init.js"></script>-->
+<!--	&lt;!&ndash;js弹出控制弹出&ndash;&gt;-->
+<!--   <script type="text/javascript" src="myjs/demo-one.js"></script>-->
+<!--   <script>-->
+<!--   		$('.select2').select2();-->
+<!--   </script>-->
 </body>
 </html>

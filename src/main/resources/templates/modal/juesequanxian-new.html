@@ -1,109 +1,110 @@
 <!doctype html>
 <html lang="zh_CN" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<link type="text/css" rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css" />
-		<link type="text/css" rel="stylesheet" href="css/select2.min.css" />
-		<link type="text/css" rel="stylesheet" href="css/all.css" />
-	</head>
-	<body>
-		<!--新建弹出框开始-->
-		<form action="" method="post" autocomplete="off">
-		    <div class="modal-dialog">
-		        <div class="modal-content">
-		            <div class="modal-header">
-		                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		                    <span aria-hidden="true">×</span>
-		                </button>
-		                <h4 class="modal-title">新建角色</h4>
-		            </div>
-		        	<div class="modal-body">
-		            	<div class="form-box-center">
-		                	<ul class="form-box clearfix" style="padding: 0;">
-		                        <li class="width-50">
-		                            <p>角色名称：</p>
-		                             <input  class="form-control required" type="text" value="" maxlength="100" required="required">
-		                            <span class="help-inline"><font color="red">*</font></span>
-		                        </li>
-		                        <li class="width-50">
-		                            <p>英文名称：</p>
-		                             <input  class="form-control required" type="text" value="" maxlength="100" required="required">
-		                            <span class="help-inline"><font color="red">*</font></span>
-		                        </li>  
-		                       
-		                        <li class="width-50">
-		                            <p>是否可用：</p>
-		                             <select class="form-control select2" style="width: 50%;">
-		                                     <option selected="selected">是</option>
-		                                     <option>否</option>     
-		                              </select> 
-		                              <span class="help-inline"><font color="red">*</font></span>
-		                        </li>
-		                         
-		                         <li class="width-50">
-		                            <p>功能权限：</p>
-		                            <input type="text" class="form-control click-bg"  id="cat-select-click1">
-		                            <span class="input-group-addon" ><i class="fa fa-search"></i></span>
-		                            <span class="help-inline"><font color="red">*</font></span>
-		                        </li>
-		                         <li class="width-50">
-		                             <p>排序 :</p>                                           
-		                              <input  class="form-control required" type="text" value="" maxlength="100" required="required">
-		                            <span class="help-inline"><font color="red">*</font></span>
-		                        </li>
-		                        <li class="width-full">
-		                             <p>备注 :</p>
-		                              <div class="form-right">
-		                                   <textarea id="remarks" name="remarks" maxlength="255" class="form-control" rows="4"></textarea>
-		                             </div>
-		                        </li> 
-		                    </ul>
-		            	</div>
-		        	</div>
-		        	<div class="modal-footer">
-		            	<button type="reset" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
-		            	<button type="submit" class="btn btn-primary">保存</button>
-		       	 	</div>
-		    	</div>
-			</div>
-    	</form>
-        <!--新建弹出框结束-->
-        <!--弹出框内 功能权限  弹出分类树 开始-->
-        <div id="mubu"></div>
-        <div class="cat-select" id="cat-select" style="display: none;">
-            <div class="cat-select-header">
-                <h4 class="cat-select-title">选择功能</h4>
-                <i class="fa fa-close close"></i>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css"/>
+    <link type="text/css" rel="stylesheet" href="css/select2.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/all.css"/>
+</head>
+<body>
+<!--新建弹出框开始-->
+<form id="roleForm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">新建角色</h4>
             </div>
-            <div class="cat-select-body">
-                <div class="cat-select-search">
-                    <p class="pop-line">关键字 : </p>
-                    <input type="text" class="form-control" />
-                    <button type="button" class="btn">搜索</button>
-                </div>
-                <div class="cat-select-tree">
-                    <!--项目分类树-->
-                    <ul id="treeDemo2" class="ztree"></ul>
+            <div class="modal-body">
+                <div class="form-box-center">
+                    <ul class="form-box clearfix" style="padding: 0;">
+                        <li class="width-50">
+                            <p>角色名称：</p>
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="rname">
+                            <span class="help-inline"><font color="red">*</font></span>
+                        </li>
+                        <li class="width-50">
+                            <p>英文名称：</p>
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="name">
+                            <span class="help-inline"><font color="red">*</font></span>
+                        </li>
+
+                        <li class="width-50">
+                            <p>是否可用：</p>
+                            <select class="form-control select2" style="width: 50%;" name="isuse">
+                                <option selected="selected" value="0">是</option>
+                                <option value="1">否</option>
+                            </select>
+                            <span class="help-inline"><font color="red">*</font></span>
+                        </li>
+
+                        <li class="width-50">
+                            <p>功能权限：</p>
+                            <input type="text" class="form-control click-bg" id="cat-select-click1" name="permissionids">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <span class="help-inline"><font color="red">*</font></span>
+                        </li>
+                        <li class="width-50">
+                            <p>排序 :</p>
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="orders">
+                            <span class="help-inline"><font color="red">*</font></span>
+                        </li>
+                        <li class="width-full">
+                            <p>备注 :</p>
+                            <div class="form-right">
+                                <textarea name="remark" maxlength="255" class="form-control" rows="4"></textarea>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="cat-select-footer">
-                <button type="button" class="btn btn-default pull-left cencel">取消</button>
-                <button type="button" class="btn btn-primary pull-right sure">确定</button>
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-primary" id="roleSave">保存</button>
             </div>
         </div>
-        <!--弹出框内上级分类 弹出分类树 结束-->
-	<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
-	<script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>
-	<script type="text/javascript" src="js/select2.full.min.js"></script>
-	<script type="text/javascript" src="js/icheck.min.js"></script>
-	<!--组织机构 分类树的初始化-->
-	<script type="text/javascript" src="myjs/treecat-init.js"></script>
-	<!--js弹出控制弹出-->
-   <script type="text/javascript" src="myjs/demo-one.js"></script>
-   <script>
-   		$('.select2').select2();
-   </script>
-	</body>
+    </div>
+</form>
+<!--新建弹出框结束-->
+<!--弹出框内 功能权限  弹出分类树 开始-->
+<div id="mubu"></div>
+<div class="cat-select" id="cat-select" style="display: none;">
+    <div class="cat-select-header">
+        <h4 class="cat-select-title">选择功能</h4>
+        <i class="fa fa-close close"></i>
+    </div>
+    <div class="cat-select-body">
+        <div class="cat-select-search">
+            <p class="pop-line">关键字 : </p>
+            <input type="text" class="form-control"/>
+            <button type="button" class="btn">搜索</button>
+        </div>
+        <div class="cat-select-tree">
+            <!--项目分类树-->
+            <ul id="treeDemo2" class="ztree"></ul>
+        </div>
+    </div>
+    <div class="cat-select-footer">
+        <button type="button" class="btn btn-default pull-left cencel">取消</button>
+        <button type="button" class="btn btn-primary pull-right sure">确定</button>
+    </div>
+</div>
+<!--弹出框内上级分类 弹出分类树 结束-->
+<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="js/select2.full.min.js"></script>
+<script type="text/javascript" src="js/icheck.min.js"></script>
+<script type="text/javascript" src="myjs/wy/jusequanxian-modal.js"></script>
+<!--	&lt;!&ndash;组织机构 分类树的初始化&ndash;&gt;-->
+<!--	<script type="text/javascript" src="myjs/treecat-init.js"></script>-->
+<!--	&lt;!&ndash;js弹出控制弹出&ndash;&gt;-->
+<!--   <script type="text/javascript" src="myjs/demo-one.js"></script>-->
+<!--   <script>-->
+<!--   		$('.select2').select2();-->
+<!--   </script>-->
+</body>
 </html>
