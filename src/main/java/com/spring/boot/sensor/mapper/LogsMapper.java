@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface LogsMapper {
     @Select("select * from logs")
-    List<User> findAll();
+    List<Logs> findAll();
 
     @Select("insert into logs(method, name, userusername, username,url,createtime) values(#{method}, #{name}, #{userusername}, #{username}, #{url}, #{createtime})")
     @Options(useGeneratedKeys = true, keyProperty = "id")

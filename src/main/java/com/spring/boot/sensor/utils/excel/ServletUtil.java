@@ -38,13 +38,11 @@ public class ServletUtil {
         String contentDisposition = "";
         try {
             if (req.getHeader("User-Agent").toLowerCase().indexOf("firefox") > 0) {
-                contentDisposition = "attachment; filename=\"" + new String(fileName.getBytes("UTF-8"), "ISO8859-1")
-                        + "\"";// firefox浏览器
+                contentDisposition = "attachment; filename=\"" + new String(fileName.getBytes("UTF-8"), "ISO8859-1") + "\"";// firefox浏览器
             } else {
                 contentDisposition = "attachment; filename=\"" + URLEncoder.encode(fileName, "UTF-8") + "\"";// IE浏览器
             }
         } catch (UnsupportedEncodingException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
         resp.setHeader("Content-Disposition", contentDisposition);

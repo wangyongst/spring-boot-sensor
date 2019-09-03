@@ -43,11 +43,11 @@ public class Dept {
         this.type = type;
     }
 
-    public Integer getpId() {
+    public Integer getPId() {
         return pId;
     }
 
-    public void setpId(Integer pId) {
+    public void setPId(Integer pId) {
         this.pId = pId;
     }
 

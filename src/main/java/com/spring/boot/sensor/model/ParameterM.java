@@ -22,8 +22,6 @@ public class ParameterM {
     private String telephone;
     private String email;
     private String ip;
-    private Integer islogin;
-    private Integer islock;
     private String cname;
     private String urlpath;
     private String iconpath;
@@ -31,30 +29,6 @@ public class ParameterM {
     private Integer roleid;
     private Integer permissionid;
     private Integer userid;
-
-    public int getLock() {
-        return lock;
-    }
-
-    public void setLock(int lock) {
-        this.lock = lock;
-    }
-
-    public int getUse() {
-        return use;
-    }
-
-    public void setUse(int use) {
-        this.use = use;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
 
     public int getDelete() {
         return delete;
@@ -104,11 +78,11 @@ public class ParameterM {
         this.type = type;
     }
 
-    public Integer getpId() {
+    public Integer getPId() {
         return pId;
     }
 
-    public void setpId(Integer pId) {
+    public void setPId(Integer pId) {
         this.pId = pId;
     }
 
@@ -118,6 +92,22 @@ public class ParameterM {
 
     public void setIsuse(int isuse) {
         this.isuse = isuse;
+    }
+
+    public int getLock() {
+        return lock;
+    }
+
+    public void setLock(int lock) {
+        this.lock = lock;
+    }
+
+    public int getUse() {
+        return use;
+    }
+
+    public void setUse(int use) {
+        this.use = use;
     }
 
     public String getOrders() {
@@ -184,20 +174,12 @@ public class ParameterM {
         this.email = email;
     }
 
-    public Integer getIslogin() {
-        return islogin;
+    public String getIp() {
+        return ip;
     }
 
-    public void setIslogin(Integer islogin) {
-        this.islogin = islogin;
-    }
-
-    public Integer getIslock() {
-        return islock;
-    }
-
-    public void setIslock(Integer islock) {
-        this.islock = islock;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 
     public String getCname() {

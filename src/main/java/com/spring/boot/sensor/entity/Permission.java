@@ -13,14 +13,6 @@ public class Permission {
     private Integer pId;
     private String updatetime;
 
-    public String getUpdatetime() {
-        return updatetime;
-    }
-
-    public void setUpdatetime(String updatetime) {
-        this.updatetime = updatetime;
-    }
-
     public int getId() {
         return id;
     }
@@ -93,11 +85,19 @@ public class Permission {
         this.type = type;
     }
 
-    public Integer getpId() {
+    public Integer getPId() {
         return pId;
     }
 
-    public void setpId(Integer pId) {
+    public void setPId(Integer pId) {
         this.pId = pId;
+    }
+
+    public String getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(String updatetime) {
+        this.updatetime = updatetime;
     }
 }

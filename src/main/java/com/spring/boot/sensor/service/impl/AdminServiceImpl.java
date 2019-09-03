@@ -89,7 +89,7 @@ public class AdminServiceImpl implements AdminService {
         dept.setOrders(Integer.parseInt(parameterM.getOrders()));
         dept.setRemark(parameterM.getRemark());
         dept.setName(parameterM.getName());
-        dept.setpId(parameterM.getpId());
+        dept.setPId(parameterM.getPId());
         dept.setType(parameterM.getType());
         if (dept.getId() != 0) {
             deptMapper.updateDept(dept);
