@@ -36,7 +36,7 @@ $(function () {
     });
 
     $("#deptSelectSave").click(function () {
-        alert(getSelectedZTreeId());
+        $('#cat-select-click1').val(getSelectedZTreeId());
     });
 })
 
