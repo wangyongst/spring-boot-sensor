@@ -25,7 +25,7 @@ public interface UserMapper {
     })
     List<User> findAll();
 
-    @Delete("delete from dept where id = #{id}")
+    @Delete("delete from user where id = #{id}")
     int deleteById(@Param("id") int id);
 
     @Update("update user set isuse = #{isuse} where id = #{id}")
@@ -35,6 +35,6 @@ public interface UserMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertUser(User user);
 
-    @Update("update user set username = #{username},name  = #{name},finger  = #{finger}, password = #{password},workno = #{workno},mobile = #{mobile},telephone = #{telephone},email = #{email},remark  = #{remark}, isuse = #{isuse},deptid  = #{deptid},roleid = #{roleid}) where id = #{id}")
+    @Update("update user set username = #{username},name  = #{name},finger  = #{finger}, password = #{password},workno = #{workno},mobile = #{mobile},telephone = #{telephone},email = #{email},remark  = #{remark}, isuse = #{isuse},deptid  = #{deptid},roleid = #{roleid} where id = #{id}")
     void updateUser(User user);
 }

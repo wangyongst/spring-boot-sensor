@@ -140,6 +140,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Result roleList(ParameterM parameterM) {
+        if (parameterM.getIsuse() == 1) return ResultUtil.okWithData(roleMapper.findAllByIsuse());
         return ResultUtil.okWithData(roleMapper.findAll());
     }
 
