@@ -9,7 +9,16 @@ public class Role {
     private Integer isuse;
     private String name;
     private Integer orders;
+    private Integer islock;
     private List<Role2Permission> role2Permissions;
+
+    public Integer getIslock() {
+        return islock;
+    }
+
+    public void setIslock(Integer islock) {
+        this.islock = islock;
+    }
 
     public List<Role2Permission> getRole2Permissions() {
         return role2Permissions;

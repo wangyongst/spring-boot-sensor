@@ -33,14 +33,13 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="images/header.png" class="user-image">
-                            <span class="hidden-xs">技术部>>系统管理员</span>
+                            <span class="hidden-xs" th:text="me.name"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
                                 <img src="images/header.png" class="img-circle">
-                                <p>
-                                    系统管理员
-                                    <small>18511088786</small>
+                                <p th:text="me.name">
+                                    <small th:text="me.username"></small>
                                 </p>
                             </li>
                             <li class="user-footer">
@@ -48,7 +47,7 @@
                                     <a href="#" class="btn btn-default btn-flat">修改密码</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat" id="logout">退出</a>
+                                    <a href="javascpript:logout();" class="btn btn-default btn-flat">退出</a>
                                 </div>
                             </li>
                         </ul>

@@ -78,7 +78,6 @@ $(function () {
     });
 
     $("#deptSelectSave").click(function () {
-        alert(getSelectedZTreeId())
         $('#cat-select-click1').val(getSelectedZTreeId());
     });
 
@@ -89,8 +88,6 @@ $(function () {
             return;
         }
         $('#cat-select-click3').val(ids);
-        $('#cat-select3').css('display', 'none');
-        $('#mubu').css('display', 'none');
     });
 })
 

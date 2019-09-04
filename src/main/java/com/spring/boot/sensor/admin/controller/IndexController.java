@@ -1,7 +1,9 @@
 package com.spring.boot.sensor.admin.controller;
 
+import com.spring.boot.sensor.entity.User;
 import com.spring.boot.sensor.model.ParameterM;
 import com.spring.boot.sensor.service.AdminService;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,8 @@ public class IndexController {
     @RequestMapping("/")
     public String index(Model model) {
         ParameterM parameterM = new ParameterM();
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
+        model.addAttribute("me",user);
         return "index";
     }
 
