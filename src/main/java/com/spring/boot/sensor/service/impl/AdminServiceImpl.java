@@ -89,7 +89,7 @@ public class AdminServiceImpl implements AdminService {
         dept.setOrders(Integer.parseInt(parameterM.getOrders()));
         dept.setRemark(parameterM.getRemark());
         dept.setName(parameterM.getName());
-        dept.setPId(parameterM.getPId());
+        dept.setpId(Integer.parseInt(parameterM.getpId()));
         dept.setType(parameterM.getType());
         if (dept.getId() != 0) {
             deptMapper.updateDept(dept);
@@ -174,14 +174,36 @@ public class AdminServiceImpl implements AdminService {
             }
             return ResultUtil.ok();
         }
-        User user = null;
-        if (StringUtils.isBlank(parameterM.getUsername())) return ResultUtil.errorWithMessage("电话不能为空！");
+        if (StringUtils.isBlank(parameterM.getUsername())) return ResultUtil.errorWithMessage("登录名不能为空！");
         if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("姓名不能为空！");
-        if (StringUtils.isBlank(parameterM.getWorkno())) return ResultUtil.errorWithMessage("电话不能为空！");
-        if (StringUtils.isBlank(parameterM.getPassword())) return ResultUtil.errorWithMessage("姓名不能为空！");
+        if (StringUtils.isBlank(parameterM.getWorkno())) return ResultUtil.errorWithMessage("工号不能为空！");
+        if (StringUtils.isBlank(parameterM.getPassword())) return ResultUtil.errorWithMessage("密码不能为空！");
+        if (StringUtils.isBlank(parameterM.getPassword2())) return ResultUtil.errorWithMessage("确认密码不能为空！");
+        if (!parameterM.getPassword().equals(parameterM.getPassword2())) return ResultUtil.errorWithMessage("两次密码不一致！");
+        User user = null;
+        if (parameterM.getId() != 0) user = userMapper.findById(parameterM.getId());
+        else if (parameterM.getId() == 0) user = new User();
         user.setName(parameterM.getName());
         user.setPassword(new Md5Hash(parameterM.getPassword()).toHex());
         user.setMobile(parameterM.getMobile());
+        user.setWorkno(parameterM.getWorkno());
+        user.setUsername(parameterM.getUsername());
+        user.setTelephone(parameterM.getTelephone());
+        user.setEmail(parameterM.getEmail());
+        user.setIsuse(parameterM.getIsuse());
+        user.setRemark(parameterM.getRemark());
+        if (parameterM.getRoleid() != null && parameterM.getRoleid() != 0) {
+            user.setRoleid(parameterM.getRoleid());
+        }
+        if (parameterM.getDeptid() != null && parameterM.getDeptid() != 0) {
+            user.setDeptid(parameterM.getDeptid());
+        }
+        if (user.getId() != 0) {
+            userMapper.updateUser(user);
+            return ResultUtil.ok();
+        } else {
+            userMapper.insertUser(user);
+        }
         return ResultUtil.ok();
     }
 

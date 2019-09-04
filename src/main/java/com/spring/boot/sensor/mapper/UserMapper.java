@@ -30,4 +30,11 @@ public interface UserMapper {
 
     @Update("update user set isuse = #{isuse} where id = #{id}")
     void updateIsuse(@Param("id") int id, @Param("isuse") int isuse);
+
+    @Select("insert into user(username, name, finger, password,workno,mobile,telephone,email, remark, isuse, deptid,roleid) values(#{username}, #{name}, #{finger}, #{password},#{workno},#{mobile},#{telephone},#{email}, #{remark}, #{isuse}, #{deptid},#{roleid})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    void insertUser(User user);
+
+    @Update("update user set username = #{username},name  = #{name},finger  = #{finger}, password = #{password},workno = #{workno},mobile = #{mobile},telephone = #{telephone},email = #{email},remark  = #{remark}, isuse = #{isuse},deptid  = #{deptid},roleid = #{roleid}) where id = #{id}")
+    void updateUser(User user);
 }

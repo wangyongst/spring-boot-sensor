@@ -9,7 +9,7 @@ public class ParameterM {
     private String code;
     private String name;
     private String type;
-    private Integer pId;
+    private String pId;
     private int isuse;
     private int lock;
     private int use;
@@ -17,6 +17,7 @@ public class ParameterM {
     private String remark;
     private String username;
     private String password;
+    private String password2;
     private String workno;
     private String mobile;
     private String telephone;
@@ -27,8 +28,17 @@ public class ParameterM {
     private String iconpath;
     private Integer ischeck;
     private Integer roleid;
+    private Integer deptid;
     private Integer permissionid;
     private Integer userid;
+
+    public Integer getDeptid() {
+        return deptid;
+    }
+
+    public void setDeptid(Integer deptid) {
+        this.deptid = deptid;
+    }
 
     public int getDelete() {
         return delete;
@@ -78,11 +88,11 @@ public class ParameterM {
         this.type = type;
     }
 
-    public Integer getPId() {
+    public String getpId() {
         return pId;
     }
 
-    public void setPId(Integer pId) {
+    public void setpId(String pId) {
         this.pId = pId;
     }
 
@@ -140,6 +150,14 @@ public class ParameterM {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
     }
 
     public String getWorkno() {

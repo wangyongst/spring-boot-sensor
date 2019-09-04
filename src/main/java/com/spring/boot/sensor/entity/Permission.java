@@ -85,11 +85,11 @@ public class Permission {
         this.type = type;
     }
 
-    public Integer getPId() {
+    public Integer getpId() {
         return pId;
     }
 
-    public void setPId(Integer pId) {
+    public void setpId(Integer pId) {
         this.pId = pId;
     }
 
