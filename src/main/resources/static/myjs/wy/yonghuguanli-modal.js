@@ -76,4 +76,36 @@ $(function () {
                 }
             });
     });
+
+    $("#deptSelectSave").click(function () {
+        $('#cat-select-click1').val(getSelectedZTreeId());
+    });
+
+    $("#roleSelectButton").click(function () {
+        var ids = select();
+        if (ids.length > 1) ids = ids.substr(1);
+        if (ids.split(",").length > 1) {
+            alert("只能选择一个角色");
+            return;
+        }
+        $('#cat-select-click3').val(select());
+        $('#cat-select3').css('display','none');
+        $('#mubu').css('display','none');
+    });
 })
+
+const getSelectedZTreeId = () => {
+    let idList = [];
+    $.fn.zTree.getZTreeObj("treeDemo1").getCheckedNodes(true).map(val => idList.push(val.id));
+    return idList.toString();
+};
+
+function select() {
+    var ids = "";
+    $("input[name=roleSelectItem]").each(function () {
+        if ($(this).prop('checked')) {
+            ids += "," + $(this).val();
+        }
+    });
+    return ids;
+}
