@@ -84,7 +84,6 @@ $(function () {
 
     $("#roleSelectButton").click(function () {
         var ids = select();
-        if (ids.length > 1) ids = ids.substr(1);
         if (ids.split(",").length > 1) {
             alert("只能选择一个角色");
             return;
