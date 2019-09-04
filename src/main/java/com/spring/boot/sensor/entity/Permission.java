@@ -12,6 +12,15 @@ public class Permission {
     private Integer type;
     private Integer pId;
     private String updatetime;
+    private Integer isuse;
+
+    public Integer getIsuse() {
+        return isuse;
+    }
+
+    public void setIsuse(Integer isuse) {
+        this.isuse = isuse;
+    }
 
     public int getId() {
         return id;
