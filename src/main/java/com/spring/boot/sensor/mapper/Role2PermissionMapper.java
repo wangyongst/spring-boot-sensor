@@ -10,7 +10,7 @@ public interface Role2PermissionMapper {
 
     @Select("select * from role2permission where roleid = #{roleid}")
     @Results(id = "userPermission", value = {
-            @Result(property = "permission", column = "permissionid", one = @One(select = "com.spring.boot.sensor.mapper.PermissionMapper.findById"))
+            @Result(property = "permission", column = "permissionid", one = @One(select = "com.spring.boot.sensor.mapper.PermissionMapper.findByIdAndIsuse"))
     })
     List<Role2Permission> findByRoleid(@Param("roleid") int roleid);
 }
