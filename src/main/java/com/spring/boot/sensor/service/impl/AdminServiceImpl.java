@@ -108,12 +108,41 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Result permissionSud(ParameterM parameterM) {
-        if (!StringUtils.isNumeric(parameterM.getOrders())) return ResultUtil.errorWithMessage("排序只能是数字");
-        if (StringUtils.isBlank(parameterM.getCode())) return ResultUtil.errorWithMessage("组织编码不能为空");
-        if (StringUtils.isBlank(parameterM.getName())) return ResultUtil.errorWithMessage("组织名称不能为空");
         if (parameterM.getDelete() == 1) {
-            deptMapper.deleteById(parameterM.getId());
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
+            permissionMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
+        } else if (parameterM.getDelete() == 2) {
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            for (String id : parameterM.getIds().split(",")) {
+                permissionMapper.deleteById(Integer.parseInt(id));
+            }
+            return ResultUtil.ok();
+        } else if (parameterM.getLock() == 1) {
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            for (String id : parameterM.getIds().split(",")) {
+                permissionMapper.updateIsuse(Integer.parseInt(id), 1);
+            }
+            return ResultUtil.ok();
+        }
+        if (!StringUtils.isNumeric(parameterM.getOrders())) return ResultUtil.errorWithMessage("排序只能是数字");
+        if (StringUtils.isBlank(parameterM.getPname())) return ResultUtil.errorWithMessage("名称标识不能为空");
+        Permission permission = null;
+        if (parameterM.getId() != 0) permission = permissionMapper.findById(parameterM.getId());
+        else if (parameterM.getId() == 0) permission = new Permission();
+        permission.setPname(parameterM.getPname());
+        permission.setIsuse(parameterM.getIsuse());
+        permission.setOrders(Integer.parseInt(parameterM.getOrders()));
+        permission.setRemark(parameterM.getRemark());
+        permission.setName(parameterM.getName());
+        permission.setpId(Integer.parseInt(parameterM.getpId()));
+        permission.setType(Integer.parseInt(parameterM.getType()));
+        if (parameterM.getId() != 0) {
+            permissionMapper.updatePermission(permission);
+            return ResultUtil.ok();
+        } else {
+            permissionMapper.insertPermission(permission);
         }
         return ResultUtil.ok();
     }
@@ -225,6 +254,28 @@ public class AdminServiceImpl implements AdminService {
                 roleMapper.deleteById(Integer.parseInt(id));
             }
             return ResultUtil.ok();
+        } else if (parameterM.getLock() == 1) {
+            if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
+            for (String id : parameterM.getIds().split(",")) {
+                roleMapper.updateIsuse(Integer.parseInt(id), 1);
+            }
+            return ResultUtil.ok();
+        }
+        if (!StringUtils.isNumeric(parameterM.getOrders())) return ResultUtil.errorWithMessage("排序只能是数字");
+        if (StringUtils.isBlank(parameterM.getPname())) return ResultUtil.errorWithMessage("名称标识不能为空");
+        Role role = null;
+        if (parameterM.getId() != 0) role = roleMapper.findById(parameterM.getId());
+        else if (parameterM.getId() == 0) role = new Role();
+        role.setRname(parameterM.getRname());
+        role.setIsuse(parameterM.getIsuse());
+        role.setOrders(Integer.parseInt(parameterM.getOrders()));
+        role.setRemark(parameterM.getRemark());
+        role.setName(parameterM.getName());
+        if (parameterM.getId() != 0) {
+            roleMapper.updateRole(role);
+            return ResultUtil.ok();
+        } else {
+            roleMapper.insertRole(role);
         }
         return ResultUtil.ok();
     }

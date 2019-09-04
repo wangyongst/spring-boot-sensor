@@ -31,6 +31,24 @@ public class ParameterM {
     private Integer deptid;
     private Integer permissionid;
     private Integer userid;
+    private String pname;
+    private String rname;
+
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
+    public String getRname() {
+        return rname;
+    }
+
+    public void setRname(String rname) {
+        this.rname = rname;
+    }
 
     public Integer getDeptid() {
         return deptid;

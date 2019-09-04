@@ -10,7 +10,16 @@ public class Role {
     private String name;
     private Integer orders;
     private Integer islock;
+    private String remark;
     private List<Role2Permission> role2Permissions;
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
     public Integer getIslock() {
         return islock;

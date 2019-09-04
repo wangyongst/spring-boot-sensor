@@ -31,14 +31,15 @@ $('.sidebar-menu li:not(.treeview)>a').on('click', function () {
     $(this).parents().siblings().find('li').removeClass('active');
 });
 
-// $('#logout').on('click', function () {
-//     $.post("/shiro/logout")
-// });
-
-function logout() {
+$('#logout').on('click', function () {
     $.post("/shiro/logout");
     window.location.href = "/login";
-}
+});
+//
+// function logout() {
+//     $.post("/shiro/logout");
+//     window.location.href = "/login";
+// }
 
 
   
