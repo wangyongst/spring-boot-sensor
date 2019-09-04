@@ -17,7 +17,7 @@ $(function () {
 
     };
 
-    $.get("/admin/dept/list",
+    $.get("/admin/dept/list?isuse=0",
         function (result) {
             if (result.status) {
                 $.fn.zTree.init($("#treeDemo1"), setting2, result.data);
