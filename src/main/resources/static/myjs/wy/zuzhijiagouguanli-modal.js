@@ -13,11 +13,11 @@ $(function () {
             simpleData: {
                 enable: true
             }
-        },
+        }
 
     };
 
-    $.get("/admin/dept/list",
+    $.get("/admin/dept/list?isuse=0",
         function (result) {
             if (result.status) {
                 $.fn.zTree.init($("#treeDemo1"), setting2, result.data);
@@ -34,4 +34,14 @@ $(function () {
                 }
             });
     });
+
+    $("#deptSelectSave").click(function () {
+        alert(getSelectedZTreeId());
+    });
 })
+
+const getSelectedZTreeId = () => {
+    let idList = [];
+    $.fn.zTree.getZTreeObj("treeDemo1").getCheckedNodes(true).map(val => idList.push(val.id));
+    return idList.toString();
+};

@@ -17,7 +17,7 @@ $(function () {
 
     };
 
-    $.get("/admin/dept/list",
+    $.get("/admin/dept/list?isuse=0",
         function (result) {
             if (result.status) {
                 $.fn.zTree.init($("#treeDemo1"), setting2, result.data);
@@ -26,7 +26,7 @@ $(function () {
 
     var roletable = $('#roletable').DataTable({
             "ajax": {
-                "url": "admin/role/list?isuse=1",
+                "url": "admin/role/list?isuse=0",
                 "dataSrc": "data",
             },
             "paging": true,
