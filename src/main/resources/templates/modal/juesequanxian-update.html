@@ -43,21 +43,21 @@
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
 
-                        <li class="width-50">
+                        <li class="width-50" shiro:haspermission="anquan">
                             <p>功能权限：</p>
-                            <input type="text" class="form-control click-bg" id="cat-select-click1" name="permissionids" th:value="${role.id}">
+                            <input type="text" class="form-control click-bg" id="cat-select-click1" name="permissionids">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>排序 :</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="orders" th:value="${role.orders}>
+                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="orders" th:value="${role.orders}">
                             <span class=" help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-full">
                             <p>备注 :</p>
                             <div class="form-right">
-                                <textarea name="remark" maxlength="255" class="form-control" rows="4" th:text="${role.orders}></textarea>
+                                <textarea name="remark" maxlength="255" class="form-control" rows="4" th:text="${role.orders}"></textarea>
                             </div>
                         </li>
                     </ul>

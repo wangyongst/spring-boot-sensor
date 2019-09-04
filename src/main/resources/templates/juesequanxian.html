@@ -1,95 +1,95 @@
 <!doctype html>
 <html lang="zh_CN" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-		<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
-		<link type="text/css" rel="stylesheet" href="css/skin-blue.min.css" />
-		<link type="text/css" rel="stylesheet" href="css/AdminLTE.min.css" />
-		<link type="text/css" rel="stylesheet" href="css/all.css" />
-		<link type="text/css" rel="stylesheet" href="css/dataTables.bootstrap.min.css" />
-		<link type="text/css" rel="stylesheet" href="css/index.css" />
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-	</head>
-	<body class="holl-init">
-		<section class="content-header">
-      		<h1>
-        		用户管理
-        		<small>角色权限</small>
-      		</h1>
-      		<ol class="breadcrumb">
-        		<li><a href="#"><i class="fa fa-dashboard"></i>系统配置</a></li>
-        		<li><a href="#">用户管理</a></li>
-        		<li class="active">角色权限</li>
-     		</ol>
-    	</section>
-    	<section class="content container-fluid">
-    		<div class="row">
-				<!--表格开始-->
-				<div class="col-xs-12">
-					<div class="box">
-					    <div class="box-header">
-					    	<h3 class="box-title">角色权限</h3>
-					    </div>
-					    <!--操作button-->
-					    <div class="buttons mag_1">
-	                        <button type="button" class="btn btn-primary" id="new" shiro:haspermission="permission-new">新建</button>
-	                        <button type="button" class="btn btn-success " shiro:haspermission="permission-update">编辑</button>
-							<button type="button" class="btn btn-warning " shiro:haspermission="permission-chakan">查看</button>
-	                        <button type="button" class="btn btn-danger " shiro:haspermission="permission-delete">删除</button>
-							<button type="button" class="btn btn-danger " shiro:haspermission="permission-deleteall">批量删除</button>
-							<button type="button" class="btn btn-success " shiro:haspermission="permission-import">导入</button>
-							<button type="button" class="btn btn-warning " shiro:haspermission="permission-export">导出</button>
-	                   	</div>
-	                   	<!--操作button结束-->
-	                   	<!--table表格开始-->
-	                   	<div class="box-body">
-	                        <table class="table table-hover table-bordered table-striped example-table" id="mydatatable">
-<!--	                            <thead>-->
-<!--	                            	<tr>-->
-<!--	                                	<th></th>-->
-<!--	                                	<th>角色名称</th>-->
-<!--	                                	<th>角色英文名称</th>-->
-<!--	                                	<th>操作</th>-->
-<!--	                            	</tr>-->
-<!--	                            </thead>-->
-<!--	                    		<tbody>-->
-<!--	                    			<tr>-->
-<!--	                       				<td><input type="checkbox" class="minimal" /></td>-->
-<!--	                        			<td>系统管理员</td>-->
-<!--	                        			<td>sysadmin</td>-->
-<!--	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a></td>-->
-<!--	                    			</tr>-->
-<!--	                    			<tr>-->
-<!--	                       				<td><input type="checkbox" class="minimal" /></td>-->
-<!--	                        			<td>工程师</td>-->
-<!--	                        			<td>engineer</td>-->
-<!--	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a> </td>-->
-<!--	                    			</tr>-->
-<!--	                    			<tr>-->
-<!--	                       				<td><input type="checkbox" class="minimal" /></td>-->
-<!--	                        			<td>客户</td>-->
-<!--	                        			<td>customer</td>-->
-<!--	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a> </td>-->
-<!--	                    			</tr>-->
-<!--	                    		</tbody>-->
-	                   	    </table>
-	                   	</div>
-	                   	<!--table表格结束-->
-					</div>
-				</div>
-				<!--表格结束-->
-    		</div>
-        </section>
-  	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/adminlte.min.js"></script>
-	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/icheck.min.js"></script>
-	<!--table初始化-->
-		<script type="text/javascript" src="myjs/wy/juesequanxian.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/skin-blue.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/AdminLTE.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/all.css"/>
+    <link type="text/css" rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/index.css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body class="holl-init">
+<section class="content-header">
+    <h1>
+        用户管理
+        <small>角色权限</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>系统配置</a></li>
+        <li><a href="#">用户管理</a></li>
+        <li class="active">角色权限</li>
+    </ol>
+</section>
+<section class="content container-fluid">
+    <div class="row">
+        <!--表格开始-->
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">角色权限</h3>
+                </div>
+                <!--操作button-->
+                <div class="buttons mag_1">
+                    <button type="button" class="btn btn-primary" id="new" shiro:haspermission="permission-new">新建</button>
+                    <button type="button" class="btn btn-success " id="update" shiro:haspermission="permission-update">编辑</button>
+                    <button type="button" class="btn btn-warning " id="look" shiro:haspermission="permission-chakan">查看</button>
+                    <button type="button" class="btn btn-danger " id="delete" shiro:haspermission="permission-delete">删除</button>
+                    <button type="button" class="btn btn-danger " id="deleteall" shiro:haspermission="permission-deleteall">批量删除</button>
+                    <button type="button" class="btn btn-success " id="import" shiro:haspermission="permission-import">导入</button>
+                    <button type="button" class="btn btn-warning " id="export" shiro:haspermission="permission-export">导出</button>
+                </div>
+                <!--操作button结束-->
+                <!--table表格开始-->
+                <div class="box-body">
+                    <table class="table table-hover table-bordered table-striped example-table" id="mydatatable">
+                        <!--	                            <thead>-->
+                        <!--	                            	<tr>-->
+                        <!--	                                	<th></th>-->
+                        <!--	                                	<th>角色名称</th>-->
+                        <!--	                                	<th>角色英文名称</th>-->
+                        <!--	                                	<th>操作</th>-->
+                        <!--	                            	</tr>-->
+                        <!--	                            </thead>-->
+                        <!--	                    		<tbody>-->
+                        <!--	                    			<tr>-->
+                        <!--	                       				<td><input type="checkbox" class="minimal" /></td>-->
+                        <!--	                        			<td>系统管理员</td>-->
+                        <!--	                        			<td>sysadmin</td>-->
+                        <!--	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a></td>-->
+                        <!--	                    			</tr>-->
+                        <!--	                    			<tr>-->
+                        <!--	                       				<td><input type="checkbox" class="minimal" /></td>-->
+                        <!--	                        			<td>工程师</td>-->
+                        <!--	                        			<td>engineer</td>-->
+                        <!--	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a> </td>-->
+                        <!--	                    			</tr>-->
+                        <!--	                    			<tr>-->
+                        <!--	                       				<td><input type="checkbox" class="minimal" /></td>-->
+                        <!--	                        			<td>客户</td>-->
+                        <!--	                        			<td>customer</td>-->
+                        <!--	                        			<td><a href="#.html">删除</a> <a href="#.html">停用</a> </td>-->
+                        <!--	                    			</tr>-->
+                        <!--	                    		</tbody>-->
+                    </table>
+                </div>
+                <!--table表格结束-->
+            </div>
+        </div>
+        <!--表格结束-->
+    </div>
+</section>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/adminlte.min.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="js/icheck.min.js"></script>
+<!--table初始化-->
+<script type="text/javascript" src="myjs/wy/juesequanxian.js"></script>
 <!--	<script>-->
 <!--   $(function() {	-->
 <!--	/*&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;点击按钮打开模态框&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;*/-->
@@ -102,5 +102,5 @@
 <!--		})-->
 <!--    });-->
 <!--	</script>-->
-	</body>
+</body>
 </html>

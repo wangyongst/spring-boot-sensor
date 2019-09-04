@@ -48,14 +48,73 @@ $(function () {
 
 
     /*----------点击按钮打开模态框------------*/
-    $("#new").click(function(){
+    $("#new").click(function () {
         var dialog = window.parent.$('#modal-default');
         dialog.empty();
-        dialog.load("modal/juesequanxian-modal.html",function(){
-            dialog.modal();
-        });
+        dialog.load("modal/juesequanxian");
+        dialog.modal();
+    })
+
+    $("#look").click(function () {
+        var id = select();
+        if (id == "") {
+            alert("请先选择一条数据")
+            return;
+        }
+        if (id.split(',').length > 1) {
+            alert("只能选择一条数据")
+            return;
+        }
+        var dialog = window.parent.$('#modal-default');
+        dialog.empty();
+        dialog.load("modal/juesequanxian?look=1&id=" + id);
+        dialog.modal();
+    })
+
+    $("#update").click(function () {
+        var id = select();
+        if (id == "") {
+            alert("请先选择一条数据")
+            return;
+        }
+        if (id.split(',').length > 1) {
+            alert("只能选择一条数据")
+            return;
+        }
+        var dialog = window.parent.$('#modal-default');
+        dialog.empty();
+        dialog.load("modal/juesequanxian?id=" + id);
+        dialog.modal();
+    })
+
+
+    $("#delete").click(function () {
+        $.post("/admin/role/sud?delete=1&ids=" + select(),
+            function (result) {
+                if (result.status) {
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
+    })
+
+    $("#deleteall").click(function () {
+        $.post("/admin/role/sud?delete=2&ids=" + select(),
+            function (result) {
+                if (result.status) {
+                    $('#mydatatable').DataTable().ajax.reload();
+                } else {
+                    alert(result.message);
+                }
+            });
+    })
+
+    $("#export").click(function () {
+        $.get("/admin/role/export");
     })
 })
+
 
 function select() {
     var ids = "";
