@@ -33,13 +33,13 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="images/header.png" class="user-image">
-                            <span class="hidden-xs" th:text="me.name"></span>
+                            <span class="hidden-xs" th:text="${me.name}"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
                                 <img src="images/header.png" class="img-circle">
-                                <p th:text="me.name">
-                                    <small th:text="me.username"></small>
+                                <p th:text="${me.name}">
+                                    <small th:text="${me.username}"></small>
                                 </p>
                             </li>
                             <li class="user-footer">
