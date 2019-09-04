@@ -1,6 +1,7 @@
 package com.spring.boot.sensor.admin.controller;
 
 import com.spring.boot.sensor.entity.Blacklist;
+import com.spring.boot.sensor.entity.Dept;
 import com.spring.boot.sensor.entity.Permission;
 import com.spring.boot.sensor.model.ParameterM;
 import com.spring.boot.sensor.service.AdminService;
@@ -52,12 +53,17 @@ public class ViewController {
     }
 
     @RequestMapping("/modal/zuzhijiagouguanli")
-    public String zuzhijiagouguanlimodal(Integer id, Integer look, Model model) {
+    public String zuzhijiagouguanlimodal(Integer id, Integer look, Integer pid, Model model) {
         if (id != null && id != 0) {
             ParameterM parameterM = new ParameterM();
             parameterM.setId(id);
             model.addAttribute("dept", adminService.dept(parameterM).getData());
             if (look != null && look == 1) return "modal/zuzhijiagouguanli-look";
+            return "modal/zuzhijiagouguanli-update";
+        } else if (pid != null && pid != 0) {
+            Dept dept = new Dept();
+            dept.setpId(pid);
+            model.addAttribute("dept", dept);
             return "modal/zuzhijiagouguanli-update";
         }
         return "modal/zuzhijiagouguanli-new";
