@@ -78,6 +78,7 @@ $(function () {
     });
 
     $("#deptSelectSave").click(function () {
+        alert(getSelectedZTreeId())
         $('#cat-select-click1').val(getSelectedZTreeId());
     });
 
@@ -88,13 +89,13 @@ $(function () {
             alert("只能选择一个角色");
             return;
         }
-        $('#cat-select-click3').val(select());
-        $('#cat-select3').css('display','none');
-        $('#mubu').css('display','none');
+        $('#cat-select-click3').val(ids);
+        $('#cat-select3').css('display', 'none');
+        $('#mubu').css('display', 'none');
     });
 })
 
-const getSelectedZTreeId = () => {
+function getSelectedZTreeId() {
     let idList = [];
     $.fn.zTree.getZTreeObj("treeDemo1").getCheckedNodes(true).map(val => idList.push(val.id));
     return idList.toString();
@@ -107,5 +108,6 @@ function select() {
             ids += "," + $(this).val();
         }
     });
+    if (ids.length > 1) ids = ids.substr(1);
     return ids;
 }
