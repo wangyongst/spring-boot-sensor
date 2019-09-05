@@ -83,6 +83,12 @@ public class AdminController {
         return adminService.role(parameterM);
     }
 
+    //分配权限
+    @PostMapping("/role/permission")
+    public Result rolePermission(@ModelAttribute ParameterM parameterM) {
+        return adminService.rolePermission(parameterM);
+    }
+
     //角色增删改
     @PostMapping("/role/sud")
     public Result roleSud(@ModelAttribute ParameterM parameterM) {

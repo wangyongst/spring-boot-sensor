@@ -43,6 +43,9 @@ public class AdminServiceImpl implements AdminService {
     private PermissionMapper permissionMapper;
 
     @Autowired
+    private Role2PermissionMapper role2PermissionMapper;
+
+    @Autowired
     private BlacklistMapper blacklistMapper;
 
     @Autowired
@@ -265,7 +268,7 @@ public class AdminServiceImpl implements AdminService {
             return ResultUtil.ok();
         }
         if (!StringUtils.isNumeric(parameterM.getOrders())) return ResultUtil.errorWithMessage("排序只能是数字");
-//      if (StringUtils.isBlank(parameterM.getPname())) return ResultUtil.errorWithMessage("名称标识不能为空");
+        if (StringUtils.isBlank(parameterM.getRname())) return ResultUtil.errorWithMessage("名称标识不能为空");
         Role role = null;
         if (parameterM.getId() != 0) role = roleMapper.findById(parameterM.getId());
         else if (parameterM.getId() == 0) role = new Role();
@@ -279,6 +282,24 @@ public class AdminServiceImpl implements AdminService {
             return ResultUtil.ok();
         } else {
             roleMapper.insertRole(role);
+        }
+        return ResultUtil.ok();
+    }
+
+    @Override
+    public Result rolePermission(ParameterM parameterM) {
+        if (parameterM.getRoleid().equals("48") || parameterM.getRoleid().equals("50") || parameterM.getRoleid().equals("51")) {
+            return ResultUtil.errorWithMessage("内置角色不可以修改权限");
+        }
+        int roleid = parameterM.getRoleid().intValue();
+        String ids = parameterM.getPermissionids();
+        role2PermissionMapper.deleteByRoleid(roleid);
+        if (StringUtils.isBlank(ids)) return ResultUtil.ok();
+        for (String id : ids.split(",")) {
+            Role2Permission rp = new Role2Permission();
+            rp.setRoleid(roleid);
+            rp.setPermissionid(Integer.parseInt(id));
+            role2PermissionMapper.insertRole2Permission(rp);
         }
         return ResultUtil.ok();
     }

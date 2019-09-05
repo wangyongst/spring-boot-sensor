@@ -70,6 +70,7 @@ $(function () {
             function (result) {
                 if (result.status) {
                     $('#modal-default').modal('hide');
+                    window.parent.location.reload();
                 } else {
                     alert(result.message);
                 }

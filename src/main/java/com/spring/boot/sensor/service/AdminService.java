@@ -35,6 +35,8 @@ public interface AdminService {
 
     Result roleSud(ParameterM parameterM);
 
+    Result rolePermission(ParameterM parameterM);
+
     Result isInBlack(String ip);
 
     Result blacklist(int type);

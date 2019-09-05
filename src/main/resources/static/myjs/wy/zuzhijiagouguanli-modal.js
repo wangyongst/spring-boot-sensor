@@ -29,6 +29,7 @@ $(function () {
             function (result) {
                 if (result.status) {
                     $('#modal-default').modal('hide');
+                    window.parent.location.reload();
                 } else {
                     alert(result.message);
                 }
@@ -37,6 +38,8 @@ $(function () {
 
     $("#deptSelectSave").click(function () {
         $('#cat-select-click1').val(getSelectedZTreeId());
+        $('#cat-select').css('display','none');
+        $('#mubu').css('display','none');
     });
 })
 

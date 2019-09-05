@@ -33,6 +33,15 @@ public class ParameterM {
     private Integer userid;
     private String pname;
     private String rname;
+    private String permissionids;
+
+    public String getPermissionids() {
+        return permissionids;
+    }
+
+    public void setPermissionids(String permissionids) {
+        this.permissionids = permissionids;
+    }
 
     public String getPname() {
         return pname;
