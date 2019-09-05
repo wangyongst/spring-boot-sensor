@@ -1,4 +1,29 @@
 $(function () {
+
+    var setting = {
+        view: {
+            selectedMulti: false
+        },
+        check: {
+            enable: true
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        edit: {
+            enable: false
+        }
+    };
+
+    $.get("/admin/permission/list?isuse=0",
+        function (result) {
+            if (result.status) {
+                $.fn.zTree.init($("#treeDemo1"), setting, result.data);
+            }
+        });
+
     var mydatatable = $('#mydatatable').DataTable({
             "ajax": {
                 "url": "admin/role/list",
