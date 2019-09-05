@@ -29,9 +29,11 @@ public class ShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         User user = (User) principals.getPrimaryPrincipal();
         Role role = user.getRole();
-        authorizationInfo.addRole(role.getRname());
-        for (Role2Permission p : role.getRole2Permissions()) {
-            authorizationInfo.addStringPermission(p.getPermission().getPname());
+        if(role != null) {
+            authorizationInfo.addRole(role.getRname());
+            for (Role2Permission p : role.getRole2Permissions()) {
+                authorizationInfo.addStringPermission(p.getPermission().getPname());
+            }
         }
         return authorizationInfo;
     }
