@@ -246,7 +246,7 @@ public class AdminServiceImpl implements AdminService {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
             Role role = roleMapper.findById(Integer.parseInt(parameterM.getIds()));
-            if (role.getIslock() == 1) return ResultUtil.errorWithMessage("不能删除内置角色");
+            if (role.getIslock() != null && role.getIslock() == 1) return ResultUtil.errorWithMessage("不能删除内置角色");
             roleMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
         } else if (parameterM.getDelete() == 2) {
