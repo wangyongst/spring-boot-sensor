@@ -37,8 +37,6 @@ $(function () {
     });
     $("#permissionSelectSave").click(function () {
         $('#cat-select-click1').val(getSelectedZTreeId());
-        $('#cat-select').css('display','none');
-        $('#mubu').css('display','none');
     });
 })
 
