@@ -33,7 +33,7 @@ public interface RoleMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertRole(Role role);
 
-    @Update("update role set rname = #{rname},isuse = #{isuse},name = #{name},orders = #{orders},islock = #{islock},remark = #{remark}")
+    @Update("update role set rname = #{rname},isuse = #{isuse},name = #{name},orders = #{orders},islock = #{islock},remark = #{remark} where id = #{id}")
     void updateRole(Role role);
 
     @Update("update role set isuse = #{isuse} where id = #{id}")

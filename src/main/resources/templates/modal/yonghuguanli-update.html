@@ -76,7 +76,7 @@
                                 <option th:selected="${user.isuse == 1}" value="1">否</option>
                             </select>
                         </li>
-                        <li class="width-full">
+                        <li class="width-full" shiro:haspermission="anquan">
                             <p>用户角色 :</p>
                             <input type="text" class="form-control click-bg" id="cat-select-click3" th:value="${user.roleid}" name="roleid">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>

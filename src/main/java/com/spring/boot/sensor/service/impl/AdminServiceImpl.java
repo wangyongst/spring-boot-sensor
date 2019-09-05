@@ -18,7 +18,9 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-;import java.util.List;
+import java.util.List;
+
+;
 
 
 @Service
@@ -210,6 +212,7 @@ public class AdminServiceImpl implements AdminService {
         if (StringUtils.isBlank(parameterM.getPassword())) return ResultUtil.errorWithMessage("密码不能为空！");
         if (StringUtils.isBlank(parameterM.getPassword2())) return ResultUtil.errorWithMessage("确认密码不能为空！");
         if (!parameterM.getPassword().equals(parameterM.getPassword2())) return ResultUtil.errorWithMessage("两次密码不一致！");
+        if (parameterM.getUsername().equals(parameterM.getPassword())) return ResultUtil.errorWithMessage("用户名和密码不能重复！");
         User user = null;
         if (parameterM.getId() != 0) user = userMapper.findById(parameterM.getId());
         else if (parameterM.getId() == 0) user = new User();
@@ -262,7 +265,7 @@ public class AdminServiceImpl implements AdminService {
             return ResultUtil.ok();
         }
         if (!StringUtils.isNumeric(parameterM.getOrders())) return ResultUtil.errorWithMessage("排序只能是数字");
-        if (StringUtils.isBlank(parameterM.getPname())) return ResultUtil.errorWithMessage("名称标识不能为空");
+//      if (StringUtils.isBlank(parameterM.getPname())) return ResultUtil.errorWithMessage("名称标识不能为空");
         Role role = null;
         if (parameterM.getId() != 0) role = roleMapper.findById(parameterM.getId());
         else if (parameterM.getId() == 0) role = new Role();

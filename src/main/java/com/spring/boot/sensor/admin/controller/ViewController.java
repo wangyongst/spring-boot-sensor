@@ -95,7 +95,7 @@ public class ViewController {
             ParameterM parameterM = new ParameterM();
             parameterM.setId(id);
             model.addAttribute("role", adminService.role(parameterM).getData());
-            if (look != null && look == 1) return "modal/yonghuguanli-look";
+            if (look != null && look == 1) return "modal/juesequanxian-look";
             return "modal/juesequanxian-update";
         }
         return "modal/juesequanxian-new";
