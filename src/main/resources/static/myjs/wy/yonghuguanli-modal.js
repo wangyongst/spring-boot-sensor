@@ -88,7 +88,6 @@ $(function () {
             return;
         }
         $('#cat-select-click3').val(ids);
-        $('#modal-default').modal('hide');
     });
 })
 

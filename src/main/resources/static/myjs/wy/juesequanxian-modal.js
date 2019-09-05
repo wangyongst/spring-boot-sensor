@@ -37,7 +37,7 @@ $(function () {
     });
 
     $("#permissionSelectSave").click(function () {
-        $.post("/admin/role/permission?roleid" + $('#id') + "&permissionids=" + getSelectedZTreeId(),
+        $.post("/admin/role/permission?roleid=" + $('#id').val() + "&permissionids=" + getSelectedZTreeId(),
             function (result) {
                 if (result.status) {
                 } else {
