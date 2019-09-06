@@ -12,7 +12,7 @@ public interface LogsMapper {
     @Select("select * from logs")
     List<Logs> findAll();
 
-    @Insert("insert into logs(method, name, userusername, username,url,createtime) values(#{method}, #{name}, #{userusername}, #{username}, #{url}, #{createtime})")
+    @Insert("insert into logs(method, name, userusername, username,url,ip,createtime) values(#{method}, #{name}, #{userusername}, #{username}, #{url},#{ip}, #{createtime})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertLogs(Logs logs);
 }

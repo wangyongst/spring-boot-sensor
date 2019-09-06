@@ -31,6 +31,10 @@ $(function () {
                     "data": "method",
                     "title": "提交方式",
                 }, {
+                    "data": "ip",
+                    "title": "ip",
+                }
+                , {
                     "data": "userusername",
                     "title": "操作者",
                 }, {

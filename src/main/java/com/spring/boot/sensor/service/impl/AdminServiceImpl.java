@@ -188,6 +188,7 @@ public class AdminServiceImpl implements AdminService {
         if (parameterM.getDelete() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
+            if (parameterM.getIds().equals("85") || parameterM.getIds().equals("86") || parameterM.getIds().equals("90")) return ResultUtil.errorWithMessage("不能删除内置账号");
             userMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
         } else if (parameterM.getDelete() == 2) {
@@ -216,11 +217,18 @@ public class AdminServiceImpl implements AdminService {
         if (StringUtils.isBlank(parameterM.getPassword2())) return ResultUtil.errorWithMessage("确认密码不能为空！");
         if (!parameterM.getPassword().equals(parameterM.getPassword2())) return ResultUtil.errorWithMessage("两次密码不一致！");
         if (parameterM.getUsername().equals(parameterM.getPassword())) return ResultUtil.errorWithMessage("用户名和密码不能重复！");
+        if (parameterM.getUsername().length() < 8) return ResultUtil.errorWithMessage("密码长度最少8位！");
+        String regex = "^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[_\\-@&=])[a-z0-9_\\-@&=]+$";
+        if (!parameterM.getPassword().matches(regex)) return ResultUtil.errorWithMessage("密码至少数字、字母、特殊字符三种组合 ！");
+        List<User> savedUserList = userMapper.findByUsername(parameterM.getUsername());
+        if (savedUserList != null && savedUserList.size() > 0) return ResultUtil.errorWithMessage("登录名已经存在！");
         User user = null;
         if (parameterM.getId() != 0) user = userMapper.findById(parameterM.getId());
         else if (parameterM.getId() == 0) user = new User();
         user.setName(parameterM.getName());
-        user.setPassword(new Md5Hash(parameterM.getPassword()).toHex());
+        String newPassword = new Md5Hash(parameterM.getPassword()).toHex();
+        if (user != null && user.getPassword().equals(newPassword)) return ResultUtil.errorWithMessage("新密码不能和旧密码重复！");
+        user.setPassword(newPassword);
         user.setMobile(parameterM.getMobile());
         user.setWorkno(parameterM.getWorkno());
         user.setUsername(parameterM.getUsername());
@@ -268,7 +276,8 @@ public class AdminServiceImpl implements AdminService {
             return ResultUtil.ok();
         }
         if (!StringUtils.isNumeric(parameterM.getOrders())) return ResultUtil.errorWithMessage("排序只能是数字");
-        if (StringUtils.isBlank(parameterM.getRname())) return ResultUtil.errorWithMessage("名称标识不能为空");
+        if (StringUtils.isBlank(parameterM.getRname())) return ResultUtil.errorWithMessage("英文名称不能为空");
+        if (!parameterM.getRname().matches("[a-zA-Z]")) return ResultUtil.errorWithMessage("英文名称只能是英文字母");
         Role role = null;
         if (parameterM.getId() != 0) role = roleMapper.findById(parameterM.getId());
         else if (parameterM.getId() == 0) role = new Role();
@@ -322,7 +331,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Result createLog(String method, String path) {
+    public Result createLog(String method, String path, String ip) {
         List<Permission> permissionList = permissionMapper.findByUrl(path);
         if (permissionList != null && permissionList.size() == 1) {
             User me = (User) SecurityUtils.getSubject().getPrincipal();
@@ -330,6 +339,7 @@ public class AdminServiceImpl implements AdminService {
             logs.setMethod(method);
             logs.setName(permissionList.get(0).getName());
             logs.setUrl(path);
+            logs.setIp(ip);
             logs.setUserusername(me.getUsername());
             logs.setUsername(me.getName());
             logs.setCreatetime(TimeUtils.format(System.currentTimeMillis()));

@@ -6,8 +6,17 @@ public class Logs {
     private String username;
     private String userusername;
     private String url;
+    private String ip;
     private String method;
     private String createtime;
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 
     public int getId() {
         return id;

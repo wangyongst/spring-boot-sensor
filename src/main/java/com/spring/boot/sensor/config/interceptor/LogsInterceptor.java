@@ -16,6 +16,6 @@ public class LogsInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-        adminService.createLog(httpServletRequest.getMethod(), httpServletRequest.getRequestURI());
+        adminService.createLog(httpServletRequest.getMethod(), httpServletRequest.getRequestURI(),httpServletRequest.getRemoteAddr());
     }
 }

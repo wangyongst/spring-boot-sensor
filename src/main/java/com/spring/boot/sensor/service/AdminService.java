@@ -43,7 +43,7 @@ public interface AdminService {
 
     Result blacklistSud(ParameterM parameterM);
 
-    Result createLog(String method, String path);
+    Result createLog(String method, String path,String ip);
 
     Result logsList(ParameterM parameterM);
 
