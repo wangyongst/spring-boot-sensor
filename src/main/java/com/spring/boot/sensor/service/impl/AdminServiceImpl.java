@@ -258,6 +258,7 @@ public class AdminServiceImpl implements AdminService {
             if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
             Role role = roleMapper.findById(Integer.parseInt(parameterM.getIds()));
             if (role.getIslock() != null && role.getIslock() == 1) return ResultUtil.errorWithMessage("不能删除内置角色");
+            userMapper.updateRoleid(role.getId());
             roleMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
         } else if (parameterM.getDelete() == 2) {
@@ -265,6 +266,7 @@ public class AdminServiceImpl implements AdminService {
             for (String id : parameterM.getIds().split(",")) {
                 Role role = roleMapper.findById(Integer.parseInt(id));
                 if (role.getIslock() == 1) return ResultUtil.errorWithMessage("不能删除内置角色");
+                userMapper.updateRoleid(role.getId());
                 roleMapper.deleteById(Integer.parseInt(id));
             }
             return ResultUtil.ok();
