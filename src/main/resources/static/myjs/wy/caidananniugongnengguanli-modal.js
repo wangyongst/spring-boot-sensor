@@ -42,6 +42,6 @@ $(function () {
 
 function getSelectedZTreeId() {
     let idList = [];
-    $.fn.zTree.getZTreeObj("treeDemo1").getCheckedNodes(true).map(val => idList.push(val.id));
+    $.fn.zTree.getZTreeObj("treeDemo6").getCheckedNodes(true).map(val => idList.push(val.id));
     return idList.toString();
 };
