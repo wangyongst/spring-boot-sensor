@@ -161,7 +161,8 @@ public class AdminServiceImpl implements AdminService {
                 role2PermissionMapper.deleteByPermissionid(Integer.parseInt(parameterM.getIds()));
             }
             return ResultUtil.ok();
-        } else if (parameterM.getLock() == 1) {
+        }
+        if (parameterM.getLock() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 permissionMapper.updateIsuse(Integer.parseInt(id), 1);
