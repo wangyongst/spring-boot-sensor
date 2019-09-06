@@ -105,13 +105,15 @@ public class AdminServiceImpl implements AdminService {
             if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
             deptMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
-        } else if (parameterM.getDelete() == 2) {
+        }
+        if (parameterM.getDelete() == 2) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 deptMapper.deleteById(Integer.parseInt(id));
             }
             return ResultUtil.ok();
-        } else if (parameterM.getLock() == 1) {
+        }
+        if (parameterM.getLock() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 deptMapper.updateIsuse(Integer.parseInt(id), 1);
@@ -154,7 +156,8 @@ public class AdminServiceImpl implements AdminService {
             permissionMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             role2PermissionMapper.deleteByPermissionid(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
-        } else if (parameterM.getDelete() == 2) {
+        }
+        if (parameterM.getDelete() == 2) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 permissionMapper.deleteById(Integer.parseInt(id));
@@ -230,19 +233,22 @@ public class AdminServiceImpl implements AdminService {
             if (parameterM.getIds().equals("85") || parameterM.getIds().equals("86") || parameterM.getIds().equals("90")) return ResultUtil.errorWithMessage("不能删除内置账号");
             userMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
-        } else if (parameterM.getDelete() == 2) {
+        }
+        if (parameterM.getDelete() == 2) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 userMapper.deleteById(Integer.parseInt(id));
             }
             return ResultUtil.ok();
-        } else if (parameterM.getLock() == 1) {
+        }
+        if (parameterM.getLock() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 userMapper.updateIsuse(Integer.parseInt(id), 1);
             }
             return ResultUtil.ok();
-        } else if (parameterM.getUse() == 1) {
+        }
+        if (parameterM.getUse() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 userMapper.updateIsuse(Integer.parseInt(id), 0);
