@@ -143,7 +143,7 @@ public class AdminServiceImpl implements AdminService {
         permission.setOrders(Integer.parseInt(parameterM.getOrders()));
         permission.setRemark(parameterM.getRemark());
         permission.setName(parameterM.getName());
-        if(StringUtils.isBlank(parameterM.getpId())) permission.setpId(null);
+        if (StringUtils.isBlank(parameterM.getpId())) permission.setpId(null);
         else permission.setpId(Integer.parseInt(parameterM.getpId()));
         permission.setType(Integer.parseInt(parameterM.getType()));
         if (parameterM.getId() != 0) {
@@ -268,7 +268,7 @@ public class AdminServiceImpl implements AdminService {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 Role role = roleMapper.findById(Integer.parseInt(id));
-                if (role.getIslock() == 1) return ResultUtil.errorWithMessage("不能删除内置角色");
+                if (role.getIslock() != null && role.getIslock() == 1) return ResultUtil.errorWithMessage("不能删除内置角色");
                 userMapper.updateRoleid(role.getId());
                 roleMapper.deleteById(Integer.parseInt(id));
             }
