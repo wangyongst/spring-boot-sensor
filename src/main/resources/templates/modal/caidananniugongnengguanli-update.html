@@ -23,6 +23,7 @@
                 <div class="form-box-center">
                     <input name="id" th:value="${permission.id}" hidden>
                     <ul class="form-box clearfix" style="padding: 0;">
+                        <input name="type" value="1"  hidden>
                         <li class="width-50">
                             <p>上级菜单：</p>
                             <input type="text" class="form-control click-bg" id="cat-select-click1" name="pId" th:value="${permission.pId}">
