@@ -302,10 +302,8 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Result rolePermission(ParameterM parameterM) {
-        if (parameterM.getRoleid().equals("48") || parameterM.getRoleid().equals("50") || parameterM.getRoleid().equals("51")) {
-            return ResultUtil.errorWithMessage("内置角色不可以修改权限");
-        }
         int roleid = parameterM.getRoleid().intValue();
+        if (roleMapper.findById(roleid).getIslock() == 1) return ResultUtil.errorWithMessage("内置角色不可以修改权限");
         String ids = parameterM.getPermissionids();
         role2PermissionMapper.deleteByRoleid(roleid);
         if (StringUtils.isBlank(ids)) return ResultUtil.ok();
