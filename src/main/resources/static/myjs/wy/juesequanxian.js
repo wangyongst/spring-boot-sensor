@@ -82,7 +82,7 @@ $(function () {
             alert("只能选择一条数据")
             return;
         }
-        if (id == "48" || id == "50" || id == "51") {
+        if (id == "48" || id == "50" || id == "51" || id == "53") {
             alert("不能修改内置角色");
             return;
         }
