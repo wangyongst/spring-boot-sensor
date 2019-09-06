@@ -117,11 +117,13 @@ public class AdminServiceImpl implements AdminService {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
             permissionMapper.deleteById(Integer.parseInt(parameterM.getIds()));
+            role2PermissionMapper.deleteByPermissionid(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
         } else if (parameterM.getDelete() == 2) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
                 permissionMapper.deleteById(Integer.parseInt(id));
+                role2PermissionMapper.deleteByPermissionid(Integer.parseInt(parameterM.getIds()));
             }
             return ResultUtil.ok();
         } else if (parameterM.getLock() == 1) {
