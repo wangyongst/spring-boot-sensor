@@ -13,6 +13,9 @@ public interface BlacklistMapper {
     @Select("select * from blacklist where type = #{type}")
     List<Blacklist> findAll(int type);
 
+    @Select("select * from blacklist where type <> #{type}")
+    List<Blacklist> findAllNotType(int type);
+
     @Select("select * from blacklist where type <> 2 and type = 1 and ip like concat('%',#{ip},'%') ")
     List<Blacklist> findAllByBlack(String ip);
 
