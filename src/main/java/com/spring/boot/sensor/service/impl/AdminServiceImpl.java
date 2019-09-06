@@ -219,7 +219,7 @@ public class AdminServiceImpl implements AdminService {
         if (StringUtils.isBlank(parameterM.getPassword2())) return ResultUtil.errorWithMessage("确认密码不能为空！");
         if (!parameterM.getPassword().equals(parameterM.getPassword2())) return ResultUtil.errorWithMessage("两次密码不一致！");
         if (parameterM.getUsername().equals(parameterM.getPassword())) return ResultUtil.errorWithMessage("用户名和密码不能重复！");
-        if (parameterM.getUsername().length() < 8) return ResultUtil.errorWithMessage("密码长度最少8位！");
+        if (parameterM.getPassword().length() < 8) return ResultUtil.errorWithMessage("密码长度最少8位！");
         String regex = "^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[_\\-@&=])[a-z0-9_\\-@&=]+$";
         if (!parameterM.getPassword().matches(regex)) return ResultUtil.errorWithMessage("密码至少数字、字母、特殊字符三种组合 ！");
         List<User> savedUserList = userMapper.findByUsername(parameterM.getUsername());
