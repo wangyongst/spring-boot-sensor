@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface AdminService {
 
+    Result userLogin(String username, String password);
+
     Result findByUsername(String username);
 
     Result dept(ParameterM parameterM);
@@ -43,7 +45,7 @@ public interface AdminService {
 
     Result blacklistSud(ParameterM parameterM);
 
-    Result createLog(String method, String path,String ip);
+    Result createLog(String method, String path, String ip);
 
     Result logsList(ParameterM parameterM);
 

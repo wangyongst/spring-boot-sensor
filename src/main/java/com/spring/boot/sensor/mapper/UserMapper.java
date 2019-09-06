@@ -8,12 +8,15 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
-
     @Select("select * from user where username = #{username} and ifnull(isuse,0) <>1")
     @Results(id = "userPermission", value = {
             @Result(property = "role", column = "roleid", one = @One(select = "com.spring.boot.sensor.mapper.RoleMapper.findByIdAndIsuse"))
     })
     List<User> findByUsername(@Param("username") String username);
+
+    @Select("select * from user where username = #{username}")
+    List<User> findByUsernameCheck(@Param("username") String username);
+
 
     @Select("select * from user where id = #{id}")
     User findById(@Param("id") int id);
@@ -40,4 +43,10 @@ public interface UserMapper {
 
     @Update("update user set username = #{username},name  = #{name},finger  = #{finger}, password = #{password},workno = #{workno},mobile = #{mobile},telephone = #{telephone},email = #{email},remark  = #{remark}, isuse = #{isuse},deptid  = #{deptid},roleid = #{roleid} where id = #{id}")
     void updateUser(User user);
+
+    @Update("update user set pwtime = #{pwtime} where id = #{id}")
+    void updatePwtime(int id, String pwtime);
+
+    @Update("update user set errortime = #{errortime} where id = #{id}")
+    void updateErrortime(int id, int errortime);
 }

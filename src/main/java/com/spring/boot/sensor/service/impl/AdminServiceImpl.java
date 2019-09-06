@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
 import java.util.List;
 
 ;
@@ -50,6 +51,40 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private LogsMapper logsMapper;
+
+    @Override
+    public Result userLogin(String username, String password) {
+        List<User> userList = userMapper.findByUsername(username);
+        User user = null;
+        if (userList == null || userList.size() == 0) return ResultUtil.errorWithMessage("用户名不存在");
+        else user = userList.get(0);
+        if (user.getIslock() != null && user.getIslock() == 1) return ResultUtil.ok();
+        if (user.getIsuse() != null) return ResultUtil.errorWithMessage("账号失效不能登录");
+        String loginPassword = new Md5Hash(password).toHex();
+        if (!user.getPassword().equals(loginPassword)) {
+            int errortime = 1;
+            if (user.getErrortime() != null) errortime = user.getErrortime() + 1;
+            if (errortime <= 5) {
+                userMapper.updateErrortime(user.getId(), errortime);
+                return ResultUtil.errorWithMessage("密码错误,连续错误5次，账号将被锁定");
+            } else {
+                userMapper.updateErrortime(user.getId(), 0);
+                userMapper.updateIsuse(user.getId(), 1);
+                return ResultUtil.errorWithMessage("密码连续错误5次，账号被锁定");
+            }
+        }
+        userMapper.updateErrortime(user.getId(), 0);
+        try {
+            if ((System.currentTimeMillis() - TimeUtils.parse(user.getPwtime())) > 1000 * 60 * 60 * 24 * 30) {
+                userMapper.updateIsuse(user.getId(), 1);
+                return ResultUtil.errorWithMessage("密码超过有效期不能登录");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return ResultUtil.errorWithMessage("登录失败");
+        }
+        return ResultUtil.ok();
+    }
 
     @Override
     public Result findByUsername(String username) {
@@ -251,6 +286,7 @@ public class AdminServiceImpl implements AdminService {
         } else {
             userMapper.insertUser(user);
         }
+        userMapper.updatePwtime(user.getId(), TimeUtils.format(System.currentTimeMillis()));
         return ResultUtil.ok();
     }
 

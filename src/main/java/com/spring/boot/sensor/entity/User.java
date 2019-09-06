@@ -17,8 +17,35 @@ public class User {
     private Integer isuse;
     private Integer deptid;
     private Integer roleid;
+    private String pwtime;
+    private Integer errortime;
+    private Integer islock;
     private Role role;
     private Dept dept;
+
+    public Integer getIslock() {
+        return islock;
+    }
+
+    public void setIslock(Integer islock) {
+        this.islock = islock;
+    }
+
+    public String getPwtime() {
+        return pwtime;
+    }
+
+    public void setPwtime(String pwtime) {
+        this.pwtime = pwtime;
+    }
+
+    public Integer getErrortime() {
+        return errortime;
+    }
+
+    public void setErrortime(Integer errortime) {
+        this.errortime = errortime;
+    }
 
     public int getId() {
         return id;

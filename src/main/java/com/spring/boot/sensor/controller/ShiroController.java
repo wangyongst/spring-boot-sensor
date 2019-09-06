@@ -34,8 +34,8 @@ public class ShiroController {
         if (adminService.isInBlack(ip).getStatus() != 1) return ResultUtil.loginFail("你不允许登录！");
         if (StringUtils.isBlank(username)) return ResultUtil.errorWithMessage("登录账号不能为空！");
         if (StringUtils.isBlank(password)) return ResultUtil.errorWithMessage("登录密码不能为空！");
-        String regex = "^[a-z0-9A-Z]+$";
-        if (!password.matches(regex)) return ResultUtil.errorWithMessage("密码只支持数字和英文！");
+        Result result = adminService.userLogin(username, password);
+        if (result.getStatus() == 0) return result;
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try {
