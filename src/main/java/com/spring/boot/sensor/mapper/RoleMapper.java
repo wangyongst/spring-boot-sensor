@@ -19,7 +19,7 @@ public interface RoleMapper {
     @Select("select * from role where id = #{id}")
     Role findById(@Param("id") int id);
 
-    @Select("select * from role")
+    @Select("select * from role order by orders asc")
     List<Role> findAll();
 
     @Delete("delete from role where id = #{id}")

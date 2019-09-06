@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface DeptMapper {
 
-    @Select("select * from dept")
+    @Select("select * from dept order by orders asc")
     List<Dept> findAll();
 
     @Select("select * from dept where ifnull(isuse,0) = 1")

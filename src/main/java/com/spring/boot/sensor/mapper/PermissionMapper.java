@@ -15,7 +15,7 @@ public interface PermissionMapper {
     @Select("select * from permission where id = #{id} and ifnull(isuse,0) <>1")
     Permission findByIdAndIsuse(@Param("id") int id);
 
-    @Select("select * from permission")
+    @Select("select * from permission order by orders asc")
     List<Permission> findAll();
 
     @Select("select * from permission where urlpath = #{urlpath}")
