@@ -48,7 +48,8 @@ $(function () {
                     "title": "类型",
                     "render": function (data, type, row) {
                         if (data == 1) return "菜单";
-                        else return "按钮";
+                        else if (data == 2) return "按钮";
+                        else return "其它";
                     }
                 }, {
                     "data": "pname",
@@ -99,11 +100,11 @@ $(function () {
 
     $("#look").click(function () {
         var id = select();
-        if(id == ""){
+        if (id == "") {
             alert("请先选择一条数据")
             return;
         }
-        if (id.split(',').length > 1){
+        if (id.split(',').length > 1) {
             alert("只能选择一条数据")
             return;
         }
@@ -115,11 +116,11 @@ $(function () {
 
     $("#update").click(function () {
         var id = select();
-        if(id == ""){
+        if (id == "") {
             alert("请先选择一条数据")
             return;
         }
-        if (id.split(',').length > 1){
+        if (id.split(',').length > 1) {
             alert("只能选择一条数据")
             return;
         }
