@@ -21,6 +21,9 @@ public interface PermissionMapper {
     @Select("select * from permission where urlpath = #{urlpath}")
     List<Permission> findByUrl(String urlpath);
 
+    @Select("select * from permission where pId = #{pId}")
+    List<Permission> findBypId(Integer pId);
+
     @Delete("delete from permission where id = #{id}")
     int deleteById(@Param("id") int id);
 

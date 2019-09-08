@@ -153,6 +153,11 @@ public class AdminServiceImpl implements AdminService {
         if (parameterM.getDelete() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
+            Permission permission = permissionMapper.findById(Integer.parseInt(parameterM.getIds()));
+            if (permission.getIslock() != null && permission.getIslock() == 1)
+                return ResultUtil.errorWithMessage("不能删除内置权限");
+            if (permissionMapper.findBypId(permission.getId()).size() > 0)
+                return ResultUtil.errorWithMessage("有子节点不能删除");
             permissionMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             role2PermissionMapper.deleteByPermissionid(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
@@ -160,6 +165,11 @@ public class AdminServiceImpl implements AdminService {
         if (parameterM.getDelete() == 2) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             for (String id : parameterM.getIds().split(",")) {
+                Permission permission = permissionMapper.findById(Integer.parseInt(id));
+                if (permission.getIslock() != null && permission.getIslock() == 1)
+                    return ResultUtil.errorWithMessage("不能删除内置权限");
+                if (permissionMapper.findBypId(permission.getId()).size() > 0)
+                    return ResultUtil.errorWithMessage("有子节点不能删除");
                 permissionMapper.deleteById(Integer.parseInt(id));
                 role2PermissionMapper.deleteByPermissionid(Integer.parseInt(parameterM.getIds()));
             }
@@ -230,7 +240,8 @@ public class AdminServiceImpl implements AdminService {
         if (parameterM.getDelete() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
-            if (parameterM.getIds().equals("85") || parameterM.getIds().equals("86") || parameterM.getIds().equals("90")) return ResultUtil.errorWithMessage("不能删除内置账号");
+            if (parameterM.getIds().equals("85") || parameterM.getIds().equals("86") || parameterM.getIds().equals("90"))
+                return ResultUtil.errorWithMessage("不能删除内置账号");
             userMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
         }
@@ -261,7 +272,8 @@ public class AdminServiceImpl implements AdminService {
         if (StringUtils.isBlank(parameterM.getPassword())) return ResultUtil.errorWithMessage("密码不能为空！");
         if (StringUtils.isBlank(parameterM.getPassword2())) return ResultUtil.errorWithMessage("确认密码不能为空！");
         if (!parameterM.getPassword().equals(parameterM.getPassword2())) return ResultUtil.errorWithMessage("两次密码不一致！");
-        if (parameterM.getUsername().equals(parameterM.getPassword())) return ResultUtil.errorWithMessage("用户名和密码不能重复！");
+        if (parameterM.getUsername().equals(parameterM.getPassword()))
+            return ResultUtil.errorWithMessage("用户名和密码不能重复！");
         if (parameterM.getPassword().length() < 8) return ResultUtil.errorWithMessage("密码长度最少8位！");
         String regex = "^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[_\\-@&=])[a-z0-9_\\-@&=]+$";
         if (!parameterM.getPassword().matches(regex)) return ResultUtil.errorWithMessage("密码至少数字、字母、特殊字符三种组合 ！");

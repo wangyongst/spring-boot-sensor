@@ -13,6 +13,15 @@ public class Permission {
     private Integer pId;
     private String updatetime;
     private Integer isuse;
+    private Integer islock;
+
+    public Integer getIslock() {
+        return islock;
+    }
+
+    public void setIslock(Integer islock) {
+        this.islock = islock;
+    }
 
     public Integer getIsuse() {
         return isuse;
