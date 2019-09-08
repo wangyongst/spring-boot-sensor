@@ -188,6 +188,7 @@ public class AdminServiceImpl implements AdminService {
         if (parameterM.getId() != 0) permission = permissionMapper.findById(parameterM.getId());
         else if (parameterM.getId() == 0) permission = new Permission();
         permission.setPname(parameterM.getPname());
+        if (StringUtils.isNotBlank(parameterM.getpId())) permission.setpId(Integer.parseInt(parameterM.getpId()));
         permission.setIsuse(parameterM.getIsuse());
         permission.setOrders(Integer.parseInt(parameterM.getOrders()));
         permission.setRemark(parameterM.getRemark());
