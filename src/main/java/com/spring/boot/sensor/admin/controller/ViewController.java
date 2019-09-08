@@ -3,6 +3,7 @@ package com.spring.boot.sensor.admin.controller;
 import com.spring.boot.sensor.entity.Blacklist;
 import com.spring.boot.sensor.entity.Dept;
 import com.spring.boot.sensor.entity.Permission;
+import com.spring.boot.sensor.entity.User;
 import com.spring.boot.sensor.model.ParameterM;
 import com.spring.boot.sensor.service.AdminService;
 import com.spring.boot.sensor.utils.ThymeleafUtils;
@@ -106,7 +107,17 @@ public class ViewController {
         if (id != null && id != 0) {
             ParameterM parameterM = new ParameterM();
             parameterM.setId(id);
-            model.addAttribute("user", adminService.user(parameterM).getData());
+            User user = (User) adminService.user(parameterM).getData();
+            model.addAttribute("user", user);
+            String deptName = "";
+            Integer deptid = 0;
+            Dept dept = user.getDept();
+            if (dept != null) {
+                deptName = dept.getName();
+                deptid = dept.getId();
+            }
+            model.addAttribute("deptName", deptName);
+            model.addAttribute("deptid", deptid);
             if (look != null && look == 1) return "modal/yonghuguanli-look";
             return "modal/yonghuguanli-update";
         }

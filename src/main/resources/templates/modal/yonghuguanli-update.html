@@ -26,8 +26,8 @@
                         <li class="width-50">
                             <p>归属机构：</p>
                             <input type="text" class="form-control click-bg" id="cat-select-click1"
-                                   th:value="${user.dept.name}">
-                            <input id="deptid" name="deptid" hidden>
+                                   th:value="${deptName}" >
+                            <input id="deptid" name="deptid" th:value="${deptid}" hidden>
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
