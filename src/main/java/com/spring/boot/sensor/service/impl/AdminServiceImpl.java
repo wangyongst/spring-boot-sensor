@@ -317,7 +317,8 @@ public class AdminServiceImpl implements AdminService {
             if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
             Role role = roleMapper.findById(Integer.parseInt(parameterM.getIds()));
             if (role.getIslock() != null && role.getIslock() == 1) return ResultUtil.errorWithMessage("不能删除内置角色");
-            userMapper.updateRoleid(role.getId());
+            List<User> userList = userMapper.findByRoleid(role.getId());
+            if (userList != null && userList.size() > 0) return ResultUtil.errorWithMessage("有用户的角色不能删除");
             roleMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
         } else if (parameterM.getDelete() == 2) {
@@ -325,7 +326,8 @@ public class AdminServiceImpl implements AdminService {
             for (String id : parameterM.getIds().split(",")) {
                 Role role = roleMapper.findById(Integer.parseInt(id));
                 if (role.getIslock() != null && role.getIslock() == 1) return ResultUtil.errorWithMessage("不能删除内置角色");
-                userMapper.updateRoleid(role.getId());
+                List<User> userList = userMapper.findByRoleid(role.getId());
+                if (userList != null && userList.size() > 0) return ResultUtil.errorWithMessage("有用户的角色不能删除");
                 roleMapper.deleteById(Integer.parseInt(id));
             }
             return ResultUtil.ok();
@@ -388,7 +390,8 @@ public class AdminServiceImpl implements AdminService {
         Blacklist blacklist = blacklistMapper.findAllNotType(Integer.parseInt(parameterM.getType())).get(0);
         if (StringUtils.isNotBlank(parameterM.getIp())) {
             for (String ip : parameterM.getIp().split(";")) {
-                if (blacklist.getIp() != null && blacklist.getIp().contains(ip)) return ResultUtil.errorWithMessage(ip + "不能同时存在黑名单和白名单中");
+                if (blacklist.getIp() != null && blacklist.getIp().contains(ip))
+                    return ResultUtil.errorWithMessage(ip + "不能同时存在黑名单和白名单中");
             }
         }
         blacklistMapper.update(parameterM.getIp(), Integer.parseInt(parameterM.getType()));

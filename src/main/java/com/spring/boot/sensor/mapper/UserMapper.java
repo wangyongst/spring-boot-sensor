@@ -17,6 +17,8 @@ public interface UserMapper {
     @Select("select * from user where username = #{username}")
     List<User> findByUsernameCheck(@Param("username") String username);
 
+    @Select("select * from user where roleid = #{roleid}")
+    List<User> findByRoleid(@Param("roleid") int roleid);
 
     @Select("select * from user")
     @Results(id = "userList", value = {
