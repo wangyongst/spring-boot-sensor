@@ -18,15 +18,16 @@ public interface UserMapper {
     List<User> findByUsernameCheck(@Param("username") String username);
 
 
-    @Select("select * from user where id = #{id}")
-    User findById(@Param("id") int id);
-
     @Select("select * from user")
     @Results(id = "userList", value = {
             @Result(property = "role", column = "roleid", one = @One(select = "com.spring.boot.sensor.mapper.RoleMapper.findById")),
             @Result(property = "dept", column = "deptid", one = @One(select = "com.spring.boot.sensor.mapper.DeptMapper.findById"))
     })
     List<User> findAll();
+
+    @Select("select * from user where id = #{id}")
+    @ResultMap("userList")
+    User findById(@Param("id") int id);
 
     @Delete("delete from user where id = #{id}")
     int deleteById(@Param("id") int id);

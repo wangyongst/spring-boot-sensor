@@ -388,7 +388,7 @@ public class AdminServiceImpl implements AdminService {
         Blacklist blacklist = blacklistMapper.findAllNotType(Integer.parseInt(parameterM.getType())).get(0);
         if (StringUtils.isNotBlank(parameterM.getIp())) {
             for (String ip : parameterM.getIp().split(";")) {
-                if (blacklist.getIp().contains("ip")) return ResultUtil.errorWithMessage(ip + "不能同时存在黑名单和白名单中");
+                if (blacklist.getIp() != null && blacklist.getIp().contains("ip")) return ResultUtil.errorWithMessage(ip + "不能同时存在黑名单和白名单中");
             }
         }
         blacklistMapper.update(parameterM.getIp(), Integer.parseInt(parameterM.getType()));
