@@ -103,6 +103,10 @@ public class AdminServiceImpl implements AdminService {
         if (parameterM.getDelete() == 1) {
             if (StringUtils.isBlank(parameterM.getIds())) return ResultUtil.errorWithMessage("请先选择要操作的数据");
             if (parameterM.getIds().split(",").length > 1) return ResultUtil.errorWithMessage("只能选择一条数据");
+            List<Dept> deptList = deptMapper.findBypID(Integer.parseInt(parameterM.getIds()));
+            if (deptList != null && deptList.size() > 0) return ResultUtil.errorWithMessage("有下级的组织不能删除");
+            List<User> userList = userMapper.findByDeptid(Integer.parseInt(parameterM.getIds()));
+            if (userList != null && userList.size() > 0) return ResultUtil.errorWithMessage("有用户的组织不能删除");
             deptMapper.deleteById(Integer.parseInt(parameterM.getIds()));
             return ResultUtil.ok();
         }
