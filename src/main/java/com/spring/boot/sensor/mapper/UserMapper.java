@@ -48,8 +48,8 @@ public interface UserMapper {
     void updateUser(User user);
 
     @Update("update user set pwtime = #{pwtime} where id = #{id}")
-    void updatePwtime(int id, String pwtime);
+    void updatePwtime(@Param("id") int id,@Param("pwtime")  String pwtime);
 
     @Update("update user set errortime = #{errortime} where id = #{id}")
-    void updateErrortime(int id, int errortime);
+    void updateErrortime(@Param("id") int id,@Param("errortime")  int errortime);
 }
