@@ -3,7 +3,6 @@ $("#cat-select-click1").click(function () {
     $('#mubu').css('display', 'block');
 });
 $('#cat-select .close').click(function () {
-    alert("aaa")
     $('#cat-select').css('display', 'none');
     $('#mubu').css('display', 'none');
 });
