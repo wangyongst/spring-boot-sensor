@@ -44,12 +44,19 @@ $(function () {
                     alert(result.message);
                 }
             });
-        $('#cat-select-click1').val(getSelectedZTreeId());
+        $('#cat-select-click1').val(getSelectedZTreeName());
+        $('#permissionids').val(getSelectedZTreeId());
     });
 })
 
 function getSelectedZTreeId() {
     let idList = [];
     $.fn.zTree.getZTreeObj("treeDemo2").getCheckedNodes(true).map(val => idList.push(val.id));
+    return idList.toString();
+};
+
+function getSelectedZTreeName() {
+    let idList = [];
+    $.fn.zTree.getZTreeObj("treeDemo2").getCheckedNodes(true).map(val => idList.push(val.name));
     return idList.toString();
 };

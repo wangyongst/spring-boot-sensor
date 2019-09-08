@@ -25,12 +25,14 @@
                         <input name="id" th:value="${dept.id}" hidden>
                         <li class="width-50">
                             <p>组织编码：</p>
-                            <input class="form-control required" type="text" name="code" maxlength="100" th:value="${dept.code}">
+                            <input class="form-control required" type="text" name="code" maxlength="100"
+                                   th:value="${dept.code}">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>组织名称：</p>
-                            <input class="form-control required" type="text" name="name" maxlength="100" th:value="${dept.name}">
+                            <input class="form-control required" type="text" name="name" maxlength="100"
+                                   th:value="${dept.name}">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
@@ -44,7 +46,9 @@
                         </li>
                         <li class="width-50">
                             <p>上级组织：</p>
-                            <input type="text" class="form-control click-bg" id="cat-select-click1" name="pId" th:value="${dept.pId}">
+                            <input type="text" class="form-control click-bg" id="cat-select-click1"
+                                   th:value="${dept.name}">
+                            <input id="pId" name="pId" th:value="${dept.id}" hidden>
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>

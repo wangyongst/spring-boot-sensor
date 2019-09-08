@@ -25,33 +25,39 @@
                     <ul class="form-box clearfix" style="padding: 0;">
                         <li class="width-50">
                             <p>上级菜单：</p>
-                            <input type="text" class="form-control click-bg" id="cat-select-click1" name="pId" th:value="${permission.pId}" disabled>
+                            <input type="text" class="form-control click-bg" id="cat-select-click1" disabled>
+                            <input id="pId" name="pId" hidden>
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>菜单名：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="name" th:value="${permission.name}" disabled>
+                            <input class="form-control required" type="text" value="" maxlength="100"
+                                   required="required" name="name" th:value="${permission.name}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>菜单路径：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="urlpath" th:value="${permission.urlpath}" disabled>
+                            <input class="form-control required" type="text" value="" maxlength="100"
+                                   required="required" name="urlpath" th:value="${permission.urlpath}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>授权标识：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="pname" th:value="${permission.pname}" disabled>
+                            <input class="form-control required" type="text" value="" maxlength="100"
+                                   required="required" name="pname" th:value="${permission.pname}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>排序：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="orders" th:value="${permission.orders}" disabled>
+                            <input class="form-control required" type="text" value="" maxlength="100"
+                                   required="required" name="orders" th:value="${permission.orders}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>菜单图标路径：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" name="iconpath" th:value="${permission.iconpath}" disabled>
+                            <input class="form-control required" type="text" value="" maxlength="100"
+                                   required="required" name="iconpath" th:value="${permission.iconpath}" disabled>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
@@ -65,7 +71,8 @@
                         <li class="width-full">
                             <p>备注 :</p>
                             <div class="form-right">
-                                <textarea name="remark" maxlength="255" class="form-control" rows="4" th:text="${permission.remark}" disabled></textarea>
+                                <textarea name="remark" maxlength="255" class="form-control" rows="4"
+                                          th:text="${permission.remark}" disabled></textarea>
                             </div>
                         </li>
                     </ul>

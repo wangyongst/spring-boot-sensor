@@ -25,48 +25,58 @@
                         <input name="id" th:value="${user.id}" hidden>
                         <li class="width-50">
                             <p>归属机构：</p>
-                            <input type="text" class="form-control click-bg" id="cat-select-click1" th:value="${user.deptid}" name="deptid">
+                            <input type="text" class="form-control click-bg" id="cat-select-click1"
+                                   th:value="${user.dept.name}">
+                            <input id="deptid" name="deptid" hidden>
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>登录名：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.username}" name="username">
+                            <input class="form-control required" type="text" value="" maxlength="100"
+                                   required="required" th:value="${user.username}" name="username">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>姓名：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.name}" name="name">
+                            <input class="form-control required" type="text" value="" maxlength="100"
+                                   required="required" th:value="${user.name}" name="name">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>工号：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" required="required" th:value="${user.workno}" name="workno">
+                            <input class="form-control required" type="text" value="" maxlength="100"
+                                   required="required" th:value="${user.workno}" name="workno">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>密码：</p>
-                            <input class="form-control required" type="password" value="" maxlength="100" required="required" name="password">
+                            <input class="form-control required" type="password" value="" maxlength="100"
+                                   required="required" name="password">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>确认密码：</p>
-                            <input class="form-control required" type="password" value="" maxlength="100" required="required" name="password2">
+                            <input class="form-control required" type="password" value="" maxlength="100"
+                                   required="required" name="password2">
                             <span class="help-inline"><font color="red">*</font></span>
                         </li>
                         <li class="width-50">
                             <p>电话：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" th:value="${user.telephone}" name="telephone">
+                            <input class="form-control required" type="text" value="" maxlength="100"
+                                   th:value="${user.telephone}" name="telephone">
 
                         </li>
                         <li class="width-50">
                             <p>手机：</p>
-                            <input class="form-control required" type="text" value="" maxlength="100" th:value="${user.mobile}" name="mobile">
+                            <input class="form-control required" type="text" value="" maxlength="100"
+                                   th:value="${user.mobile}" name="mobile">
 
                         </li>
                         <li class="width-50">
                             <p>邮箱：</p>
-                            <input class="form-control required" type="email" value="" maxlength="100" th:value="${user.email}" name="email">
+                            <input class="form-control required" type="email" value="" maxlength="100"
+                                   th:value="${user.email}" name="email">
                         </li>
 
                         <li class="width-50">
@@ -78,7 +88,8 @@
                         </li>
                         <li class="width-full" shiro:haspermission="anquan">
                             <p>用户角色 :</p>
-                            <input type="text" class="form-control click-bg" id="cat-select-click3" th:value="${user.roleid}" name="roleid">
+                            <input type="text" class="form-control click-bg" id="cat-select-click3"
+                                   th:value="${user.roleid}" name="roleid">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
                         </li>
                         <li class="width-50">
@@ -90,7 +101,8 @@
                         <li class="width-full">
                             <p>备注 :</p>
                             <div class="form-right">
-                                <textarea name="remark" maxlength="255" class="form-control" rows="4" th:text="${user.remark}"></textarea>
+                                <textarea name="remark" maxlength="255" class="form-control" rows="4"
+                                          th:text="${user.remark}"></textarea>
                             </div>
                         </li>
                     </ul>
