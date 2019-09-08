@@ -283,13 +283,15 @@ public class AdminServiceImpl implements AdminService {
         String regex = "^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[_\\-@&=])[a-z0-9_\\-@&=]+$";
         if (!parameterM.getPassword().matches(regex)) return ResultUtil.errorWithMessage("密码至少数字、字母、特殊字符三种组合 ！");
         List<User> savedUserList = userMapper.findByUsername(parameterM.getUsername());
-        if (savedUserList != null && savedUserList.size() > 0) return ResultUtil.errorWithMessage("登录名已经存在！");
+        if (savedUserList != null && savedUserList.get(0).getId() != parameterM.getId())
+            return ResultUtil.errorWithMessage("登录名已经存在！");
         User user = null;
         if (parameterM.getId() != 0) user = userMapper.findById(parameterM.getId());
         else if (parameterM.getId() == 0) user = new User();
         user.setName(parameterM.getName());
         String newPassword = new Md5Hash(parameterM.getPassword()).toHex();
-        if (user != null && user.getPassword() != null && user.getPassword().equals(newPassword)) return ResultUtil.errorWithMessage("新密码不能和旧密码重复！");
+        if (user != null && user.getPassword() != null && user.getPassword().equals(newPassword))
+            return ResultUtil.errorWithMessage("新密码不能和旧密码重复！");
         user.setPassword(newPassword);
         user.setMobile(parameterM.getMobile());
         user.setWorkno(parameterM.getWorkno());
