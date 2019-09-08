@@ -289,7 +289,7 @@ public class AdminServiceImpl implements AdminService {
         else if (parameterM.getId() == 0) user = new User();
         user.setName(parameterM.getName());
         String newPassword = new Md5Hash(parameterM.getPassword()).toHex();
-        if (user != null && user.getPassword().equals(newPassword)) return ResultUtil.errorWithMessage("新密码不能和旧密码重复！");
+        if (user != null && user.getPassword() != null && user.getPassword().equals(newPassword)) return ResultUtil.errorWithMessage("新密码不能和旧密码重复！");
         user.setPassword(newPassword);
         user.setMobile(parameterM.getMobile());
         user.setWorkno(parameterM.getWorkno());
