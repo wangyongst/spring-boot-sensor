@@ -37,8 +37,8 @@ public interface UserMapper {
     @Update("update user set isuse = #{isuse} where id = #{id}")
     void updateIsuse(@Param("id") int id, @Param("isuse") int isuse);
 
-    @Update("update user set roleid = null where roleid = #{roleid}")
-    void updateRoleid(@Param("roleid") int roleid);
+    @Select("select * from user where deptid = #{deptid}")
+    List<User> findByDeptid(@Param("deptid") int deptid);
 
     @Select("insert into user(username, name, finger, password,workno,mobile,telephone,email, remark, isuse, deptid,roleid) values(#{username}, #{name}, #{finger}, #{password},#{workno},#{mobile},#{telephone},#{email}, #{remark}, #{isuse}, #{deptid},#{roleid})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
