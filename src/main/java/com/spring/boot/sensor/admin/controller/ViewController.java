@@ -54,7 +54,7 @@ public class ViewController {
     }
 
     @RequestMapping("/modal/zuzhijiagouguanli")
-    public String zuzhijiagouguanlimodal(Integer id, Integer look, Integer pid, Model model) {
+    public String zuzhijiagouguanlimodal(Integer id, Integer look, Integer pid, Integer type, Model model) {
         if (id != null && id != 0) {
             ParameterM parameterM = new ParameterM();
             parameterM.setId(id);

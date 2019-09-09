@@ -80,13 +80,29 @@ $(function () {
         dialog.modal();
     })
 
+    /*----------点击按钮打开模态框------------*/
+    $("#new2").click(function () {
+        var dialog = window.parent.$('#modal-default');
+        dialog.empty();
+        dialog.load("modal/zuzhijiagouguanli?type=1");
+        dialog.modal();
+    })
+
+    /*----------点击按钮打开模态框------------*/
+    $("#new3").click(function () {
+        var dialog = window.parent.$('#modal-default');
+        dialog.empty();
+        dialog.load("modal/zuzhijiagouguanli?type=2");
+        dialog.modal();
+    })
+
     $("#look").click(function () {
         var id = select();
-        if(id == ""){
+        if (id == "") {
             alert("请先选择一条数据")
             return;
         }
-        if (id.split(',').length > 1){
+        if (id.split(',').length > 1) {
             alert("只能选择一条数据")
             return;
         }
@@ -98,11 +114,11 @@ $(function () {
 
     $("#update").click(function () {
         var id = select();
-        if(id == ""){
+        if (id == "") {
             alert("请先选择一条数据")
             return;
         }
-        if (id.split(',').length > 1){
+        if (id.split(',').length > 1) {
             alert("只能选择一条数据")
             return;
         }
