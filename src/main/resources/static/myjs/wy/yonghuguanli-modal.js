@@ -13,7 +13,6 @@ $(function () {
                 enable: true
             }
         },
-
     };
 
     $.get("/admin/dept/list?isuse=0",
@@ -114,3 +113,4 @@ function select() {
     if (ids.length > 1) ids = ids.substr(1);
     return ids;
 }
+

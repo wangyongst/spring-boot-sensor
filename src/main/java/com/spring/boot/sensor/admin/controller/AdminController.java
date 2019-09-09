@@ -65,6 +65,12 @@ public class AdminController {
         return adminService.userList(parameterM);
     }
 
+    //账号列表
+    @GetMapping("/user/search")
+    public Object userSearch(@ModelAttribute ParameterM parameterM) {
+        return adminService.userSearch(parameterM);
+    }
+
     //账号详情
     @GetMapping("/user")
     public Result user(@ModelAttribute ParameterM parameterM) {

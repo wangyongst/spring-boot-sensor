@@ -232,6 +232,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public Result userSearch(ParameterM parameterM) {
+        return ResultUtil.okWithData(userMapper.findByDeptid(parameterM.getId()));
+    }
+
+    @Override
     public Result user(ParameterM parameterM) {
         return ResultUtil.okWithData(userMapper.findById(parameterM.getId()));
     }

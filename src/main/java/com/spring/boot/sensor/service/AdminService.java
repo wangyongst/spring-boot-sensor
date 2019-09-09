@@ -29,6 +29,8 @@ public interface AdminService {
 
     Result userList(ParameterM parameterM);
 
+    Result userSearch(ParameterM parameterM);
+
     Result user(ParameterM parameterM);
 
     Result userSud(ParameterM parameterM);

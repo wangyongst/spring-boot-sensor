@@ -13,8 +13,7 @@ $(function () {
             simpleData: {
                 enable: true
             }
-        },
-
+        }
     };
 
     $.get("/admin/dept/list",
@@ -59,14 +58,14 @@ $(function () {
                     "data": "dept",
                     "title": "所属部门",
                     "render": function (data, type, row) {
-                        if(data != null)  return data.name;
+                        if (data != null) return data.name;
                         else return null;
                     }
                 }, {
                     "data": "role",
                     "title": "角色",
                     "render": function (data, type, row) {
-                        if(data != null)  return data.name;
+                        if (data != null) return data.name;
                         else return null;
                     }
                 }],
@@ -99,11 +98,11 @@ $(function () {
 
     $("#look").click(function () {
         var id = select();
-        if(id == ""){
+        if (id == "") {
             alert("请先选择一条数据")
             return;
         }
-        if (id.split(',').length > 1){
+        if (id.split(',').length > 1) {
             alert("只能选择一条数据")
             return;
         }
@@ -115,11 +114,11 @@ $(function () {
 
     $("#update").click(function () {
         var id = select();
-        if(id == ""){
+        if (id == "") {
             alert("请先选择一条数据")
             return;
         }
-        if (id.split(',').length > 1){
+        if (id.split(',').length > 1) {
             alert("只能选择一条数据")
             return;
         }
