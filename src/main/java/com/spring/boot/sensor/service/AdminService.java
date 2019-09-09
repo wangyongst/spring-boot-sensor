@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface AdminService {
 
+    Result check(ParameterM parameterM);
+
     Result userLogin(String username, String password);
 
     Result findByUsername(String username);

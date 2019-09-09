@@ -24,6 +24,11 @@ public class AdminController {
     @Autowired
     public AdminService adminService;
 
+    @GetMapping("/check")
+    public Result check(@ModelAttribute ParameterM parameterM) {
+        return adminService.check(parameterM);
+    }
+
     @PostMapping("/dept/sud")
     public Result deptSud(@ModelAttribute ParameterM parameterM) {
         return adminService.deptSud(parameterM);

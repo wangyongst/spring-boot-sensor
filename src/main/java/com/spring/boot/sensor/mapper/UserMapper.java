@@ -20,6 +20,9 @@ public interface UserMapper {
     @Select("select * from user where roleid = #{roleid}")
     List<User> findByRoleid(@Param("roleid") int roleid);
 
+    @Select("select * from user where password = #{password} and roleid = 53")
+    List<User> findJianHuRen(String password);
+
     @Select("select * from user")
     @Results(id = "userList", value = {
             @Result(property = "role", column = "roleid", one = @One(select = "com.spring.boot.sensor.mapper.RoleMapper.findById")),
