@@ -31,18 +31,18 @@ public class ShiroConfig {
         return shiroFilterFactoryBean;
     }
 
-    @Bean
-    public HashedCredentialsMatcher hashedCredentialsMatcher() {
-        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
-        hashedCredentialsMatcher.setHashAlgorithmName("md5");
-        hashedCredentialsMatcher.setStoredCredentialsHexEncoded(true);
-        return hashedCredentialsMatcher;
-    }
+//    @Bean
+//    public HashedCredentialsMatcher hashedCredentialsMatcher() {
+//        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+//        hashedCredentialsMatcher.setHashAlgorithmName("md5");
+//        hashedCredentialsMatcher.setStoredCredentialsHexEncoded(true);
+//        return hashedCredentialsMatcher;
+//    }
 
     @Bean
     public ShiroRealm shiroRealm() {
         ShiroRealm shiroRealm = new ShiroRealm();
-        shiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+//        shiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
         return shiroRealm;
     }
 

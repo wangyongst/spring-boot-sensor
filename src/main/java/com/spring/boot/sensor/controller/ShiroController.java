@@ -4,6 +4,7 @@ import com.spring.boot.sensor.entity.Blacklist;
 import com.spring.boot.sensor.entity.User;
 import com.spring.boot.sensor.mapper.BlacklistMapper;
 import com.spring.boot.sensor.service.AdminService;
+import com.spring.boot.sensor.utils.SM3Utils;
 import com.spring.boot.sensor.utils.result.Result;
 import com.spring.boot.sensor.utils.result.ResultUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -37,7 +38,7 @@ public class ShiroController {
         Result result = adminService.userLogin(username, password);
         if (result.getStatus() == 0) return result;
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        UsernamePasswordToken token = new UsernamePasswordToken(username, SM3Utils.encrypt(password));
         try {
             subject.login(token);
             User user = (User) SecurityUtils.getSubject().getPrincipal();

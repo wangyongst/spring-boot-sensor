@@ -4,6 +4,7 @@ import com.spring.boot.sensor.entity.Role;
 import com.spring.boot.sensor.entity.Role2Permission;
 import com.spring.boot.sensor.entity.User;
 import com.spring.boot.sensor.service.AdminService;
+import com.spring.boot.sensor.utils.SM3Utils;
 import com.spring.boot.sensor.utils.result.Result;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -29,7 +30,7 @@ public class ShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         User user = (User) principals.getPrimaryPrincipal();
         Role role = user.getRole();
-        if(role != null) {
+        if (role != null) {
             authorizationInfo.addRole(role.getRname());
             for (Role2Permission p : role.getRole2Permissions()) {
                 authorizationInfo.addStringPermission(p.getPermission().getPname());

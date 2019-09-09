@@ -4,6 +4,7 @@ import com.spring.boot.sensor.entity.*;
 import com.spring.boot.sensor.mapper.*;
 import com.spring.boot.sensor.model.ParameterM;
 import com.spring.boot.sensor.service.AdminService;
+import com.spring.boot.sensor.utils.SM3Utils;
 import com.spring.boot.sensor.utils.db.TimeUtils;
 import com.spring.boot.sensor.utils.result.Result;
 import com.spring.boot.sensor.utils.result.ResultUtil;
@@ -289,7 +290,7 @@ public class AdminServiceImpl implements AdminService {
         if (parameterM.getId() != 0) user = userMapper.findById(parameterM.getId());
         else if (parameterM.getId() == 0) user = new User();
         user.setName(parameterM.getName());
-        String newPassword = new Md5Hash(parameterM.getPassword()).toHex();
+        String newPassword = SM3Utils.encrypt(parameterM.getPassword());
         if (user != null && user.getPassword() != null && user.getPassword().equals(newPassword))
             return ResultUtil.errorWithMessage("新密码不能和旧密码重复！");
         user.setPassword(newPassword);
